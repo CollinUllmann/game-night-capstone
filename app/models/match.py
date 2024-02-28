@@ -1,4 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from models import deck_matches
+
 
 class Match(db.Model):
   __tablename__ = 'matches'
@@ -10,7 +12,9 @@ class Match(db.Model):
   event_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('event.id')), nullable=False)
   user_id_winner = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('user.id')), nullable=False)
 
-  user = db.relationship("User", back_populates="match")
+  winning_user = db.relationship("User", back_populates="won_matches")
+  decks = db.relationship("Deck", secondary=deck_matches, back_populates=("matches"))
+  event = db.relationship("Event", back_populates=("matches"))
   
   def to_dict(self):
     return {

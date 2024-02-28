@@ -25,14 +25,17 @@ function LoginFormModal() {
       setErrors(serverResponse);
     } else {
       closeModal();
+      window.location.reload(false);
     }
   };
 
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
+      <div className="login-header-div">
+        <h1>Log In</h1>        
+      </div>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <label className="login-form-input">
           Email
           <input
             type="text"
@@ -42,7 +45,7 @@ function LoginFormModal() {
           />
         </label>
         {errors.email && <p>{errors.email}</p>}
-        <label>
+        <label className="login-form-input">
           Password
           <input
             type="password"
@@ -51,8 +54,17 @@ function LoginFormModal() {
             required
           />
         </label>
-        {errors.password && <p>{errors.password}</p>}
-        <button type="submit">Log In</button>
+        <div className="login-form-submit-button-div">
+          {errors.password && <p>{errors.password}</p>}
+          <button type="submit">Log In</button>
+        </div>
+        <div className="login-form-submit-button-div">
+          <button className='login-modal-button'
+            onClick={() => {
+              setEmail('demo@aa.io')
+              setPassword('password')
+            }}>Demo User</button>
+        </div>
       </form>
     </>
   );

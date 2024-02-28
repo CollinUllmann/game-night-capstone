@@ -27,7 +27,7 @@ function SignupFormModal() {
       thunkSignup({
         email,
         username,
-        password,
+        password
       })
     );
 
@@ -35,15 +35,21 @@ function SignupFormModal() {
       setErrors(serverResponse);
     } else {
       closeModal();
+      window.location.reload(false);
     }
   };
 
   return (
     <>
-      <h1>Sign Up</h1>
-      {errors.server && <p>{errors.server}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
+      <div className="signup-header-div">
+        <h1>Sign Up</h1>
+      </div>
+      {errors.server && <p className="modal-error">{errors.server}</p>}
+      {errors.email && <p className="modal-error">{errors.email}</p>}
+      {errors.confirmPassword && <p className="modal-error">{errors.confirmPassword}</p>}
+      {errors.password && <p className="modal-error">{errors.password}</p>}
+      <form className="signup-form" onSubmit={handleSubmit}>
+        <label className="signup-form-input">
           Email
           <input
             type="text"
@@ -52,8 +58,8 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.email && <p>{errors.email}</p>}
-        <label>
+        
+        <label className="signup-form-input">
           Username
           <input
             type="text"
@@ -62,8 +68,9 @@ function SignupFormModal() {
             required
           />
         </label>
+
         {errors.username && <p>{errors.username}</p>}
-        <label>
+        <label className="signup-form-input">
           Password
           <input
             type="password"
@@ -72,8 +79,8 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.password && <p>{errors.password}</p>}
-        <label>
+        
+        <label className="signup-form-input">
           Confirm Password
           <input
             type="password"
@@ -82,8 +89,10 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        <button type="submit">Sign Up</button>
+        <div className="signup-form-submit-button-div">
+          
+          <button type="submit">Sign Up</button>
+        </div>
       </form>
     </>
   );
