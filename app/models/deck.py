@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from models.deck_match import deck_matches
+from .deck_match import deck_matches
 from .deck_card import deck_cards
 
 class Deck(db.Model):
@@ -10,12 +10,12 @@ class Deck(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(50), nullable=False)
-  user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('user.id')))
+  user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
   format = db.Column(db.String(50), nullable=False)
   
-  matches = db.relationship("Match", secondary=deck_matches, back_populates=("decks"))
+  matches = db.relationship("Match", secondary=deck_matches, back_populates="decks")
   user = db.relationship("User", back_populates="decks")
-  cards = db.relationship("Card", secondary=deck_cards, back_populates=("decks"))
+  cards = db.relationship("Card", secondary=deck_cards, back_populates="decks")
 
   def to_dict(self):
     return {

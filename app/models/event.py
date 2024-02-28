@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Event(db.Model):
-  __tablename__ = 'matches'
+  __tablename__ = 'events'
 
   if environment == "production":
     __table_args__ = {'schema': SCHEMA}
@@ -11,4 +11,4 @@ class Event(db.Model):
   date = db.Column(db.Date, nullable=False)
   format = db.Column(db.String, nullable=False)
 
-  matches = db.relationship("Match", back_populates=("event"))
+  matches = db.relationship("Match", back_populates="event")

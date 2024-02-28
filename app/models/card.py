@@ -11,15 +11,14 @@ class Card(db.Model):
   name = db.Column(db.String, nullable=False)
   mana_cost = db.Column(db.String, nullable=False)
   cmc = db.Column(db.Integer, nullable=False)
-  type_line = db.Column(db.String, nullabe=False)
-  oracle_text = db.Column(db.String)
+  type_line = db.Column(db.String, nullable=False)
   colors = db.Column(db.String, nullable=False)
   color_identity = db.Column(db.String, nullable=False)
   rarity = db.Column(db.String, nullable=False)
   power = db.Column(db.String)
   toughness = db.Column(db.String)
 
-  decks = db.relationship("Deck", secondary=deck_cards, back_populates=("cards"))
+  decks = db.relationship("Deck", secondary=deck_cards, back_populates="cards")
 
   def to_dict(self):
     return {
@@ -29,7 +28,6 @@ class Card(db.Model):
       'manaCost': self.mana_cost,
       'cmc': self.cmc,
       'typeLine': self.type_line,
-      'oracleText': self.oracle_text,
       'colors': self.colors,
       'colorIdentity': self.color_identity,
       'rarity': self.rarity,

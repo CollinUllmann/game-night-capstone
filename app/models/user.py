@@ -1,7 +1,6 @@
-from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .db import db, environment, SCHEMA
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from models import user_deck_matches
 
 
 class User(db.Model, UserMixin):
@@ -15,7 +14,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    won_matches = db.relationship("Match", back_populates=("winning_user"))
+    won_matches = db.relationship("Match", back_populates="winning_user")
     decks = db.relationship("Deck", back_populates="user")
 
     @property
