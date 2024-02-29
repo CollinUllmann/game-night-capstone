@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkFetchAllDecks } from "../../../redux/deck";
 import { DeckTile } from "../DeckTile/DeckTile";
 
+import './DecksIndex.css'
+
 export function DecksIndex() {
   const dispatch = useDispatch()
 

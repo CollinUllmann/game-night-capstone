@@ -1,6 +1,8 @@
 
 import { useSelector } from "react-redux";
 
+import './DeckTile.css'
+
 
 export function DeckTile(deck) {
 
@@ -8,6 +10,7 @@ export function DeckTile(deck) {
   // console.log('deckObj: ', deckObj)
 
   console.log('deck: ', deck)
+  console.log('url: ', deck.deck.cards[0].imageUrl)
 
   return (
     <div className="deck-tile-div">

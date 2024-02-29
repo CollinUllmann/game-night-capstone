@@ -1,0 +1,11 @@
+.deck-tile-div {
+  border-radius: 10px;
+  transition: scale .2s ease;
+  margin: 0 0 0 5vh;
+  height: 200px;
+  width: 200px;
+  padding: 10px;
+}
+.deck-tile-div:hover {
+  scale: 1.2;
+}
