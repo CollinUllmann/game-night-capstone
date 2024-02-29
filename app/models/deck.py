@@ -22,5 +22,6 @@ class Deck(db.Model):
       'id': self.id,
       'name': self.name,
       'userId': self.user_id,
-      'format': self.format
+      'format': self.format,
+      'cards': [card.to_dict() for card in self.cards]
     }
