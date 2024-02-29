@@ -3,6 +3,7 @@ import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import { DecksIndex } from '../components/DeckComponents/DecksIndex/DecksIndex';
+import { DeckFormPage } from '../components/DeckComponents/DeckFormPage/DeckFormPage';
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: "/decks",
         element: <DecksIndex />,
+      },
+      {
+        path: "/decks/new",
+        element: <DeckFormPage />,
       },
     ],
   },

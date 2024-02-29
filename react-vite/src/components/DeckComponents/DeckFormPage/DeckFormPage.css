@@ -1,0 +1,46 @@
+.validation-error {
+  color: red;
+}
+
+.deck-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 84vh;
+}
+
+.form-input {
+  display: flex;
+}
+
+.deck-form-input {
+  width: 100%;
+  margin: 20px 5px 0 5px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.deck-form-input-file {
+  margin: 20px 5px 0 5px;
+}
+.deck-form-input-file input {
+  margin: 0 5px;
+}
+.deck-form-input-file select {
+  margin: 0 5px;
+}
+
+.deck-form-input input {
+  width: 100%;
+  margin: 0 5px;
+}
+
+.deck-form {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}

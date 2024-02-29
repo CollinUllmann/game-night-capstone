@@ -76,6 +76,16 @@ def seed_cards():
       colors = '',
       color_identity = 'R',
       rarity = 'C'
+    ),
+    Card(
+      image_url='https://cards.scryfall.io/large/front/4/5/4520cdcc-a10f-4b39-9c6f-ba86f6aa2c87.jpg',
+      name = 'Zada, Hedron Grinder',
+      mana_cost = '3R',
+      cmc = 4,
+      type_line = 'Legendary Creature — Goblin Ally',
+      colors = 'R',
+      color_identity = 'R',
+      rarity = 'U'
     )
   ]
   for card in cards:

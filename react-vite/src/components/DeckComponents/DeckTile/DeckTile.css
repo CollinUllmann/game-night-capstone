@@ -1,11 +1,56 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .deck-tile-div {
   border-radius: 10px;
-  transition: scale .2s ease;
-  margin: 0 0 0 5vh;
+  scale: 1;
+  transition: background-color .2s ease;
+  margin: 0 0 5vh 5vh;
   height: 200px;
   width: 200px;
-  padding: 10px;
+  background-color: lightgray;
+  background-size: 420px;
+  transition: background-size .2s ease;
 }
 .deck-tile-div:hover {
-  scale: 1.2;
+  background-color: gray;
+  background-size: 500px
+}
+
+.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: scale .2s ease;
+}
+.add:hover {
+  scale: 1.1;
+}
+.add-deck-tile-plus {
+  font-size: xxx-large;
+  font-weight: 600;
+}
+
+.deck-tile-content-div {
+  background-color: black;
+  opacity: 60%;
+  height: 70%;
+  width: 100%;
+  margin: 15% 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.deck-tile-deck-name {
+  margin: 15px 0 0 0;
+  font-weight: 600;
+  opacity: 100%;
+  font-size: x-large;
+}
+
+.deck-tile-deck-format {
+  margin: 0;
+  font-size: small;
 }
