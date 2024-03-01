@@ -18,7 +18,8 @@ class Card(db.Model):
   power = db.Column(db.String)
   toughness = db.Column(db.String)
 
-  decks = db.relationship("Deck", secondary=deck_cards, back_populates="cards")
+  # decks = db.relationship("Deck", secondary=deck_cards, back_populates="cards")
+  decks = db.relationship("DeckCard", back_populates="card")
 
   def to_dict(self):
     return {
