@@ -1,19 +1,28 @@
 
 // import { useSelector } from "react-redux";
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './DeckTile.css'
+import OpenModalMenuItem from '../../Navigation/OpenModalMenuItem';
+import DeckDeleteConfirmationModal from '../../DeckDeleteConfirmationModal/DeckDeleteConfirmationModal'
+import { FaTrashAlt } from "react-icons/fa";
+import { RxUpdate } from "react-icons/rx";
+import { thunkDeleteDeck } from '../../../redux/deck';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 export function DeckTile({ deck, onClick }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const cardsById = useSelector(state => state.cards)
 
-  // const deckObj = useSelector(state => state.decks[deck?.id])
-  // console.log('deckObj: ', deckObj)
 
-  // console.log('deck: ', deck)
-  // console.log('url: ', deck.deck.cards[0].imageUrl)
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    dispatch(thunkDeleteDeck(deck.id))
+  }
+
   return (
     <div onClick={onClick} style={{backgroundImage: `url(${cardsById[deck.cards[0]?.cardId]?.imageUrl})`, backgroundPositionX: '50%', backgroundPositionY: '25%', }} className="deck-tile-div">
       <div className='deck-tile-content-div'>
@@ -21,6 +30,12 @@ export function DeckTile({ deck, onClick }) {
         <p className='deck-tile-deck-format'>{deck.format}</p>
         {/* {deck.cards.map(card => <p key={card.id}>{card.name}</p>)} */}
       </div>
+      <FaTrashAlt className="deck-tile-delete icon" onClick={handleDelete} />
+      <RxUpdate className="deck-tile-update icon" onClick={() => navigate(`/decks/${deck.id}/update`)}/>
+      {/* <OpenModalMenuItem
+        itemText="Delete"
+        modalComponent={<DeckDeleteConfirmationModal deckId={deck.id} />}
+      /> */}
     </div>
   )
 }

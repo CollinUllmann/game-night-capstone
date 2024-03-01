@@ -38,7 +38,7 @@ export function DeckFormPage({ formtype }) {
       const cardId = deckCard.cardId
       const card = cardById[cardId]
       if(card)
-        cardsList.push(card.name)
+        cardsList.push(`${deckCard.count}x ${card.name}`)
     }
     setCards(cardsList.join('\n'))
   }, [deckId, deckById, cardById, setName, setFormat, setCards])

@@ -95,16 +95,27 @@ def update_deck(deckId):
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     deck = Deck.query.get(deckId)
-
-    cards_string = form.data['cards']
-    cards_list = list(map(str.strip, cards_string.split('\n')))
-    cards = Card.query.filter(Card.name.in_(cards_list)).all()
-
     deck.name = form.data['name']
     deck.format = form.data['format']
     deck.cards = []
+
+    cards_string = form.data['cards']
+    cards_count_list = list(map(str.strip, cards_string.split('\n')))
+    card_count_obj = {}
+    for card_count in cards_count_list:
+      card_count_split = card_count.split('x ')
+      card_count_obj[card_count_split[1]] = card_count_split[0]
+
+    cards = Card.query.filter(Card.name.in_(card_count_obj.keys())).all()
+
     for card in cards:
-      deck.cards.append(card)
+      deck_card_params = {
+        'deck_id': deck.id,
+        'card_id': card.id,
+        'count': card_count_obj[card.name]
+      }
+      deck_card = DeckCard(**deck_card_params)
+      db.session.add(deck_card)
     db.session.commit()
     return deck.to_dict()
   return form.errors, 401

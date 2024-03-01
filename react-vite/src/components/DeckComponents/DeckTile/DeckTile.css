@@ -54,3 +54,9 @@ body {
   margin: 0;
   font-size: small;
 }
+
+.icon {
+  height: 1.6vh;
+  width: 1.6vh;
+  margin: .5vh 0 0 .5vh;
+}
