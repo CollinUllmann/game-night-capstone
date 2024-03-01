@@ -1,3 +1,4 @@
+import { getCards } from "./card"
 
 //Action Types
 export const GET_DECKS = 'decks/getDecks'
@@ -37,8 +38,9 @@ export const thunkFetchAllDecks = () => async dispatch => {
   const res = await fetch('/api/decks')
 
   if (res.ok) {
-    const decks = await res.json()
+    const { decks, cards } = await res.json()
     dispatch(getDecks(decks))
+    dispatch(getCards(cards))
   } else return 'get all decks thunk error'
 }
 
@@ -46,9 +48,10 @@ export const thunkFetchDeckById = deckId => async dispatch => {
   const res = await fetch(`/api/decks/${deckId}`)
 
   if (res.ok) {
-    const deck = await res.json()
-    dispatch(getDeck(deck))
-    return deck
+    const { decks, cards } = await res.json()
+    dispatch(getDecks(decks))
+    dispatch(getCards(cards))
+    return decks[0]
   } else return 'get deck by id thunk error'
 }
 
@@ -95,7 +98,8 @@ const deckReducer = (state = {}, action) => {
   switch (action.type) {
     case GET_DECKS: {
       const newDeckState = { ...state }
-      action.payload.decks.forEach(deck => { newDeckState[deck.id] = deck })
+      action.payload.forEach(deck => { newDeckState[deck.id] = deck })
+      console.log(newDeckState);
       return newDeckState
     }
     case GET_DECK: {

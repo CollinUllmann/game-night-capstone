@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 5a31ef48fed0
-Revises: ffdc0a98111c
-Create Date: 2024-02-28 15:59:58.508009
+Revision ID: e193e59ba453
+Revises: 
+Create Date: 2024-03-01 12:20:41.621115
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5a31ef48fed0'
-down_revision = 'ffdc0a98111c'
+revision = 'e193e59ba453'
+down_revision = None
 branch_labels = None
 depends_on = None
 
@@ -25,7 +25,6 @@ def upgrade():
     sa.Column('mana_cost', sa.String(), nullable=False),
     sa.Column('cmc', sa.Integer(), nullable=False),
     sa.Column('type_line', sa.String(), nullable=False),
-    sa.Column('oracle_text', sa.String(), nullable=True),
     sa.Column('colors', sa.String(), nullable=False),
     sa.Column('color_identity', sa.String(), nullable=False),
     sa.Column('rarity', sa.String(), nullable=False),
@@ -39,6 +38,15 @@ def upgrade():
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('format', sa.String(), nullable=False),
     sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('users',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('username', sa.String(length=40), nullable=False),
+    sa.Column('email', sa.String(length=255), nullable=False),
+    sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email'),
+    sa.UniqueConstraint('username')
     )
     op.create_table('decks',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -59,6 +67,7 @@ def upgrade():
     op.create_table('deck_cards',
     sa.Column('deck_id', sa.Integer(), nullable=False),
     sa.Column('card_id', sa.Integer(), nullable=False),
+    sa.Column('count', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['card_id'], ['cards.id'], ),
     sa.ForeignKeyConstraint(['deck_id'], ['decks.id'], ),
     sa.PrimaryKeyConstraint('deck_id', 'card_id')
@@ -79,6 +88,7 @@ def downgrade():
     op.drop_table('deck_cards')
     op.drop_table('matches')
     op.drop_table('decks')
+    op.drop_table('users')
     op.drop_table('events')
     op.drop_table('cards')
     # ### end Alembic commands ###

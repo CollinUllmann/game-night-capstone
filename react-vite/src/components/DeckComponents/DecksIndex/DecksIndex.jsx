@@ -16,8 +16,6 @@ export function DecksIndex() {
   const decks = Object.values(decksObj)
 
   const [selectedDeckId, setSelectedDeckId] = useState(null)
-  
-  console.log('DECKS', decks)
 
   useEffect(() => {
     dispatch(thunkFetchAllDecks())

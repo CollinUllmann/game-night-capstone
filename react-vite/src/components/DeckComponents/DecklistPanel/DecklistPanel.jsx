@@ -3,12 +3,15 @@ import { CardTile } from "./CardTile";
 
 export function DecklistPanel({ deckId }) {
 
-  const decksObj = useSelector(state => state.decks)
-  const deck = decksObj[deckId]
+  const cardById = useSelector(state => state.cards);
+  const deckById = useSelector(state => state.decks)
+  const deck = deckById[deckId]
+
+  const cards = deck?.cards.map(deckCard => cardById[deckCard.cardId])
 
   return (
     <div className="decklist-panel-div">
-      {deck?.cards.map(card => <CardTile key={card.id} card={card} />)}
+      {cards?.map(card => <CardTile key={card.id} card={card} />)}
     </div>
   )
 }

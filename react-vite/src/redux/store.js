@@ -7,9 +7,11 @@ import {
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import deckReducer from "./deck";
+import cardReducer from "./card";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
+  cards: cardReducer,
   decks: deckReducer
 });
 

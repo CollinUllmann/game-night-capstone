@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Deck, db, Card
+from app.models import Deck, db, Card, DeckCard
 from flask_login import current_user, login_required
 from ..forms import NewDeckForm
 
@@ -10,14 +10,37 @@ deck_routes = Blueprint('decks', __name__)
 @deck_routes.route('/')
 def deck_index():
   decks = Deck.query.all()
-  return {'decks': [deck.to_dict() for deck in decks]}
+  decks_temp = [deck.to_dict() for deck in decks]
+
+  # get all card ids in all decks
+  card_ids_set = set()
+  for deck in decks_temp:
+    for card in deck['cards']:
+      card_ids_set.add(card['cardId'])
+  card_ids = list(card_ids_set)
+
+  # query for all cards in all decks
+  cards = Card.query.filter(Card.id.in_(card_ids)).all()
+    
+  return {'decks': decks_temp, 'cards': [card.to_dict() for card in cards] }
 
 @deck_routes.route('/<int:deckId>')
 def deck_details(deckId):
   deck = Deck.query.get(deckId)
   if (not deck):
     return {"message": "Deck not found"}
-  return deck.to_dict()
+  deck_temp = deck.to_dict()
+
+  # get all card ids in all decks
+  card_ids_set = set()
+  for card in deck_temp['cards']:
+    card_ids_set.add(card['cardId'])
+  card_ids = list(card_ids_set)
+
+  # query for all cards in all decks
+  cards = Card.query.filter(Card.id.in_(card_ids)).all()
+
+  return {'decks': [deck_temp], 'cards': [card.to_dict() for card in cards] }
 
 @deck_routes.route('/', methods = ['POST'])
 @login_required
@@ -35,9 +58,16 @@ def create_new_deck():
       'format': form.data['format']
     }
     new_deck = Deck(**params)
-    for card in cards:
-      new_deck.cards.append(card)
     db.session.add(new_deck)
+    for card in cards:
+      deck_card_params = {
+        'deck_id': new_deck.id,
+        'card_id': card.id,
+        'count': 1
+      }
+      deck_card = DeckCard(**deck_card_params)
+      db.session.add(deck_card)
+      # new_deck.cards.append(card)
     db.session.commit()
 
     return new_deck.to_dict()
