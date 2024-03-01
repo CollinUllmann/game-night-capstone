@@ -1,3 +1,8 @@
+body {
+  background-color: #1a1b1c;
+  color: white;
+}
+
 .deck-index-tile-div {
   display: flex;
   flex-wrap: wrap;

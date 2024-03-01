@@ -27,7 +27,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/decks/new",
-        element: <DeckFormPage />,
+        element: <DeckFormPage formtype="new" />,
+      },
+      {
+        path: "/decks/:deckId/update",
+        element: <DeckFormPage formtype="update" />,
       },
     ],
   },

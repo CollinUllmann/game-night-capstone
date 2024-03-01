@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { thunkCreateDeck } from "../../../redux/deck";
+import { thunkCreateDeck, thunkFetchDeckById, thunkUpdateDeck } from "../../../redux/deck";
 
 import './DeckFormPage.css'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export function DeckFormPage() {
+export function DeckFormPage({ formtype }) {
+  console.log('update page')
+  const { deckId } = useParams()
+
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -14,15 +18,35 @@ export function DeckFormPage() {
 
   const [errors] = useState({});
 
+  useEffect(() => {
+    if (formtype == 'update') {
+      dispatch(thunkFetchDeckById(deckId)).then((oldDeck) => {
+        setName(oldDeck.name)
+        setFormat(oldDeck.format)
+        let cardsList = []
+        for (let card of oldDeck.cards) {
+          cardsList.push(card.name)
+        }
+        setCards(cardsList.join('\n'))
+      })
+    }
+  }, [formtype, deckId, dispatch])
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     
     const deckFormData = new FormData()
     deckFormData.append('name', name)
     deckFormData.append('format', format)
     deckFormData.append('cards', cards)
-    dispatch(thunkCreateDeck(deckFormData)).then(() => navigate('/decks'))
+
+    if (formtype == 'update') {
+      dispatch(thunkUpdateDeck(deckId, deckFormData)).then(() => navigate('/decks'))
+    } else {
+      dispatch(thunkCreateDeck(deckFormData)).then(() => navigate('/decks'))
+    }
   };
 
   return (

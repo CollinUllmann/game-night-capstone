@@ -1,0 +1,35 @@
+.card-tile-div {
+  display: flex;
+  width: fit-content;
+}
+.card-tile-div:hover {
+  background-color: #2b2d2e;
+}
+
+.card-tile-image-div {
+  height: 3vh;
+  width: 3vh;
+  background-size: 7vh;
+  margin: 0 5px 0 0;
+}
+
+.card-tile-name-manacost-div {
+  display: flex;
+  flex-direction: column;
+  width: 20vh;
+}
+
+.card-tile-name {
+  margin: 0;
+}
+
+.card-tile-manacost {
+  margin: 0;
+}
+
+.card-tile-count-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3vh;
+}

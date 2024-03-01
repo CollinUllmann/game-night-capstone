@@ -11,7 +11,7 @@ def seed_decks():
         Deck(
             name='Deck2',
             user_id=2,
-            format='Modern'
+            format='Legacy'
         )
     ]
     for deck in decks:
