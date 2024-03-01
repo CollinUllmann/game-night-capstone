@@ -1,7 +1,7 @@
 import { ManaSymbol } from '../../ManaSymbol/ManaSymbol'
 import './CardTile.css'
 
-export function CardTile({ card }) {
+export function CardTile({ card, count }) {
 
   let key = 0;
   return (
@@ -13,7 +13,7 @@ export function CardTile({ card }) {
         <p className="card-tile-manacost">{card.manaCost.split('}{').map(symbol => symbol.replace('{', '').replace('}', '')).map(symbol => `{${symbol}}`).map(symbol => <ManaSymbol key={key++} symbol={symbol}></ManaSymbol>)}</p>
       </div>
       <div className="card-tile-count-div">
-        <p className="card-tile-count">1</p>
+        <p className="card-tile-count">{count}</p>
       </div>
     </div>
   )

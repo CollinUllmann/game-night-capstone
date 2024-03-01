@@ -49,8 +49,13 @@ def create_new_deck():
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     cards_string = form.data['cards']
-    cards_list = list(map(str.strip, cards_string.split('\n')))
-    cards = Card.query.filter(Card.name.in_(cards_list)).all()
+    cards_count_list = list(map(str.strip, cards_string.split('\n')))
+    card_count_obj = {}
+    for card_count in cards_count_list:
+      card_count_split = card_count.split('x ')
+      card_count_obj[card_count_split[1]] = card_count_split[0]
+
+    cards = Card.query.filter(Card.name.in_(card_count_obj.keys())).all()
 
     params = {
       'name': form.data['name'],
@@ -59,11 +64,12 @@ def create_new_deck():
     }
     new_deck = Deck(**params)
     db.session.add(new_deck)
+    db.session.commit()
     for card in cards:
       deck_card_params = {
         'deck_id': new_deck.id,
         'card_id': card.id,
-        'count': 1
+        'count': card_count_obj[card.name]
       }
       deck_card = DeckCard(**deck_card_params)
       db.session.add(deck_card)

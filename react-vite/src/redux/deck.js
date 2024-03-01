@@ -99,7 +99,6 @@ const deckReducer = (state = {}, action) => {
     case GET_DECKS: {
       const newDeckState = { ...state }
       action.payload.forEach(deck => { newDeckState[deck.id] = deck })
-      console.log(newDeckState);
       return newDeckState
     }
     case GET_DECK: {

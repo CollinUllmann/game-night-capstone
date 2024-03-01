@@ -6,7 +6,6 @@ import './DeckFormPage.css'
 import { useNavigate, useParams } from "react-router-dom";
 
 export function DeckFormPage({ formtype }) {
-  console.log('update page')
   const { deckId } = useParams()
 
   const cardById = useSelector(state => state.cards)

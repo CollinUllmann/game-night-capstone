@@ -7,11 +7,11 @@ export function DecklistPanel({ deckId }) {
   const deckById = useSelector(state => state.decks)
   const deck = deckById[deckId]
 
-  const cards = deck?.cards.map(deckCard => cardById[deckCard.cardId])
+  const cardCounts = deck?.cards.map(deckCard =>({count: deckCard.count, card: cardById[deckCard.cardId]}))
 
   return (
     <div className="decklist-panel-div">
-      {cards?.map(card => <CardTile key={card.id} card={card} />)}
+      {cardCounts?.map(cardCount => <CardTile key={cardCount.card.id} card={cardCount.card} count={cardCount.count} />)}
     </div>
   )
 }

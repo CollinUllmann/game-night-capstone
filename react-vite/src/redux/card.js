@@ -14,7 +14,6 @@ const cardReducer = (state = {}, action) => {
     case GET_CARDS: {
       const newCardState = { ...state }
       action.payload.forEach(card => { newCardState[card.id] = card })
-      console.log(newCardState);
       return newCardState
     }
     default:
