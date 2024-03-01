@@ -21,9 +21,9 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_users()
     seed_users()
-    cards = seed_cards()
-    decks = seed_decks()
-    seed_deck_cards(decks, cards)
+    seed_cards()
+    seed_decks()
+    seed_deck_cards()
     # Add other seed functions here
 
 
