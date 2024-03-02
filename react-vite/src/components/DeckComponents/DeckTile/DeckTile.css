@@ -60,3 +60,8 @@ body {
   width: 1.6vh;
   margin: .5vh 0 0 .5vh;
 }
+
+.deck-tile-icon-div {
+  display: flex;
+  justify-content: space-around;
+}

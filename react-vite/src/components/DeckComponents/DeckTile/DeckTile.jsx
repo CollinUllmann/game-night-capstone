@@ -16,7 +16,9 @@ export function DeckTile({ deck, onClick }) {
   const navigate = useNavigate()
 
   const cardsById = useSelector(state => state.cards)
+  const currentUser = useSelector(state => state.session.user)
 
+  console.log(currentUser)
 
   const handleDelete = (e) => {
     e.stopPropagation();
@@ -30,8 +32,13 @@ export function DeckTile({ deck, onClick }) {
         <p className='deck-tile-deck-format'>{deck.format}</p>
         {/* {deck.cards.map(card => <p key={card.id}>{card.name}</p>)} */}
       </div>
-      <FaTrashAlt className="deck-tile-delete icon" onClick={handleDelete} />
-      <RxUpdate className="deck-tile-update icon" onClick={() => navigate(`/decks/${deck.id}/update`)}/>
+      {currentUser?.id == deck.userId && 
+        <div className='deck-tile-icon-div'>
+          <FaTrashAlt className="deck-tile-delete icon" onClick={handleDelete} />
+          <RxUpdate className="deck-tile-update icon" onClick={() => navigate(`/decks/${deck.id}/update`)}/>
+        </div>
+      
+      }
       {/* <OpenModalMenuItem
         itemText="Delete"
         modalComponent={<DeckDeleteConfirmationModal deckId={deck.id} />}
