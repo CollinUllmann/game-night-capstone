@@ -31,9 +31,9 @@ def seed_cards():
       mana_cost = '{B}',
       cmc = 1,
       type_line = 'Instant',
-      colors = 'G',
-      color_identity = 'G',
-      rarity = 'R'
+      colors = 'B',
+      color_identity = 'B',
+      rarity = 'C'
     ),
     Card(
       image_url='https://cards.scryfall.io/large/front/2/d/2dd41293-d7c8-4422-9f0c-b3e96350f5c9.jpg',

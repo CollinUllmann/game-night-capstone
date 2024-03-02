@@ -9,6 +9,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { RxUpdate } from "react-icons/rx";
 import { thunkDeleteDeck } from '../../../redux/deck';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { ManaSymbol } from '../../ManaSymbol/ManaSymbol';
 
 
 export function DeckTile({ deck, onClick }) {
@@ -18,18 +19,28 @@ export function DeckTile({ deck, onClick }) {
   const cardsById = useSelector(state => state.cards)
   const currentUser = useSelector(state => state.session.user)
 
-  console.log(currentUser)
 
   const handleDelete = (e) => {
     e.stopPropagation();
     dispatch(thunkDeleteDeck(deck.id))
   }
 
+  const deckColors = new Set([])
+  for (const card of deck.cards) {
+    const cardObj = cardsById[card.cardId]
+    const splitColors = cardObj.colors.split('')
+    for (const color of splitColors) {
+      deckColors.add(`{${color}}`)
+    }
+  }
+  const deckColorsArr = [...deckColors]
+  let key = 0;
   return (
     <div onClick={onClick} style={{backgroundImage: `url(${cardsById[deck.cards[0]?.cardId]?.imageUrl})`, backgroundPositionX: '50%', backgroundPositionY: '25%', }} className="deck-tile-div">
       <div className='deck-tile-content-div'>
         <p className='deck-tile-deck-name'>{deck.name}</p>
         <p className='deck-tile-deck-format'>{deck.format}</p>
+        <div className='deck-tile-mana-symbol-div'>{deckColorsArr.map(color => <ManaSymbol key={key++} symbol={color}/>)}</div>
         {/* {deck.cards.map(card => <p key={card.id}>{card.name}</p>)} */}
       </div>
       {currentUser?.id == deck.userId && 

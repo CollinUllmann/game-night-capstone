@@ -37,7 +37,7 @@ body {
   opacity: 60%;
   height: 70%;
   width: 100%;
-  margin: 15% 0 0 0;
+  margin: 13% 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,4 +64,13 @@ body {
 .deck-tile-icon-div {
   display: flex;
   justify-content: space-around;
+}
+
+.deck-tile-mana-symbol-div {
+  margin: 5% 0 0 0;
+  display: flex;
+  justify-content: center;
+}
+.deck-tile-mana-symbol-div img {
+  margin: 0 5% 0 0;
 }
