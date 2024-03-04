@@ -21,11 +21,12 @@ export function DecksIndex() {
     dispatch(thunkFetchAllDecks())
   }, [dispatch])
 
+  let key = 0
   return (
     <div className="decks-index-div">
       <h1>Decks</h1>
       <div className="deck-index-tile-div">
-        {decks.map(deck => <DeckTile onClick={() => setSelectedDeckId(deck.id)} deck={deck} key={deck.id} />)}
+        {decks.map(deck => <DeckTile onClick={() => setSelectedDeckId(deck.id)} deck={deck} key={key++} />)}
         <div className="add-deck-button-div" onClick={() => navigate('/decks/new')}>
           <AddDeckTile />
         </div>

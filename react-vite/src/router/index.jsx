@@ -4,6 +4,7 @@ import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import { DecksIndex } from '../components/DeckComponents/DecksIndex/DecksIndex';
 import { DeckFormPage } from '../components/DeckComponents/DeckFormPage/DeckFormPage';
+import { MatchesIndex } from '../components/MatchComponents/MatchesIndex/MatchesIndex';
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
         path: "/decks/:deckId/update",
         element: <DeckFormPage formtype="update" />,
       },
+      {
+        path: "/matches",
+        element: <MatchesIndex />,
+      }
     ],
   },
 ]);

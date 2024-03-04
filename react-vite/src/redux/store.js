@@ -8,11 +8,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import deckReducer from "./deck";
 import cardReducer from "./card";
+import matchReducer from "./match"
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   cards: cardReducer,
-  decks: deckReducer
+  decks: deckReducer,
+  matches: matchReducer
 });
 
 let enhancer;

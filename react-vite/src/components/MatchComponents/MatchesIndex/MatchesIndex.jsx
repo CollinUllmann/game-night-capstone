@@ -6,7 +6,7 @@ import { AddMatchTile } from "../MatchTile/AddMatchTile";
 import { useNavigate } from "react-router-dom";
 
 import './MatchesIndex.css'
-import { MatchlistPanel } from "../MatchlistPanel/MatchlistPanel";
+// import { MatchlistPanel } from "../MatchlistPanel/MatchlistPanel";
 
 export function MatchesIndex() {
   const navigate = useNavigate()
@@ -15,17 +15,18 @@ export function MatchesIndex() {
   const matchesObj = useSelector(state => state.matches)
   const matches = Object.values(matchesObj)
 
-  const [selectedMatchId, setSelectedMatchId] = useState(null)
+  const [setSelectedMatchId] = useState(null)
 
   useEffect(() => {
     dispatch(thunkFetchAllMatches())
   }, [dispatch])
 
+  let matchNum = 1
   return (
     <div className="matches-index-div">
       <h1>Matches</h1>
       <div className="match-index-tile-div">
-        {matches.map(match => <MatchTile onClick={() => setSelectedMatchId(match.id)} match={match} key={match.id} />)}
+        {matches.map(match => <MatchTile onClick={() => setSelectedMatchId(match.id)} match={match} key={match.id} matchNum={matchNum++} />)}
         <div className="add-match-button-div" onClick={() => navigate('/matches/new')}>
           <AddMatchTile />
         </div>

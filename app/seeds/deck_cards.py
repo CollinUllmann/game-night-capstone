@@ -16,12 +16,12 @@ def seed_deck_cards():
     ),
     DeckCard(
       deck_id = 2,
-      card_id = 1,
+      card_id = 3,
       count = 2
     ),
     DeckCard(
       deck_id = 2,
-      card_id = 3,
+      card_id = 4,
       count = 4
     )
   ]
