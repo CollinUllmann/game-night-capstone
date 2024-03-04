@@ -28,7 +28,7 @@ export function DeckTile({ deck, onClick }) {
   const deckColors = new Set([])
   for (const card of deck.cards) {
     const cardObj = cardsById[card.cardId]
-    const splitColors = cardObj.colors.split('')
+    const splitColors = cardObj?.colors.split('') ?? []
     for (const color of splitColors) {
       deckColors.add(`{${color}}`)
     }

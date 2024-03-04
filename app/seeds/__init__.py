@@ -5,6 +5,7 @@ from .cards import seed_cards, undo_cards
 from .deck_cards import seed_deck_cards, undo_deck_cards
 from .matches import seed_matches, undo_matches
 from .deck_matches import seed_deck_matches, undo_deck_matches
+from .events import seed_events, undo_events
 
 from app.models.db import db, environment, SCHEMA
 
@@ -26,6 +27,7 @@ def seed():
     seed_cards()
     seed_decks()
     seed_deck_cards()
+    seed_events()
     seed_matches()
     seed_deck_matches()
     # Add other seed functions here
@@ -37,6 +39,7 @@ def undo():
     undo_deck_matches()
     undo_matches()
     undo_deck_cards()
+    undo_events()
     undo_users()
     undo_cards()
     undo_decks()
