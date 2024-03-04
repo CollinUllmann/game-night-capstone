@@ -126,7 +126,7 @@ def delete_deck(deckId):
   deck = Deck.query.get(deckId)
 
   if not deck: 
-    return {"message": "Deck not ofund"}
+    return {"message": "Deck not found"}
   
   if current_user.id != deck.user_id:
     return {"error": "You are not the owner of this deck",

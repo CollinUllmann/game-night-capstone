@@ -3,12 +3,12 @@
 
 import { useDispatch, useSelector } from 'react-redux'
 import './DeckTile.css'
-import OpenModalMenuItem from '../../Navigation/OpenModalMenuItem';
-import DeckDeleteConfirmationModal from '../../DeckDeleteConfirmationModal/DeckDeleteConfirmationModal'
+// import OpenModalMenuItem from '../../Navigation/OpenModalMenuItem';
+// import DeckDeleteConfirmationModal from '../../DeckDeleteConfirmationModal/DeckDeleteConfirmationModal'
 import { FaTrashAlt } from "react-icons/fa";
 import { RxUpdate } from "react-icons/rx";
 import { thunkDeleteDeck } from '../../../redux/deck';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ManaSymbol } from '../../ManaSymbol/ManaSymbol';
 
 

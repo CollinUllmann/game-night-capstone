@@ -3,6 +3,8 @@ from .users import seed_users, undo_users
 from .decks import seed_decks, undo_decks
 from .cards import seed_cards, undo_cards
 from .deck_cards import seed_deck_cards, undo_deck_cards
+from .matches import seed_matches, undo_matches
+from .deck_matches import seed_deck_matches, undo_deck_matches
 
 from app.models.db import db, environment, SCHEMA
 
@@ -24,12 +26,16 @@ def seed():
     seed_cards()
     seed_decks()
     seed_deck_cards()
+    seed_matches()
+    seed_deck_matches()
     # Add other seed functions here
 
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
+    undo_deck_matches()
+    undo_matches()
     undo_deck_cards()
     undo_users()
     undo_cards()

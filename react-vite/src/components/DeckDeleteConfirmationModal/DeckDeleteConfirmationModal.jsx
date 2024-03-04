@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkDeleteDeck } from "../../redux/deck";
@@ -10,7 +10,7 @@ function DeckDeleteConfirmationModal({deckId}) {
   const handleDelete = async (e) => {
     e.preventDefault();
 
-    const serverResponse = await dispatch(
+    await dispatch(
       thunkDeleteDeck(deckId)
     );
 
