@@ -9,7 +9,7 @@ def seed_matches():
         ),
         Match(
             event_id=1,
-            user_id_winner=2
+            user_id_winner=4
         )
     ]
     for match in matches:

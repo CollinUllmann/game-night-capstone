@@ -16,15 +16,11 @@ export function MatchTile({ match, onClick, matchNum }) {
 
   const decks = useSelector(state => state.decks)
   const cards = useSelector(state => state.cards)
-  const [decksList, setDecksList] = useState([])
   useEffect(() => {
     match.deckIds.forEach(deckId => {
-      dispatch(thunkFetchDeckById(deckId)).then(() => {
-        setDecksList(prevDecksList => [...prevDecksList, decks[deckId]])
-      })
+      dispatch(thunkFetchDeckById(deckId))
     })
   }, [match, dispatch])
- 
 
   const handleDelete = (e) => {
     e.stopPropagation();
@@ -39,13 +35,25 @@ export function MatchTile({ match, onClick, matchNum }) {
     }
   }
 
-  let key = 0;
   return (
     <div onClick={onClick} style={{backgroundColor: 'gray'}} className="match-tile-div">
       <div className='match-tile-content-div'>
         <p className='match-tile-match-name'>Match {matchNum}</p>
         <div className='match-tile-deck-div'>
-          {decksList.map(deck => <div key={key++} style={{backgroundImage: `url(${cards[deck.cards[0].cardId].imageUrl})`, backgroundPositionX: '50%', backgroundPositionY: '22%', }} className={isWinningDeck(deck)} /> )}
+          {match.deckIds.map(deckId => {
+            const deck = decks[deckId];
+            const firstCardId = deck.cards[0]?.cardId;
+            const firstCard = firstCardId != null ? cards[firstCardId] : undefined;
+            return !deck ? <></> : <div
+              key={deckId}
+              style={{
+                backgroundImage: `url(${firstCard?.imageUrl})`,
+                backgroundPositionX: '50%',
+                backgroundPositionY: '22%',
+              }}
+              className={isWinningDeck(deck)}
+            ></div>
+          })}
         </div>
       </div>
       

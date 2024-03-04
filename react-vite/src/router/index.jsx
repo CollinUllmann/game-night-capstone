@@ -5,6 +5,7 @@ import Layout from './Layout';
 import { DecksIndex } from '../components/DeckComponents/DecksIndex/DecksIndex';
 import { DeckFormPage } from '../components/DeckComponents/DeckFormPage/DeckFormPage';
 import { MatchesIndex } from '../components/MatchComponents/MatchesIndex/MatchesIndex';
+import { MatchFormPage } from '../components/MatchComponents/MatchFormPage/MatchFormPage';
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: "/matches",
         element: <MatchesIndex />,
+      },
+      {
+        path: "/matches/new",
+        element: <MatchFormPage formtype="new" />,
       }
     ],
   },
