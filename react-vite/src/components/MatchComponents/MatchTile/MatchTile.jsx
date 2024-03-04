@@ -30,6 +30,14 @@ export function MatchTile({ match, onClick, matchNum }) {
     e.stopPropagation();
     dispatch(thunkDeleteMatch(match.id))
   }
+  
+  const isWinningDeck = (deck) => {
+    if (deck.userId == match.userIdWinner) {
+      return 'match-tile-deck-img winning-deck-tile'
+    } else {
+      return 'match-tile-deck-img'
+    }
+  }
 
   let key = 0;
   return (
@@ -37,7 +45,7 @@ export function MatchTile({ match, onClick, matchNum }) {
       <div className='match-tile-content-div'>
         <p className='match-tile-match-name'>Match {matchNum}</p>
         <div className='match-tile-deck-div'>
-          {decksList.map(deck => <div key={key++} style={{backgroundImage: `url(${cards[deck.cards[0].cardId].imageUrl})`, backgroundPositionX: '50%', backgroundPositionY: '22%', }} className='match-tile-deck-img' /> )}
+          {decksList.map(deck => <div key={key++} style={{backgroundImage: `url(${cards[deck.cards[0].cardId].imageUrl})`, backgroundPositionX: '50%', backgroundPositionY: '22%', }} className={isWinningDeck(deck)} /> )}
         </div>
       </div>
       

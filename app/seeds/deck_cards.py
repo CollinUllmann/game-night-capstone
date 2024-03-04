@@ -23,6 +23,26 @@ def seed_deck_cards():
       deck_id = 2,
       card_id = 4,
       count = 4
+    ),
+    DeckCard(
+      deck_id = 3,
+      card_id = 4,
+      count = 4
+    ),
+    DeckCard(
+      deck_id = 3,
+      card_id = 2,
+      count = 4
+    ),
+    DeckCard(
+      deck_id = 4,
+      card_id = 3,
+      count = 4
+    ),
+    DeckCard(
+      deck_id = 4,
+      card_id = 4,
+      count = 4
     )
   ]
 

@@ -12,6 +12,16 @@ def seed_decks():
             name='Deck2',
             user_id=2,
             format='Legacy'
+        ),
+        Deck(
+            name='Deck3',
+            user_id=3,
+            format='Commander'
+        ),
+        Deck(
+            name='Deck4',
+            user_id=4,
+            format='Commander'
         )
     ]
     for deck in decks:

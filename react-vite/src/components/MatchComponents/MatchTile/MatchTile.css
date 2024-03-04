@@ -80,7 +80,9 @@ body {
 .match-tile-deck-div {
   display: flex;
   width: 100%;
+  height: 100%;
   justify-content: center;
+  align-items: center;
 }
 
 .match-tile-deck-img {
@@ -88,4 +90,9 @@ body {
   height: 3vh;
   background-size: 5vh;
   margin: .5vh;
+}
+
+.winning-deck-tile {
+  /* box-shadow: 0 0 .2vh .2vh gold; */
+  border: .2vh solid gold;
 }
