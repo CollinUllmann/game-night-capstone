@@ -46,6 +46,7 @@ def match_details(matchId):
 @match_routes.route('/', methods = ['POST'])
 # @login_required
 def create_new_match():
+  print('entered route')
   form = NewMatchForm()
   form.user_id_winner.choices = [ (user.id, user.username) for user in User.query.all()]
   form['csrf_token'].data = request.cookies['csrf_token']
@@ -72,20 +73,22 @@ def create_new_match():
 @match_routes.route('/<int:matchId>', methods = ['PUT'])
 # @login_required
 def update_match(matchId):
+  print('entered update route')
   match = Match.query.get(matchId)
 
   if not match:
     return {"message": "Match not found"}
   
-  if current_user.id != match.user_id:
-    return {"error": "You are not the owner of this match"}, 401
+  # if current_user.id != match.user_id:
+  #   return {"error": "You are not the owner of this match"}, 401
   
   form = NewMatchForm()
+  form.user_id_winner.choices = [ (user.id, user.username) for user in User.query.all()]
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     match = Match.query.get(matchId)
-    match.name = form.data['name']
-    match.format = form.data['format']
+    match.event_id = form.data['event_id']
+    match.user_id_winner = form.data['user_id_winner']
     # Can I do this?
     while len(match.decks) > 0:
       match.decks.pop(0)
@@ -96,31 +99,10 @@ def update_match(matchId):
     db.session.commit()
 
     return match.to_dict()
-  #   match.cards = []
-
-  #   cards_string = form.data['cards']
-  #   cards_count_list = list(map(str.strip, cards_string.split('\n')))
-  #   card_count_obj = {}
-  #   for card_count in cards_count_list:
-  #     card_count_split = card_count.split('x ')
-  #     card_count_obj[card_count_split[1]] = card_count_split[0]
-
-  #   cards = Card.query.filter(Card.name.in_(card_count_obj.keys())).all()
-
-  #   for card in cards:
-  #     match_card_params = {
-  #       'match_id': match.id,
-  #       'card_id': card.id,
-  #       'count': card_count_obj[card.name]
-  #     }
-  #     match_card = MatchCard(**match_card_params)
-  #     db.session.add(match_card)
-  #   db.session.commit()
-  #   return match.to_dict()
   return form.errors, 401
 
 @match_routes.route('/<int:matchId>', methods = ['DELETE'])
-@login_required
+# @login_required
 def delete_match(matchId):
   match = Match.query.get(matchId)
 
