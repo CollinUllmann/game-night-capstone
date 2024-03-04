@@ -31,5 +31,5 @@ class Card(db.Model):
       'colorIdentity': self.color_identity,
       'rarity': self.rarity,
       'power': self.power,
-      'toughness': self.toughness
+      'toughness': self.toughness,
     }

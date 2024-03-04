@@ -13,34 +13,35 @@ def match_index():
   matches_temp = [match.to_dict() for match in matches]
 
   # get all deck ids in all matches
-  # deck_ids_set = set()
-  # for match in matches_temp:
-  #   for deck in match['decks']:
-  #     deck_ids_set.add(deck['deckId'])
-  # deck_ids = list(deck_ids_set)
+  deck_ids_set = set()
+  for match in matches_temp:
+    for deckId in match['deckIds']:
+      deck_ids_set.add(deckId)
+  deck_ids = list(deck_ids_set)
 
   # query for all decks in all matches
-  # decks = Deck.query.filter(Deck.id.in_(deck_ids)).all()
+  decks = Deck.query.filter(Deck.id.in_(deck_ids)).all()
     
-  return {'matches': matches_temp}
+  return {'matches': matches_temp, 'decks': [deck.to_dict() for deck in decks] }
 
 @match_routes.route('/<int:matchId>')
 def match_details(matchId):
   match = Match.query.get(matchId)
   if (not match):
     return {"message": "Match not found"}
-  match_temp = match.to_dict()
+  matches_temp = [match.to_dict() for match in [match]]
 
   # get all deck ids in all matches
   deck_ids_set = set()
-  for deck in match_temp['decks']:
-    deck_ids_set.add(deck['id'])
+  for match in matches_temp:
+    for deckId in match['deckIds']:
+      deck_ids_set.add(deckId)
   deck_ids = list(deck_ids_set)
 
   # query for all decks in all matches
   decks = Deck.query.filter(Deck.id.in_(deck_ids)).all()
-
-  return {'matches': [match_temp], 'decks': [deck.to_dict() for deck in decks] }
+    
+  return {'matches': matches_temp, 'decks': decks }
 
 @match_routes.route('/', methods = ['POST'])
 @login_required

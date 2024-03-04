@@ -21,7 +21,7 @@ class Match(db.Model):
       'id': self.id,
       'eventId': self.event_id,
       'userIdWinner': self.user_id_winner,
-      'decks': [deck.to_dict() for deck in self.decks]
+      'deckIds': [deck.id for deck in self.decks]
     }
   
 

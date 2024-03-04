@@ -7,6 +7,8 @@ export function DecklistPanel({ deckId }) {
   const deckById = useSelector(state => state.decks)
   const deck = deckById[deckId]
 
+  console.log(deck?.cards)
+
   const cardCounts = deck?.cards.map(deckCard =>({count: deckCard.count, card: cardById[deckCard.cardId]}))
 
   return (
