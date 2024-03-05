@@ -35,7 +35,6 @@ export function MatchFormPage({ formtype }) {
     dispatch(thunkFetchAllEvents())
   }, [dispatch])
 
-  console.log(eventById)
 
   const playingUsers = deckIds.map(deckId => {
     const userId = deckById[deckId]?.userId;
@@ -52,19 +51,23 @@ export function MatchFormPage({ formtype }) {
   //stuff for update
   useEffect(() => {
     const match = matchById[matchId];
+    console.log('match: ', match)
     if(!match) return;
 
     setEventId(match.eventId)
     setUserIdWinner(match.userIdWinner)
 
-    const decksList = []
-    for (const deck of match.decks) {
-      const deckId = deck.id
+    const matchDeckIds = match.deckIds
+    const matchDeckIdsSet = []
+    for (const deckId of matchDeckIds) {
       const deckObj = deckById[deckId]
-      if(deckObj)
-        decksList.push(`${deckObj.name}`)
+      if(deckObj) {
+        matchDeckIdsSet.push(deckId)
+        setDeckIds(matchDeckIdsSet)
+        // decksList.push(`${deckObj.name}`)
+      }
     }
-    // setCards(cardsList.join('\n'))
+    console.log('deckIds after loop: ', deckIds)
   }, [deckById, matchId, matchById, cardById])
 
 

@@ -42,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: "/matches/new",
         element: <MatchFormPage formtype="new" />,
+      },
+      {
+        path: "/matches/:matchId/update",
+        element: <MatchFormPage formtype="update" />,
       }
     ],
   },
