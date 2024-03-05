@@ -96,9 +96,15 @@ export function DeckFormPage({ formtype }) {
         <label className="deck-form-input">
           Deck
           <textarea
+            className="deck-form-decklist-textarea"
             rows='6'
             name="cards"
             value={cards}
+            placeholder="4x Birds of Paradise
+4x Lightning Bolt
+3x Watchwolf
+2x Dark Ritual
+1x Ancestral Recall"
             onChange={(e) => setCards(e.target.value)}
             required
           />

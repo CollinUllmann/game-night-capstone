@@ -96,3 +96,7 @@ body {
   /* box-shadow: 0 0 .2vh .2vh gold; */
   border: .3vh solid gold;
 }
+
+.match-tile-event-name {
+  margin: 0;
+}

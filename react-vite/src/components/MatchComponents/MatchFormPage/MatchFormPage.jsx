@@ -96,14 +96,13 @@ export function MatchFormPage({ formtype }) {
             value={eventId}
             onChange={(e) => setEventId(e.target.value)}
           >
-          {/* hardcoded values for now until we have event store */}
           <option value="">(Choose One)</option>
           {Object.values(eventById).map(event => <option value={event.id}>{event.name}</option>)}
           </select>
         </label>
         {errors.eventId && <p>{errors.eventId}</p>}
 
-        <label>
+        <label className="match-form-input">
           Number of Players
           <input type="number" name="numUsers" value={deckIds.length} onChange={e => {
             const newCount = Math.max(0, Math.min(6, Math.round(e.target.value)));
@@ -120,9 +119,10 @@ export function MatchFormPage({ formtype }) {
           setDeckIds(newDeckIds);
         }}></MatchDeckSelector>)}
 
-        <label>
+        <label className="match-form-input">
           Winner
           <select name="userIdWinner" value={userIdWinner} onChange={e => setUserIdWinner(e.target.value)}>
+            <option value=''>(Choose One)</option>
             {playingUsers.map((user, index) => user == null ? <></> : <option key={index} value={user.id}>{user.username}</option>)}
 
           </select>

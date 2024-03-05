@@ -8,6 +8,7 @@ import { thunkDeleteMatch } from '../../../redux/match';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { thunkFetchDeckById } from '../../../redux/deck';
+import { thunkFetchAllEvents } from '../../../redux/event';
 
 
 export function MatchTile({ match, onClick, matchNum }) {
@@ -16,6 +17,12 @@ export function MatchTile({ match, onClick, matchNum }) {
 
   const decks = useSelector(state => state.decks)
   const cards = useSelector(state => state.cards)
+  const eventById = useSelector(state => state.events)
+  
+  useEffect(() => {
+    dispatch(thunkFetchAllEvents())
+  }, [dispatch])
+
   useEffect(() => {
     match.deckIds.forEach(deckId => {
       dispatch(thunkFetchDeckById(deckId))
@@ -39,6 +46,7 @@ export function MatchTile({ match, onClick, matchNum }) {
     <div onClick={onClick} style={{backgroundColor: 'gray'}} className="match-tile-div">
       <div className='match-tile-content-div'>
         <p className='match-tile-match-name'>Match {matchNum}</p>
+        <p className='match-tile-event-name'>{eventById[match.eventId]?.name}</p>
         <div className='match-tile-deck-div'>
           {match.deckIds.map(deckId => {
             const deck = decks[deckId];
