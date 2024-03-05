@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { thunkFetchAllDecks } from "../../../redux/deck";
 import { MatchDeckSelector } from "./MatchDeckSelector/MatchDeckSelector";
 import { thunkFetchAllUsers } from "../../../redux/users";
+import { thunkFetchAllEvents } from "../../../redux/event";
 
 export function MatchFormPage({ formtype }) {
   const { matchId } = useParams()
@@ -15,6 +16,7 @@ export function MatchFormPage({ formtype }) {
   const matchById = useSelector(state => state.matches)
   const deckById = useSelector(state => state.decks)
   const userById = useSelector(state => state.users)
+  const eventById = useSelector(state => state.events)
   
   
   const dispatch = useDispatch();
@@ -30,7 +32,10 @@ export function MatchFormPage({ formtype }) {
   useEffect(() => {
     dispatch(thunkFetchAllUsers())
     dispatch(thunkFetchAllDecks())
+    dispatch(thunkFetchAllEvents())
   }, [dispatch])
+
+  console.log(eventById)
 
   const playingUsers = deckIds.map(deckId => {
     const userId = deckById[deckId]?.userId;
@@ -93,8 +98,7 @@ export function MatchFormPage({ formtype }) {
           >
           {/* hardcoded values for now until we have event store */}
           <option value="">(Choose One)</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
+          {Object.values(eventById).map(event => <option value={event.id}>{event.name}</option>)}
           </select>
         </label>
         {errors.eventId && <p>{errors.eventId}</p>}

@@ -12,3 +12,12 @@ class Event(db.Model):
   format = db.Column(db.String, nullable=False)
 
   matches = db.relationship("Match", back_populates="event")
+
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'name': self.name,
+      'date': self.date,
+      'format': self.format,
+      'matchIds': [match.id for match in self.matches]
+    }

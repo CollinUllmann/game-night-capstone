@@ -10,13 +10,15 @@ import deckReducer from "./deck";
 import cardReducer from "./card";
 import matchReducer from "./match"
 import userReducer from "./users";
+import eventReducer from "./event";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   cards: cardReducer,
   decks: deckReducer,
   matches: matchReducer,
-  users: userReducer
+  users: userReducer,
+  events: eventReducer
 });
 
 let enhancer;
