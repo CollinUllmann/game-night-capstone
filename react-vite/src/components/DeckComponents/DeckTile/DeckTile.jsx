@@ -41,6 +41,16 @@ export function DeckTile({ deck, onClick }) {
         <p className='deck-tile-deck-name'>{deck.name}</p>
         <p className='deck-tile-deck-format'>{deck.format}</p>
         <div className='deck-tile-mana-symbol-div'>{deckColorsArr.map(color => <ManaSymbol key={key++} symbol={color}/>)}</div>
+        <div className='deck-tile-win-percent-matches-div'>
+          <div className='deck-tile-win-percent-div'>
+            <p className='deck-tile-win-percent-title'>Winrate</p>
+            <p className='deck-tile-win-percent'>50%</p>
+          </div>
+          <div className='deck-tile-matches-div'>
+            <p className='deck-tile-matches-title'>Matches</p>
+            <p className='deck-tile-matches'>5-5</p>
+          </div>
+        </div>
         {/* {deck.cards.map(card => <p key={card.id}>{card.name}</p>)} */}
       </div>
       {currentUser?.id == deck.userId && 

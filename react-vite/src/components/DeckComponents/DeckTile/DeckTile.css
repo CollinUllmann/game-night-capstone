@@ -74,3 +74,44 @@ body {
 .deck-tile-mana-symbol-div img {
   margin: 0 5% 0 0;
 }
+
+.deck-tile-win-percent-matches-div {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin: .5vh 0 0 0;
+}
+
+.deck-tile-win-percent-div {
+  display: flex;
+  flex-direction: column;
+}
+.deck-tile-win-percent-title {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  font-weight: 600;
+  font-size: large;
+}
+.deck-tile-win-percent {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.deck-tile-matches-div {
+  display: flex;
+  flex-direction: column;
+}
+.deck-tile-matches-title {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  font-weight: 600;
+  font-size: large;
+}
+.deck-tile-matches {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
