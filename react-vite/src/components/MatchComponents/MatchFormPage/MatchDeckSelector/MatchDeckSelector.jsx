@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
+import '../MatchFormPage.css'
+
 
 export function MatchDeckSelector({ index, deckId, onChangeDeckId }) {
   const userById = useSelector(state => state.users)
@@ -11,7 +13,7 @@ export function MatchDeckSelector({ index, deckId, onChangeDeckId }) {
   const [userId, setUserId] = useState();
 
   return (
-    <>
+    <div className="match-form-player-input-div">
       <label className="match-form-input">
           Player {index+1}
           <select
@@ -42,6 +44,6 @@ export function MatchDeckSelector({ index, deckId, onChangeDeckId }) {
             {Object.values(deckById)?.filter(deck => deck.userId == userId).map(deck => <option key={deck.id} value={deck.id}>{deck.name}</option>)}
           </select>
         </label>
-    </>
+    </div>
   )
 }

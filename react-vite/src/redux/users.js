@@ -1,4 +1,4 @@
-import { getCards } from "./card"
+// import { getCards } from "./card"
 
 //Action Types
 export const GET_USERS = 'users/getUsers'

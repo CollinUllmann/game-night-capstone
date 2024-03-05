@@ -6,7 +6,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { RxUpdate } from "react-icons/rx";
 import { thunkDeleteMatch } from '../../../redux/match';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { thunkFetchDeckById } from '../../../redux/deck';
 
 
