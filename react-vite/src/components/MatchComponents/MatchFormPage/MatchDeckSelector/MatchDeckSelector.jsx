@@ -3,12 +3,8 @@ import { useSelector } from "react-redux";
 
 
 export function MatchDeckSelector({ index, deckId, onChangeDeckId }) {
-  const users = [
-    { id: 1, name: 'Demo' },
-    { id: 2, name: 'Marnie' },
-    { id: 3, name: 'Bobbie' },
-    { id: 4, name: 'Billy' },
-  ]
+  const userById = useSelector(state => state.users)
+  const users = Object.values(userById)
 
   const deckById = useSelector(state => state.decks)
 
@@ -31,7 +27,7 @@ export function MatchDeckSelector({ index, deckId, onChangeDeckId }) {
           >
             <option value="">(Pick One)</option>
             {
-              users.map(user => <option key={user.id} value={user.id}>{user.name}</option>)
+              users.map(user => <option key={user.id} value={user.id}>{user.username}</option>)
             }
           </select>
         </label>

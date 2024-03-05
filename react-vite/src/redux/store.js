@@ -9,12 +9,14 @@ import sessionReducer from "./session";
 import deckReducer from "./deck";
 import cardReducer from "./card";
 import matchReducer from "./match"
+import userReducer from "./users";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   cards: cardReducer,
   decks: deckReducer,
-  matches: matchReducer
+  matches: matchReducer,
+  users: userReducer
 });
 
 let enhancer;

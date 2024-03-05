@@ -6,6 +6,7 @@ import './MatchFormPage.css'
 import { useNavigate, useParams } from "react-router-dom";
 import { thunkFetchAllDecks } from "../../../redux/deck";
 import { MatchDeckSelector } from "./MatchDeckSelector/MatchDeckSelector";
+import { thunkFetchAllUsers } from "../../../redux/users";
 
 export function MatchFormPage({ formtype }) {
   const { matchId } = useParams()
@@ -13,6 +14,7 @@ export function MatchFormPage({ formtype }) {
   const cardById = useSelector(state => state.cards)
   const matchById = useSelector(state => state.matches)
   const deckById = useSelector(state => state.decks)
+  const userById = useSelector(state => state.users)
   
   
   const dispatch = useDispatch();
@@ -26,8 +28,14 @@ export function MatchFormPage({ formtype }) {
   const [errors] = useState({});
   
   useEffect(() => {
+    dispatch(thunkFetchAllUsers())
     dispatch(thunkFetchAllDecks())
   }, [dispatch])
+
+  const playingUsers = deckIds.map(deckId => {
+    const userId = deckById[deckId]?.userId;
+    return userId == null ? undefined : userById[userId];
+  })
 
   //stuff for update
   useEffect(() => {
@@ -59,9 +67,9 @@ export function MatchFormPage({ formtype }) {
     e.preventDefault();
     
     const matchFormData = new FormData()
-    matchFormData.append('eventId', eventId)
-    matchFormData.append('userIdWinner', userIdWinner)
-    matchFormData.append('deckIds', deckIds)
+    matchFormData.append('event_id', eventId)
+    matchFormData.append('user_id_winner', userIdWinner)
+    matchFormData.append('deck_ids', deckIds.join(' '))
 
     if (formtype == 'update') {
       dispatch(thunkUpdateMatch(matchId, matchFormData)).then(() => navigate('/matches'))
@@ -107,6 +115,15 @@ export function MatchFormPage({ formtype }) {
           newDeckIds[index] = newDeckId;
           setDeckIds(newDeckIds);
         }}></MatchDeckSelector>)}
+
+        <label>
+          Winner
+          <select name="userIdWinner" value={userIdWinner} onChange={e => setUserIdWinner(e.target.value)}>
+            {playingUsers.map((user, index) => user == null ? <></> : <option key={index} value={user.id}>{user.username}</option>)}
+
+          </select>
+
+        </label>
 
 
         <div className="match-form-submit-button-div">
