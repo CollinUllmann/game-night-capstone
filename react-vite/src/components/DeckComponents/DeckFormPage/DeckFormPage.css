@@ -49,3 +49,9 @@
   display: flex;
   justify-content: start;
 }
+
+.deck-form-submit-button-div {
+  display: flex;
+  justify-content: center;
+  margin: 2vh 0 0 0;
+}

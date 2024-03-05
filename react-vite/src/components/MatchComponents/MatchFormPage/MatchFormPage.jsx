@@ -51,7 +51,6 @@ export function MatchFormPage({ formtype }) {
   //stuff for update
   useEffect(() => {
     const match = matchById[matchId];
-    console.log('match: ', match)
     if(!match) return;
 
     setEventId(match.eventId)
@@ -67,7 +66,6 @@ export function MatchFormPage({ formtype }) {
         // decksList.push(`${deckObj.name}`)
       }
     }
-    console.log('deckIds after loop: ', deckIds)
   }, [deckById, matchId, matchById, cardById])
 
 

@@ -10,6 +10,7 @@ from .api.auth_routes import auth_routes
 from .api.deck_routes import deck_routes
 from .api.match_routes import match_routes
 from .api.event_routes import event_routes
+from .api.card_routes import card_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -34,6 +35,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(deck_routes, url_prefix='/api/decks')
 app.register_blueprint(match_routes, url_prefix='/api/matches')
 app.register_blueprint(event_routes, url_prefix='/api/events')
+app.register_blueprint(card_routes, url_prefix='/api/cards')
 db.init_app(app)
 Migrate(app, db)
 

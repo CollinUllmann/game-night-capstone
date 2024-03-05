@@ -4,12 +4,15 @@ import { thunkCreateDeck, thunkFetchDeckById, thunkUpdateDeck } from "../../../r
 
 import './DeckFormPage.css'
 import { useNavigate, useParams } from "react-router-dom";
+import { thunkFetchAllCards } from "../../../redux/card";
 
 export function DeckFormPage({ formtype }) {
   const { deckId } = useParams()
 
   const cardById = useSelector(state => state.cards)
   const deckById = useSelector(state => state.decks)
+
+  const cardsAll = Object.values(cardById);
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,9 +20,10 @@ export function DeckFormPage({ formtype }) {
   const [format, setFormat] = useState("")
   const [cards, setCards] = useState("")
 
-  const [errors] = useState({});
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
+    dispatch(thunkFetchAllCards())
     if (formtype == 'update') {
       dispatch(thunkFetchDeckById(deckId))
     }
@@ -43,9 +47,33 @@ export function DeckFormPage({ formtype }) {
     setCards(cardsList.join('\n'))
   }, [deckId, deckById, cardById, setName, setFormat, setCards])
 
+  function getDeckListErrors() {
+    return cards.split('\n')
+      .map((line, index) => ({ line: line.trim(), lineNumber: index+1 }))
+      .filter(lineAndNumber => lineAndNumber.line)
+      .map(lineAndNumber => {
+        const error = `Error Line ${lineAndNumber.lineNumber} - ${lineAndNumber.line}`
+        const countName = lineAndNumber.line.split('x ')
+        if (countName.length != 2) return error;
+
+        const count = Number(countName[0]);
+        if(isNaN(count) || count != Math.floor(count) || count <= 0) return error;
+
+        const cardName = countName[1];
+        if(!cardsAll.some(card => card.name === cardName)) return error;
+
+        return null;
+      }).filter(error => error).join('\n');
+  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const errorsNew = { ...errors, deckList: getDeckListErrors() }
+    setErrors(errorsNew);
+
+    if(errorsNew.name || errorsNew.format || errorsNew.deckList) return;
     
     const deckFormData = new FormData()
     deckFormData.append('name', name)
@@ -109,13 +137,11 @@ export function DeckFormPage({ formtype }) {
             required
           />
         </label>
-        {errors.format && <p>{errors.format}</p>}
-
-
         <div className="deck-form-submit-button-div">
           <button className='deck-form-modal-button'
             onClick={() => {handleSubmit}}>Submit</button>
         </div>
+        {errors.deckList && errors.deckList.split('\n').map(errorLine => <div>{errorLine}</div>)}
       </form>
       </div>
     </>
