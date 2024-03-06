@@ -11,6 +11,7 @@ import { EventsIndex } from '../components/EventComponents/EventsIndex/EventsInd
 import { SplashPage } from '../components/SplashPage/SplashPage';
 import { PlayerProfilePage } from '../components/PlayerProfilePage/PlayerProfilePage';
 import { DeckDetailsPage } from '../components/DeckComponents/DeckDetailsPage/DeckDetailsPage';
+import { MatchDetailsPage } from '../components/MatchComponents/MatchDetailsPage/MatchDetailsPage';
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
       {
         path: "/decks/:deckId",
         element: <DeckDetailsPage />,
+      },
+      {
+        path: "/matches/:matchId",
+        element: <MatchDetailsPage />,
       }
     ],
   },

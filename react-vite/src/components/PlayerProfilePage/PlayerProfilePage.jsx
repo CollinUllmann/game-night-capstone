@@ -67,7 +67,7 @@ export function PlayerProfilePage() {
           <p className="player-profile-player-event-list-title">Events</p>
           {playerEventIds?.map(eventId => 
             <div key={key++} className="player-profile-player-event-tile-div">
-              <div className="player-profile-player-event-tile">
+              <div className="player-profile-player-event-tile" onClick={() => navigate(`/events/${eventId}`)}>
                 <p className="player-profile-player-event-tile-event">{eventById[eventId]?.name}</p>
                 <p className="player-profile-player-event-tile-date">{formatDate(eventById[eventId]?.date)}</p>
               </div>

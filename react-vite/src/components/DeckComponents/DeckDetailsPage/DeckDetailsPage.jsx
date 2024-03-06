@@ -34,6 +34,10 @@ export function DeckDetailsPage() {
     dispatch(thunkFetchAllMatches())
   }, [dispatch])
 
+  function handleNavigateUserProfile() {
+    navigate(`/users/${deck.userId}`)
+  }
+
 
   
   // if (sessionUser?.id != deck?.userId) return <Navigate to="/" replace={true} />;
@@ -48,7 +52,9 @@ export function DeckDetailsPage() {
           <DecklistPanel className="deck-details-decklist-panel" deckId={deck?.id} />
         </div>
         <div className="deck-details-stats-matches-div">
-          <div className="deck-details-deck-stats-div"></div>
+          <div className="deck-details-deck-stats-div">
+            <p onClick={handleNavigateUserProfile}>Link to Deck Owner Profile</p>
+          </div>
           <p className="deck-details-deck-matches-title">Matches</p>
           <div className="deck-details-deck-matches-div">
             {deckMatches.map(match => {
