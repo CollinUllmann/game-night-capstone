@@ -9,7 +9,7 @@
 
 .player-profile-player-event-list-sidepanel-div {
   border: 1px solid white;
-  width: 20%;
+  width: 26.3vh;
   height: 80vh;
   display: flex;
   flex-direction: column;
@@ -93,7 +93,7 @@
 
 .player-profile-player-decks-div {
   display: flex;
-  margin: 1vh 0 0 1vh;
+  margin: 0 0 1vh 1vh;
   flex-wrap: wrap;
 }
 
