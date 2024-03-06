@@ -25,9 +25,9 @@ export function EventFormPage({ formtype }) {
     eventFormData.append('format', format)
 
     if (formtype == 'update') {
-      dispatch(thunkUpdateEvent(eventId, eventFormData)).then(() => navigate('/events'))
+      dispatch(thunkUpdateEvent(eventId, eventFormData)).then(() => navigate('/matches/new'))
     } else {
-      dispatch(thunkCreateEvent(eventFormData)).then(() => navigate('/events'))
+      dispatch(thunkCreateEvent(eventFormData)).then(() => navigate('/matches/new'))
     }
   }
 

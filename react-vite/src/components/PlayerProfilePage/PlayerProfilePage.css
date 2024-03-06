@@ -1,3 +1,7 @@
+.player-profile-div {
+  display: flex;
+}
+
 .player-profile-title {
   font-size: x-large;
   font-weight: 600;
@@ -5,9 +9,95 @@
 
 .player-profile-player-event-list-sidepanel-div {
   border: 1px solid white;
+  width: 20%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1vh;
 }
 
 .player-profile-player-event-list-title{
   font-size: large;
   font-weight: 600;
+}
+
+.player-profile-player-event-tile {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.player-profile-player-event-tile:hover {
+  background-color: gray;
+  cursor: pointer;
+}
+.player-profile-player-event-tile-event {
+  margin: 1vh;
+}
+
+@media (max-width: 1000px) {
+  .player-profile-player-event-tile-date {
+    display: none;
+  }
+}
+
+.player-profile-add-event-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3vh;
+  width: 90%;
+  background-color: gray;
+  border-radius: 1.5vh;
+  font-size: xx-large;
+  font-weight: 600;
+  border: .3vh solid gray;
+  color: white;
+  margin: 1vh 0;
+}
+.player-profile-add-event-button:hover {
+  color: gray;
+  background-color:white;
+  cursor: pointer;
+}
+
+.player-profile-stats-decks-div {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.player-profile-player-stats-div {
+  height: 50vh;
+  width: 100%;
+  margin: 0 0 0 2vh;
+  border: 1px solid white;
+  border-radius: 1vh;
+}
+
+.player-profiel-player-decks-title {
+  font-size: large;
+  font-weight: 600;
+  margin: 1vh 0 0 2vh
+}
+
+.player-profile-player-decks-div {
+  display: flex;
+  margin: 1vh 0 0 1vh;
+  flex-wrap: wrap;
+}
+
+.deck-tile-div {
+  margin: 1vh;
+}
+
+.player-profile-add-deck-button-div:hover {
+  cursor:pointer;
+}
+
+.player-profile-decktile-div {
+  display: flex;
+}
+.player-profile-decktile-div:hover {
+  cursor:pointer;
 }

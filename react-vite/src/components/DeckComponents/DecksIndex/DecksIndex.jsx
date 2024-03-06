@@ -31,6 +31,7 @@ export function DecksIndex() {
           <AddDeckTile />
         </div>
       </div>
+      
       <DecklistPanel deckId={selectedDeckId} />
 
     </div>
