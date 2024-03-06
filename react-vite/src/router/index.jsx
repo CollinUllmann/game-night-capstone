@@ -9,6 +9,7 @@ import { MatchFormPage } from '../components/MatchComponents/MatchFormPage/Match
 import { EventFormPage } from '../components/EventComponents/EventFormPage/EventFormPage';
 import { EventsIndex } from '../components/EventComponents/EventsIndex/EventsIndex';
 import { SplashPage } from '../components/SplashPage/SplashPage';
+import { PlayerProfilePage } from '../components/PlayerProfilePage/PlayerProfilePage';
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       {
         path: "/events",
         element: <EventsIndex />,
+      },
+      {
+        path: "/users/:userId",
+        element: <PlayerProfilePage />,
       }
     ],
   },
