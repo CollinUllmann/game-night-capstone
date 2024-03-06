@@ -1,13 +1,14 @@
-.player-profile-div {
+.event-details-div {
   display: flex;
 }
 
-.player-profile-title {
+.event-details-title {
   font-size: x-large;
   font-weight: 600;
 }
 
-.player-profile-player-event-list-sidepanel-div {
+
+.event-details-eventlist-sidepanel-div {
   border: 1px solid white;
   width: 26.3vh;
   height: 80vh;
@@ -17,41 +18,41 @@
   border-radius: 1vh;
 }
 
-.player-profile-player-event-list-title{
+.event-details-event-list-title{
   font-size: large;
   font-weight: 600;
 }
 
-.player-profile-player-event-tile-div {
+.event-details-event-tile-div {
   display: flex;
   width: 100%;
   height: 3vh;
 }
-.player-profile-player-event-tile {
+.event-details-event-tile {
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
 }
-.player-profile-player-event-tile:hover {
+.event-details-event-tile:hover {
   background-color: gray;
   cursor: pointer;
 }
-.player-profile-player-event-tile-event {
+.event-details-event-tile-event {
   margin: 1vh;
 }
-.player-profile-player-event-tile-date {
+.event-details-event-tile-date {
   margin: 1vh;
 }
 
 
 @media (max-width: 1000px) {
-  .player-profile-player-event-tile-date {
+  .event-details-event-tile-date {
     display: none;
   }
 }
 
-.player-profile-add-event-button {
+.event-details-add-event-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,19 +66,22 @@
   color: white;
   margin: 1vh 0;
 }
-.player-profile-add-event-button:hover {
+.event-details-add-event-button:hover {
   color: gray;
   background-color:white;
   cursor: pointer;
 }
 
-.player-profile-stats-decks-div {
+
+
+
+.event-details-stats-matches-div {
   display: flex;
   flex-direction: column;
   width: 75%;
 }
 
-.player-profile-player-stats-div {
+.event-details-event-stats-div {
   height: 50vh;
   width: 100%;
   margin: 0 0 0 2vh;
@@ -85,29 +89,18 @@
   border-radius: 1vh;
 }
 
-.player-profiel-player-decks-title {
+.event-details-event-matches-title {
   font-size: large;
   font-weight: 600;
   margin: 1vh 0 0 2vh
 }
 
-.player-profile-player-decks-div {
+.event-details-event-matches-div {
   display: flex;
-  margin: 0 0 1vh 1vh;
+  margin: 1vh 0 0 1vh;
   flex-wrap: wrap;
 }
 
-.deck-tile-div {
-  margin: 1vh;
-}
-
-.player-profile-add-deck-button-div:hover {
-  cursor:pointer;
-}
-
-.player-profile-decktile-div {
-  display: flex;
-}
-.player-profile-decktile-div:hover {
-  cursor:pointer;
+.event-details-match-tile-div {
+  margin: 0 1vh 2vh 1vh;
 }

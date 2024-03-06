@@ -33,6 +33,11 @@ export function MatchTile({ match, onClick, matchNum }) {
     e.stopPropagation();
     dispatch(thunkDeleteMatch(match.id))
   }
+
+  const handleUpdate = (e) => {
+    e.stopPropagation();
+    navigate(`/matches/${match.id}/update`)
+  }
   
   const isWinningDeck = (deck) => {
     if (deck.userId == match.userIdWinner) {
@@ -67,7 +72,7 @@ export function MatchTile({ match, onClick, matchNum }) {
       
       <div className='match-tile-icon-div'>
         <FaTrashAlt className="match-tile-delete icon" onClick={handleDelete} />
-        <RxUpdate className="match-tile-update icon" onClick={() => navigate(`/matches/${match.id}/update`)}/>
+        <RxUpdate className="match-tile-update icon" onClick={handleUpdate}/>
       </div>
     </div>
   )

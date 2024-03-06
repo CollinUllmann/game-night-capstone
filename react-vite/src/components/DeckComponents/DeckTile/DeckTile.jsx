@@ -25,6 +25,11 @@ export function DeckTile({ deck, onClick }) {
     dispatch(thunkDeleteDeck(deck.id))
   }
 
+  const handleNavigate = (e) => {
+    e.stopPropagation()
+    navigate(`/decks/${deck.id}/update`)
+  }
+
   const deckColors = new Set([])
   for (const card of deck.cards) {
     const cardObj = cardsById[card.cardId]

@@ -1,6 +1,8 @@
 .card-tile-div {
   display: flex;
   width: fit-content;
+  height: 4vh;
+  align-items: center;
 }
 .card-tile-div:hover {
   background-color: #2b2d2e;
@@ -10,7 +12,7 @@
   height: 3vh;
   width: 3vh;
   background-size: 7vh;
-  margin: 0 5px 0 0;
+  margin: 0 .3vh 0 0;
 }
 
 .card-tile-name-manacost-div {

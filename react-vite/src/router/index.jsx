@@ -10,6 +10,9 @@ import { EventFormPage } from '../components/EventComponents/EventFormPage/Event
 import { EventsIndex } from '../components/EventComponents/EventsIndex/EventsIndex';
 import { SplashPage } from '../components/SplashPage/SplashPage';
 import { PlayerProfilePage } from '../components/PlayerProfilePage/PlayerProfilePage';
+import { DeckDetailsPage } from '../components/DeckComponents/DeckDetailsPage/DeckDetailsPage';
+import { MatchDetailsPage } from '../components/MatchComponents/MatchDetailsPage/MatchDetailsPage';
+import { EventDetailsPage } from '../components/EventComponents/EventDetailsPage/EventDetailsPage';
 
 export const router = createBrowserRouter([
   {
@@ -62,6 +65,18 @@ export const router = createBrowserRouter([
       {
         path: "/users/:userId",
         element: <PlayerProfilePage />,
+      },
+      {
+        path: "/decks/:deckId",
+        element: <DeckDetailsPage />,
+      },
+      {
+        path: "/matches/:matchId",
+        element: <MatchDetailsPage />,
+      },
+      {
+        path: "/events/:eventId",
+        element: <EventDetailsPage />,
       }
     ],
   },

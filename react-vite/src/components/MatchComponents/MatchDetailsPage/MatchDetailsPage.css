@@ -1,0 +1,60 @@
+.match-details-div {
+  display: flex;
+}
+
+.match-details-title {
+  font-size: x-large;
+  font-weight: 600;
+}
+
+.match-details-decklist-sidepanel-div {
+  border: 1px solid white;
+  width: fit-content;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1vh;
+}
+
+
+.match-details-decklist-title{
+  font-size: large;
+  font-weight: 600;
+}
+
+
+
+.match-details-stats-decks-div {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.match-details-match-stats-div {
+  height: 50vh;
+  width: 100%;
+  margin: 0 0 0 2vh;
+  border: 1px solid white;
+  border-radius: 1vh;
+}
+
+.match-details-match-decks-title {
+  font-size: large;
+  font-weight: 600;
+  margin: 1vh 0 0 2vh
+}
+
+.match-details-match-decks-div {
+  display: flex;
+  margin: 0 0 1vh 1vh;
+  flex-wrap: wrap;
+}
+
+.match-details-decktile-div {
+  display: flex;
+  margin: 0 0 2vh 0;
+}
+.match-details-decktile-div:hover {
+  cursor: pointer;
+}
