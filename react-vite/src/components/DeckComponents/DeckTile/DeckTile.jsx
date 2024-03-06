@@ -25,6 +25,11 @@ export function DeckTile({ deck, onClick }) {
     dispatch(thunkDeleteDeck(deck.id))
   }
 
+  const handleNavigate = (e) => {
+    e.stopPropagation()
+    navigate(`/decks/${deck.id}/update`)
+  }
+
   const deckColors = new Set([])
   for (const card of deck.cards) {
     const cardObj = cardsById[card.cardId]
@@ -56,7 +61,7 @@ export function DeckTile({ deck, onClick }) {
       {currentUser?.id == deck.userId && 
         <div className='deck-tile-icon-div'>
           <FaTrashAlt className="deck-tile-delete icon" onClick={handleDelete} />
-          <RxUpdate className="deck-tile-update icon" onClick={() => navigate(`/decks/${deck.id}/update`)}/>
+          <RxUpdate className="deck-tile-update icon" onClick={handleNavigate}/>
         </div>
       
       }
