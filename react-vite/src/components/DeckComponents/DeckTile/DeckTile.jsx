@@ -34,6 +34,12 @@ export function DeckTile({ deck, onClick }) {
     }
   }
   const deckColorsArr = [...deckColors]
+
+  function handleNavigate(e) {
+    e.preventDefault()
+    navigate(`/decks/${deck.id}/update`)
+  }
+
   let key = 0;
   return (
     <div onClick={onClick} style={{backgroundImage: `url(${cardsById[deck.cards[0]?.cardId]?.imageUrl})`, backgroundPositionX: '50%', backgroundPositionY: '25%', }} className="deck-tile-div">
@@ -56,7 +62,7 @@ export function DeckTile({ deck, onClick }) {
       {currentUser?.id == deck.userId && 
         <div className='deck-tile-icon-div'>
           <FaTrashAlt className="deck-tile-delete icon" onClick={handleDelete} />
-          <RxUpdate className="deck-tile-update icon" onClick={() => navigate(`/decks/${deck.id}/update`)}/>
+          <RxUpdate className="deck-tile-update icon" onClick={handleNavigate}/>
         </div>
       
       }
