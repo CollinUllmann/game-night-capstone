@@ -12,6 +12,7 @@ import { SplashPage } from '../components/SplashPage/SplashPage';
 import { PlayerProfilePage } from '../components/PlayerProfilePage/PlayerProfilePage';
 import { DeckDetailsPage } from '../components/DeckComponents/DeckDetailsPage/DeckDetailsPage';
 import { MatchDetailsPage } from '../components/MatchComponents/MatchDetailsPage/MatchDetailsPage';
+import { EventDetailsPage } from '../components/EventComponents/EventDetailsPage/EventDetailsPage';
 
 export const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
       {
         path: "/matches/:matchId",
         element: <MatchDetailsPage />,
+      },
+      {
+        path: "/events/:eventId",
+        element: <EventDetailsPage />,
       }
     ],
   },
