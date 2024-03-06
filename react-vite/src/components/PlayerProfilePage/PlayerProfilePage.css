@@ -22,10 +22,16 @@
   font-weight: 600;
 }
 
+.player-profile-player-event-tile-div {
+  display: flex;
+  width: 100%;
+  height: 3vh;
+}
 .player-profile-player-event-tile {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
 }
 .player-profile-player-event-tile:hover {
   background-color: gray;
@@ -34,6 +40,10 @@
 .player-profile-player-event-tile-event {
   margin: 1vh;
 }
+.player-profile-player-event-tile-date {
+  margin: 1vh;
+}
+
 
 @media (max-width: 1000px) {
   .player-profile-player-event-tile-date {
