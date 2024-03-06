@@ -10,6 +10,10 @@ import { RxUpdate } from "react-icons/rx";
 import { thunkDeleteDeck } from '../../../redux/deck';
 import { useNavigate } from 'react-router-dom';
 import { ManaSymbol } from '../../ManaSymbol/ManaSymbol';
+import { useEffect } from 'react';
+import { thunkFetchAllCards } from '../../../redux/card';
+import { thunkFetchUserById } from '../../../redux/users';
+import { thunkFetchAllMatches } from '../../../redux/match';
 
 
 export function DeckTile({ deck, onClick }) {
@@ -18,6 +22,13 @@ export function DeckTile({ deck, onClick }) {
 
   const cardsById = useSelector(state => state.cards)
   const currentUser = useSelector(state => state.session.user)
+  const matchesById = useSelector(state => state.matches)
+
+  useEffect(() => {
+    dispatch(thunkFetchAllCards())
+    dispatch(thunkFetchUserById(deck.userId))
+    dispatch(thunkFetchAllMatches())
+  }, [dispatch, deck.userId])
 
 
   const handleDelete = (e) => {
@@ -29,6 +40,19 @@ export function DeckTile({ deck, onClick }) {
     e.stopPropagation()
     navigate(`/decks/${deck.id}/update`)
   }
+
+  if (!matchesById) return
+
+  const deckMatches = Object.values(matchesById).filter(match => {
+    for (const deckId of match.deckIds) {
+      if (deckId == deck.id) {
+        return true
+      }
+    }
+    return false
+  })
+  const deckMatchesWon = deckMatches.filter(match => match.userIdWinner == deck.userId)
+  const winPercent = deckMatchesWon.length / deckMatches.length
 
   const deckColors = new Set([])
   for (const card of deck.cards) {
@@ -55,11 +79,11 @@ export function DeckTile({ deck, onClick }) {
         <div className='deck-tile-win-percent-matches-div'>
           <div className='deck-tile-win-percent-div'>
             <p className='deck-tile-win-percent-title'>Winrate</p>
-            <p className='deck-tile-win-percent'>50%</p>
+            <p className='deck-tile-win-percent'>{Math.floor(winPercent * 100)}%</p>
           </div>
           <div className='deck-tile-matches-div'>
             <p className='deck-tile-matches-title'>Matches</p>
-            <p className='deck-tile-matches'>5-5</p>
+            <p className='deck-tile-matches'>{deckMatchesWon.length}-{deckMatches.length - deckMatchesWon.length}</p>
           </div>
         </div>
         {/* {deck.cards.map(card => <p key={card.id}>{card.name}</p>)} */}

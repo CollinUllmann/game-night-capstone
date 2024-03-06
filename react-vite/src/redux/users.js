@@ -30,7 +30,7 @@ export const thunkFetchUserById = userId => async dispatch => {
 
   if (res.ok) {
     const users = await res.json()
-    dispatch(getUsers(users))
+    dispatch(getUsers([users]))
     return users[0]
   } else return 'get user by id thunk error'
 }

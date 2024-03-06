@@ -18,7 +18,7 @@
   border-radius: 1vh;
 }
 
-.event-details-event-list-title{
+.event-details-eventlist-title {
   font-size: large;
   font-weight: 600;
 }
@@ -97,8 +97,12 @@
 
 .event-details-event-matches-div {
   display: flex;
-  margin: 1vh 0 0 1vh;
+  margin: 1vh 0 0 2vh;
   flex-wrap: wrap;
+}
+
+.event-details-add-match-tile {
+  margin: 0 1vh 0 0;
 }
 
 .event-details-match-tile-div {

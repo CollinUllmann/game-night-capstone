@@ -77,9 +77,9 @@ export function MatchFormPage({ formtype }) {
     matchFormData.append('deck_ids', deckIds.join(' '))
 
     if (formtype == 'update') {
-      dispatch(thunkUpdateMatch(matchId, matchFormData)).then(() => navigate('/matches'))
+      dispatch(thunkUpdateMatch(matchId, matchFormData)).then(() => navigate(`/matches/${matchId}`))
     } else {
-      dispatch(thunkCreateMatch(matchFormData)).then(() => navigate('/matches'))
+      dispatch(thunkCreateMatch(matchFormData)).then(responseMatch => navigate(`/matches/${responseMatch.id}`))
     }
   };
 

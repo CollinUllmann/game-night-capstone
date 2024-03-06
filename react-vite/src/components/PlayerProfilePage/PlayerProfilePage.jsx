@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { thunkFetchAllUsers } from "../../redux/users";
 import { thunkFetchAllDecks } from "../../redux/deck";
 import { thunkFetchAllMatches } from "../../redux/match";
@@ -17,7 +17,6 @@ export function PlayerProfilePage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const sessionUser = useSelector((state) => state.session.user);
   const userById = useSelector(state => state.users)
   const deckById = useSelector(state => state.decks)
   const eventById = useSelector(state => state.events)
@@ -55,7 +54,7 @@ export function PlayerProfilePage() {
     return `${splitDate[2]} ${splitDate[1]}, ${splitDate[3]}`
   }
   
-  if (sessionUser?.id != userId) return <Navigate to="/" replace={true} />;
+  // if (sessionUser?.id != userId) return <Navigate to="/" replace={true} />;
   
   if (!user) return
   let key = 0;

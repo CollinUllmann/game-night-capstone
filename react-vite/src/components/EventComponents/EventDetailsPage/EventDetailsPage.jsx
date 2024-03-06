@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { thunkFetchAllMatches } from "../../../redux/match";
 import { MatchTile } from "../../MatchComponents/MatchTile/MatchTile";
 import {  thunkFetchAllEvents } from "../../../redux/event";
+import { AddMatchTile } from "../../MatchComponents/MatchTile/AddMatchTile";
 
 
 import './EventDetailsPage.css'
@@ -57,6 +58,9 @@ export function EventDetailsPage() {
           </div>
           <p className="event-details-event-matches-title">Matches</p>
           <div className="event-details-event-matches-div">
+            <div className="event-details-add-match-tile" onClick={() => navigate('/matches/new')}>
+              <AddMatchTile />
+            </div>
             {eventMatches.map(match => {
               return <div className="event-details-match-tile-div" key={key++}>
                 <MatchTile className="event-details-match-tile" match={match} onClick={() => navigate(`/matches/${match.id}`)} matchNum={key}/>
