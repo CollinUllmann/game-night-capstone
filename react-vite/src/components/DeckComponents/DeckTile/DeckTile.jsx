@@ -40,10 +40,10 @@ export function DeckTile({ deck, onClick }) {
   }
   const deckColorsArr = [...deckColors]
 
-  function handleNavigate(e) {
-    e.preventDefault()
-    navigate(`/decks/${deck.id}/update`)
-  }
+  // function handleNavigate(e) {
+  //   e.preventDefault()
+  //   navigate(`/decks/${deck.id}/update`)
+  // }
 
   let key = 0;
   return (

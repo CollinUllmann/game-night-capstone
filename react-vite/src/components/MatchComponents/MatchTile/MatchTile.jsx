@@ -55,9 +55,10 @@ export function MatchTile({ match, onClick, matchNum }) {
         <div className='match-tile-deck-div'>
           {match.deckIds.map(deckId => {
             const deck = decks[deckId];
-            const firstCardId = deck.cards[0]?.cardId;
+            if (!deck) return undefined
+            const firstCardId = deck.cards[0].cardId;
             const firstCard = firstCardId != null ? cards[firstCardId] : undefined;
-            return !deck ? <></> : <div
+            return <div
               key={deckId}
               style={{
                 backgroundImage: `url(${firstCard?.imageUrl})`,
