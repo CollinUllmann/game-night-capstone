@@ -113,7 +113,7 @@ export function DeckFormPage({ formtype }) {
             onChange={(e) => setFormat(e.target.value)}
             required
           >
-            <option value="">(Pick One)</option>
+            <option value="">(Select One)</option>
             <option value="Commander">Commander</option>
             <option value="Modern">Modern</option>
             <option value="Legacy">Legacy</option>

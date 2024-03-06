@@ -63,9 +63,8 @@ export function MatchFormPage({ formtype }) {
       if(deckObj) {
         matchDeckIdsSet.push(deckId)
         setDeckIds(matchDeckIdsSet)
-        // decksList.push(`${deckObj.name}`)
       }
-    }
+    }s
   }, [deckById, matchId, matchById, cardById])
 
 

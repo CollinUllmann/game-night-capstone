@@ -1,0 +1,115 @@
+.splash-page-root-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.splash-page-div {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  width: 80%;
+}
+
+.splash-page-title-signup-login-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.splash-page-title {
+  font-size: x-large;
+  font-weight: 600;
+  margin: 0;
+}
+
+.splash-page-title-blurb {
+  font-size: medium;
+}
+
+.splash-page-signup-login-div {
+  display: flex;
+
+}
+
+.splash-page-login {
+  margin: 0 0 0 2vh;
+}
+
+.splash-page-button {
+  font-size: large;
+  border: .2vh solid white;
+  width: fit-content;
+  padding: .5vh 1vh;
+}
+.splash-page-button:hover {
+  cursor: pointer;
+}
+
+
+.splash-page-deck-builder-content-div {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 10vh 0;
+  align-items: center;
+}
+.splash-page-deck-builder-media {
+  margin: 0 3vh 0 0;
+  height: 40vh;
+  width: 100%;
+  border: .2vh solid white;
+}
+.splash-page-deck-builder-description-button-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.splash-page-deck-builder-title {
+  font-size: x-large;
+  font-weight: 600;
+  margin: 0 0 1vh 0;
+}
+.splash-page-deck-builder-description {
+  margin: 1vh 0 2vh 0;
+  font-size: medium;
+}
+.splash-page-deck-builder-title-2 {
+  margin: 0;
+  font-size: large;
+  font-weight: 600;
+}
+
+
+.splash-page-deck-analysis-content-div {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.splash-page-deck-analysis-media {
+  margin: 0 0 0 3vh;
+  height: 40vh;
+  width: 100%;
+  border: .2vh solid white;
+
+}
+.splash-page-deck-analysis-description-button-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.splash-page-deck-analysis-title {
+  font-size: x-large;
+  font-weight: 600;
+  margin: 0 0 1vh 0;
+}
+.splash-page-deck-analysis-description {
+  margin: 1vh 0 2vh 0;
+  font-size: medium;
+}
+.splash-page-deck-analysis-title-2 {
+  margin: 0;
+  font-size: large;
+  font-weight: 600;
+}

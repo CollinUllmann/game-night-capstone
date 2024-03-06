@@ -28,7 +28,7 @@ export function MatchDeckSelector({ index, deckId, onChangeDeckId }) {
               }
             }}
           >
-            <option value="">(Pick One)</option>
+            <option value="">(Select One)</option>
             {
               users.map(user => <option key={user.id} value={user.id}>{user.username}</option>)
             }
@@ -41,7 +41,7 @@ export function MatchDeckSelector({ index, deckId, onChangeDeckId }) {
             value={deckId}
             onChange={(e) => onChangeDeckId(e.target.value)}
           >
-            <option value="">(Pick One)</option>
+            <option value="">(Select One)</option>
             {Object.values(deckById)?.filter(deck => deck.userId == userId).map(deck => <option key={deck.id} value={deck.id}>{deck.name}</option>)}
           </select>
         </label>

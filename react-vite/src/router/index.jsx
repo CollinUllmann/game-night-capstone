@@ -6,6 +6,9 @@ import { DecksIndex } from '../components/DeckComponents/DecksIndex/DecksIndex';
 import { DeckFormPage } from '../components/DeckComponents/DeckFormPage/DeckFormPage';
 import { MatchesIndex } from '../components/MatchComponents/MatchesIndex/MatchesIndex';
 import { MatchFormPage } from '../components/MatchComponents/MatchFormPage/MatchFormPage';
+import { EventFormPage } from '../components/EventComponents/EventFormPage/EventFormPage';
+import { EventsIndex } from '../components/EventComponents/EventsIndex/EventsIndex';
+import { SplashPage } from '../components/SplashPage/SplashPage';
 
 export const router = createBrowserRouter([
   {
@@ -13,14 +16,14 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <h1>Welcome!</h1>,
+        element: <SplashPage />,
       },
       {
-        path: "login",
+        path: "/login",
         element: <LoginFormPage />,
       },
       {
-        path: "signup",
+        path: "/signup",
         element: <SignupFormPage />,
       },
       {
@@ -46,6 +49,14 @@ export const router = createBrowserRouter([
       {
         path: "/matches/:matchId/update",
         element: <MatchFormPage formtype="update" />,
+      },
+      {
+        path: "/events/new",
+        element: <EventFormPage formtype="new" />,
+      },
+      {
+        path: "/events",
+        element: <EventsIndex />,
       }
     ],
   },
