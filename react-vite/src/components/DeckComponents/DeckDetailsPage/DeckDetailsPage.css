@@ -1,0 +1,56 @@
+.deck-details-div {
+  display: flex;
+}
+
+.deck-details-title {
+  font-size: x-large;
+  font-weight: 600;
+}
+
+.deck-details-decklist-sidepanel-div {
+  border: 1px solid white;
+  width: fit-content;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1vh;
+}
+
+
+.deck-details-decklist-title{
+  font-size: large;
+  font-weight: 600;
+}
+
+
+
+.deck-details-stats-matches-div {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.deck-details-deck-stats-div {
+  height: 50vh;
+  width: 100%;
+  margin: 0 0 0 2vh;
+  border: 1px solid white;
+  border-radius: 1vh;
+}
+
+.deck-details-deck-matches-title {
+  font-size: large;
+  font-weight: 600;
+  margin: 1vh 0 0 2vh
+}
+
+.deck-details-deck-matches-div {
+  display: flex;
+  margin: 1vh 0 0 1vh;
+  flex-wrap: wrap;
+}
+
+.deck-details-match-tile-div {
+  margin: 2vh 1vh 0 1vh;
+}

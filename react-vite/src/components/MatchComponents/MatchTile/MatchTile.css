@@ -8,7 +8,6 @@ body {
   border-radius: 10px;
   scale: 1;
   transition: background-color .2s ease;
-  margin: 0 0 5vh 5vh;
   height: 200px;
   width: 200px;
   background-color: lightgray;
@@ -17,7 +16,8 @@ body {
 }
 .match-tile-div:hover {
   background-color: gray;
-  background-size: 500px
+  background-size: 500px;
+  cursor: pointer;
 }
 
 .add {
