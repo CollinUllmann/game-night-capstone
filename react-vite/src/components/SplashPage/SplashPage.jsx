@@ -48,7 +48,7 @@ export function SplashPage() {
           <div className="splash-page-deck-builder-media"></div>
           <div className="splash-page-deck-builder-description-button-div">
             <p className="splash-page-deck-builder-title">Before the Game</p>
-            <p className="splash-page-deck-builder-title-2">MTG's Massive Catalogue</p>
+            <p className="splash-page-deck-builder-title-2">MTG&apos;s Massive Catalogue</p>
             <p className="splash-page-deck-builder-description">• Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br></br>• Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br></br>• Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             <div className="splash-page-deck-builder splash-page-button" onClick={handleNavigateToDeckBuild}>Build the Perfect Deck</div>
           </div>

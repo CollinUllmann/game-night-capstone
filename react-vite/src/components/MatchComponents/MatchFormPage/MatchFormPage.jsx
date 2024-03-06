@@ -64,7 +64,7 @@ export function MatchFormPage({ formtype }) {
         matchDeckIdsSet.push(deckId)
         setDeckIds(matchDeckIdsSet)
       }
-    }s
+    }
   }, [deckById, matchId, matchById, cardById])
 
 
@@ -97,7 +97,7 @@ export function MatchFormPage({ formtype }) {
             onChange={(e) => setEventId(e.target.value)}
           >
           <option value="">(Choose One)</option>
-          {Object.values(eventById).map(event => <option value={event.id}>{event.name}</option>)}
+          {Object.values(eventById).map(event => <option key={event.id} value={event.id}>{event.name}</option>)}
           </select>
         </label>
         {errors.eventId && <p>{errors.eventId}</p>}

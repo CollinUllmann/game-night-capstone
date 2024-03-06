@@ -21,7 +21,7 @@ export function EventsIndex() {
     <div className="events-index-div">
       <h1>Events</h1>
       <div className="events-index-content-div">
-        {events.map(event => <p className="events-index-event" onClick={() => navigate(`/events/${event.id}`)}>{event.name}</p>)}
+        {events.map(event => <p key={event.id} className="events-index-event" onClick={() => navigate(`/events/${event.id}`)}>{event.name}</p>)}
         <p className="events-index-add-button" onClick={() => navigate('/events/new')}>Add Event</p>
       </div>
     </div>

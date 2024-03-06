@@ -1,4 +1,3 @@
-import { getDecks } from "./deck"
 import { getMatches } from "./match"
 
 //Action Types

@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { thunkCreateEvent, thunkUpdateEvent } from "../../../redux/event";
 
 import './EventFormPage.css'
 
 export function EventFormPage({ formtype }) {
+  const { eventId } = useParams();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

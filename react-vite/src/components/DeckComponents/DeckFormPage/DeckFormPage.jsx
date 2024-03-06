@@ -86,7 +86,7 @@ export function DeckFormPage({ formtype }) {
       dispatch(thunkCreateDeck(deckFormData)).then(() => navigate('/decks'))
     }
   };
-
+  let key = 0;
   return (
     <>
       <div className="deck-form-container">
@@ -141,7 +141,7 @@ export function DeckFormPage({ formtype }) {
           <button className='deck-form-modal-button'
             onClick={() => {handleSubmit}}>Submit</button>
         </div>
-        {errors.deckList && errors.deckList.split('\n').map(errorLine => <div>{errorLine}</div>)}
+        {errors.deckList && errors.deckList.split('\n').map(errorLine => <div key={key++}>{errorLine}</div>)}
       </form>
       </div>
     </>
