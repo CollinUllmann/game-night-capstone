@@ -59,6 +59,10 @@ export const router = createBrowserRouter([
         element: <EventFormPage formtype="new" />,
       },
       {
+        path: "/events/:eventId/update",
+        element: <EventFormPage formtype="update" />,
+      },
+      {
         path: "/events",
         element: <EventsIndex />,
       },

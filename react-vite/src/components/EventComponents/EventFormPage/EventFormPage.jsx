@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { thunkCreateEvent, thunkUpdateEvent } from "../../../redux/event";
+import { thunkCreateEvent, thunkFetchEventById, thunkUpdateEvent } from "../../../redux/event";
 
 import './EventFormPage.css'
 
@@ -15,6 +15,41 @@ export function EventFormPage({ formtype }) {
   const [name, setName] = useState();
   const [date, setDate] = useState();
   const [format, setFormat] = useState();
+
+  const eventsById = useSelector(state => state.events)
+
+  useEffect(() => {
+    dispatch(thunkFetchEventById(eventId))
+  }, [dispatch, eventId])
+
+  useEffect(() => {
+    const event = eventsById[eventId]
+    if (!event) return;
+
+    function formatDate(date) {
+      let months = {
+        'Jan': '01',
+        'Feb': '02',
+        'Mar': '03',
+        'Apr': '04',
+        'May': '05',
+        'Jun': '06',
+        'Jul': '07',
+        'Aug': '08',
+        'Sep': '09',
+        'Oct': '10',
+        'Nov': '11',
+        'Dec': '12'
+      }
+      if (!date) return
+      let splitDate = date.split(' ')
+      return `${splitDate[3]}-${months[splitDate[2]]}-${splitDate[1]}`
+    }
+
+    setName(event.name)
+    setDate(formatDate(event.date))
+    setFormat(event.format)
+  }, [eventId, eventsById])
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +60,7 @@ export function EventFormPage({ formtype }) {
     eventFormData.append('format', format)
 
     if (formtype == 'update') {
-      dispatch(thunkUpdateEvent(eventId, eventFormData)).then(() => navigate('/matches/new'))
+      dispatch(thunkUpdateEvent(eventId, eventFormData)).then(() => navigate(`/events/${eventId}`))
     } else {
       dispatch(thunkCreateEvent(eventFormData)).then(() => navigate('/matches/new'))
     }
