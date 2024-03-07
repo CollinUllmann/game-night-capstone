@@ -41,6 +41,9 @@
   margin: 0 0 0 2vh;
   border: 1px solid white;
   border-radius: 1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .deck-details-deck-matches-title {

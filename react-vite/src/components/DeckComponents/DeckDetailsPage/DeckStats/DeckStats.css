@@ -1,0 +1,77 @@
+.deck-stats-content-div {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.deck-stats-headers {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.deck-stats-header-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.deck-stats-header-title {
+  font-weight: 600;
+  font-size: xx-large;
+  margin: 0
+}
+.deck-stats-header-stat {
+  font-weight: 600;
+  font-size: xx-large;
+  margin: 0;
+}
+
+.deck-stats-matchups-header {
+  margin: 2vh 0 0 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 0 2vh;
+  align-items: center;
+}
+.deck-stats-matchups-header-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 80%;
+}
+.deck-stats-matchups-header-title-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1vh 0 0;
+}
+.deck-stats-matchups-header-title {
+  font-size: x-large;
+  font-weight: 600;
+}
+.deck-stats-matchups-header-filters-div {
+  display: flex;
+  justify-content: space-between;
+}
+.deck-stats-matchups-header-filter {
+  font-size: large;
+  margin: 0 .5vh;
+}
+
+.deck-stats-matchups-content-div {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.deck-stats-matchups-content-headers-div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.deck-stats-matchups-content-header {
+  font-size: medium;
+  font-weight: 600;
+}
