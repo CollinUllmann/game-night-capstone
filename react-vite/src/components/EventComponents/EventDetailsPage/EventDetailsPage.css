@@ -38,11 +38,37 @@
   background-color: gray;
   cursor: pointer;
 }
+.selected-event {
+  background-color: gray;
+}
 .event-details-event-tile-event {
   margin: 1vh;
 }
 .event-details-event-tile-date {
   margin: 1vh;
+}
+.event-details-event-tile:hover .event-details-event-tile-date {
+  display: none;
+}
+
+.event-details-event-tile-update-delete-div {
+  margin: 1vh;
+  display: none;
+}
+.event-details-event-tile:hover .event-details-event-tile-update-delete-div {
+  display: flex;
+}
+
+.event-details-event-tile-icon {
+  display: flex;
+  height: 3vh;
+  width: 3vh;
+  justify-content: center;
+  align-items: center;
+}
+.event-icon {
+  height: 1.6vh;
+  width: 1.6vh;
 }
 
 

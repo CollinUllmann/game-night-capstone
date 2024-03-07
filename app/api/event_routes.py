@@ -83,6 +83,8 @@ def update_event(eventId):
     event.date = form.data['date']
     event.format = form.data['format']
 
+    db.session.commit()
+
     return event.to_dict()
   return form.errors, 401
 

@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { thunkFetchAllMatches } from "../../../redux/match";
 import { MatchTile } from "../../MatchComponents/MatchTile/MatchTile";
-import {  thunkFetchAllEvents } from "../../../redux/event";
+import {  thunkDeleteEvent, thunkFetchAllEvents } from "../../../redux/event";
 import { AddMatchTile } from "../../MatchComponents/MatchTile/AddMatchTile";
-
+import { RxUpdate } from "react-icons/rx";
+import { FaTrashAlt } from "react-icons/fa";
 
 import './EventDetailsPage.css'
 
@@ -33,6 +34,16 @@ export function EventDetailsPage() {
     let splitDate = date.split(' ')
     return `${splitDate[2]} ${splitDate[1]}, ${splitDate[3]}`
   }
+
+  function handleUpdateNavigation(e) {
+    e.stopPropagation()
+    navigate(`/events/${eventId}/update`)
+  }
+
+  function handleDelete(e) {
+    e.stopPropagation()
+    dispatch(thunkDeleteEvent(eventId))
+  }
   
   // if (sessionUser?.id != deck?.userId) return <Navigate to="/" replace={true} />;
   
@@ -43,11 +54,15 @@ export function EventDetailsPage() {
       <div className="event-details-div">
         <div className="event-details-eventlist-sidepanel-div">
           <p className="event-details-eventlist-title">All Events</p>
-          {Object.keys(eventsById)?.map(eventId => 
+          {Object.keys(eventsById)?.map(tempEventId => 
             <div key={key++} className="event-details-event-tile-div">
-              <div className="event-details-event-tile" onClick={() => navigate(`/events/${eventId}`)}>
-                <p className="event-details-event-tile-event">{eventsById[eventId]?.name}</p>
-                <p className="event-details-event-tile-date">{formatDate(eventsById[eventId]?.date)}</p>
+              <div className={tempEventId == eventId ? "event-details-event-tile selected-event" : "event-details-event-tile"} onClick={() => navigate(`/events/${tempEventId}`)}>
+                <p className="event-details-event-tile-event">{eventsById[tempEventId]?.name}</p>
+                <div className="event-details-event-tile-update-delete-div">
+                  <div className="event-details-event-tile-icon" ><RxUpdate className="event-details-update event-icon" onClick={handleUpdateNavigation}/></div>
+                  <div className="event-details-event-tile-icon"><FaTrashAlt className="event-details-delete event-icon" onClick={handleDelete} /></div>
+                </div>
+                <p className="event-details-event-tile-date">{formatDate(eventsById[tempEventId]?.date)}</p>
               </div>
             </div>
           )}

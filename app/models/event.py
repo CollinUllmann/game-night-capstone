@@ -11,7 +11,7 @@ class Event(db.Model):
   date = db.Column(db.Date, nullable=False)
   format = db.Column(db.String, nullable=False)
 
-  matches = db.relationship("Match", back_populates="event")
+  matches = db.relationship("Match", back_populates="event", cascade="all, delete-orphan")
 
   def to_dict(self):
     return {

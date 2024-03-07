@@ -111,6 +111,11 @@ const eventReducer = (state = {}, action) => {
       newEventState[action.payload.id] = action.payload
       return newEventState
     }
+    case UPDATE_EVENT: {
+      const newEventState = { ...state }
+      newEventState[action.payload.id] = action.payload
+      return newEventState
+    }
     case DELETE_EVENT: {
       const newEventState = { ...state }
       delete newEventState[action.eventId]
