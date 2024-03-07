@@ -1,5 +1,10 @@
+:root {
+  --main-bg-color: #1a1b1c;
+  --main-highlight-color: #2b2d2e;
+}
+
 body {
-  background-color: #1a1b1c;
+  background-color: var(--main-bg-color);
   color: white;
 }
 
