@@ -56,6 +56,8 @@ export function MatchTile({ match, onClick, matchNum }) {
           {match.deckIds.map(deckId => {
             const deck = decks[deckId];
             if (!deck) return undefined
+            
+            console.log('cards: ', deck.cards)
             const firstCardId = deck.cards[0].cardId;
             const firstCard = firstCardId != null ? cards[firstCardId] : undefined;
             return <div
