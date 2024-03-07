@@ -93,12 +93,12 @@
 
 .player-profile-player-decks-div {
   display: flex;
-  margin: 0 0 1vh 1vh;
+  margin: 0 0 1vh 2vh;
   flex-wrap: wrap;
 }
 
 .deck-tile-div {
-  margin: 1vh;
+  margin: 1vh 1vh 0 0;
 }
 
 .player-profile-add-deck-button-div:hover {

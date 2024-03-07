@@ -15,6 +15,10 @@
   flex-direction: column;
   align-items: center;
   border-radius: 1vh;
+  overflow-y: scroll;
+}
+.match-details-decklist-sidepanel-div::-webkit-scrollbar {
+  display: none;
 }
 
 
@@ -47,7 +51,7 @@
 
 .match-details-match-decks-div {
   display: flex;
-  margin: 0 0 1vh 1vh;
+  margin: 0 0 1vh 2vh;
   flex-wrap: wrap;
 }
 

@@ -90,8 +90,8 @@ export function DeckTile({ deck, onClick }) {
       </div>
       {currentUser?.id == deck.userId && 
         <div className='deck-tile-icon-div'>
-          <FaTrashAlt className="deck-tile-delete icon" onClick={handleDelete} />
           <RxUpdate className="deck-tile-update icon" onClick={handleNavigate}/>
+          <FaTrashAlt className="deck-tile-delete icon" onClick={handleDelete} />
         </div>
       
       }

@@ -74,8 +74,8 @@ export function MatchTile({ match, onClick, matchNum }) {
       </div>
       
       <div className='match-tile-icon-div'>
-        <FaTrashAlt className="match-tile-delete icon" onClick={handleDelete} />
         <RxUpdate className="match-tile-update icon" onClick={handleUpdate}/>
+        <FaTrashAlt className="match-tile-delete icon" onClick={handleDelete} />
       </div>
     </div>
   )

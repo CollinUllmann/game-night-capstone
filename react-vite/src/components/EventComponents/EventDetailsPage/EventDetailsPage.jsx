@@ -47,7 +47,8 @@ export function EventDetailsPage() {
   
   // if (sessionUser?.id != deck?.userId) return <Navigate to="/" replace={true} />;
   
-  let key = 1;
+  let eventKey = 1;
+  let matchKey = 1;
   return (
     <div>
       <p className="event-details-title">{event?.name} Details</p>
@@ -55,7 +56,7 @@ export function EventDetailsPage() {
         <div className="event-details-eventlist-sidepanel-div">
           <p className="event-details-eventlist-title">All Events</p>
           {Object.keys(eventsById)?.map(tempEventId => 
-            <div key={key++} className="event-details-event-tile-div">
+            <div key={eventKey++} className="event-details-event-tile-div">
               <div className={tempEventId == eventId ? "event-details-event-tile selected-event" : "event-details-event-tile"} onClick={() => navigate(`/events/${tempEventId}`)}>
                 <p className="event-details-event-tile-event">{eventsById[tempEventId]?.name}</p>
                 <div className="event-details-event-tile-update-delete-div">
@@ -77,8 +78,8 @@ export function EventDetailsPage() {
               <AddMatchTile />
             </div>
             {eventMatches.map(match => {
-              return <div className="event-details-match-tile-div" key={key++}>
-                <MatchTile className="event-details-match-tile" match={match} onClick={() => navigate(`/matches/${match.id}`)} matchNum={key}/>
+              return <div className="event-details-match-tile-div" key={matchKey++}>
+                <MatchTile className="event-details-match-tile" match={match} onClick={() => navigate(`/matches/${match.id}`)} matchNum={matchKey}/>
               </div>
             })}
           </div>
