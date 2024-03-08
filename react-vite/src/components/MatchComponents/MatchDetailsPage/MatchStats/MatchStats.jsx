@@ -53,10 +53,14 @@ export function MatchStats() {
   return (
     <div>
       <div className="match-stats-player-tiles-div">
+      <div className="match-stats-matchups-content-headers-div">
+            <p className="match-stats-matchups-content-header">Players</p>
+            <p className="match-stats-matchups-content-header">Winrate</p>
+          </div>
         {Object.keys(matchPlayersObj).map(playerId => {
           return <div key={playerId} className="match-stats-player-tile">
               <p>{usersById[playerId]?.username}</p>
-              <p>{matchPlayersObj[playerId]}</p>
+              <p>{matchPlayersObj[playerId]}%</p>
           </div>
         })}
       </div>
