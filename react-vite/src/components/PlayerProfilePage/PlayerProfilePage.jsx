@@ -7,7 +7,7 @@ import { thunkFetchAllMatches } from "../../redux/match";
 import { thunkFetchAllEvents } from "../../redux/event";
 import { DeckTile } from "../DeckComponents/DeckTile/DeckTile";
 import { AddDeckTile } from "../DeckComponents/DeckTile/AddDeckTile";
-
+import { PlayerStats } from "./PlayerStats/PlayerStats";
 
 import './PlayerProfilePage.css'
 
@@ -16,6 +16,9 @@ export function PlayerProfilePage() {
   const {userId} = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [statsPage, setStatsPage] = useState('performance');
+
 
   const userById = useSelector(state => state.users)
   const deckById = useSelector(state => state.decks)
@@ -53,6 +56,9 @@ export function PlayerProfilePage() {
     let splitDate = date.split(' ')
     return `${splitDate[2]} ${splitDate[1]}, ${splitDate[3]}`
   }
+
+  const setStatsPageSelectionClass = (thisStatsPage, baseClassName) => statsPage == thisStatsPage ? `${baseClassName}-selected` : `${baseClassName}`
+
   
   // if (sessionUser?.id != userId) return <Navigate to="/" replace={true} />;
   
@@ -75,7 +81,14 @@ export function PlayerProfilePage() {
           <div className="player-profile-add-event-button" onClick={() => navigate('/events/new')}>+</div>
         </div>
         <div className="player-profile-stats-decks-div">
-          <div className="player-profile-player-stats-div"></div>
+          <div className="player-profile-player-stats-div">
+          <div className="player-profile-player-stats-selection-div">
+              <p className={setStatsPageSelectionClass('performance', 'player-profile-player-stats-page-selector')} onClick={() => setStatsPage('performance')}>Performance</p>
+              <p className={setStatsPageSelectionClass('construction', 'player-profile-player-stats-page-selector')} onClick={() => setStatsPage('construction')}>Construction</p>
+              {/* <p onClick={handleNavigateUserProfile}></p> */}
+            </div>
+            {statsPage == 'performance' && <PlayerStats />}
+          </div>
           <p className="player-profiel-player-decks-title">Decks</p>
           <div className="player-profile-player-decks-div">
             <div className="player-profile-add-deck-button-div" onClick={() => navigate('/decks/new')}>
