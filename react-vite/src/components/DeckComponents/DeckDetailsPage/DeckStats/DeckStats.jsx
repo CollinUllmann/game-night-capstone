@@ -31,6 +31,7 @@ export function DeckStats() {
     }
     return false
   })
+  const deckWins = deckMatches.filter(match => match.userIdWinner == deck.userId)
 
   const getDeckMatchupObj = (matchupType) => {
     if (matchupType == 'deck') {
@@ -119,6 +120,12 @@ export function DeckStats() {
     }
   }
 
+  const matchEventIds = new Set([])
+  for (const match of deckMatches) {
+    matchEventIds.add(match.eventId)
+  }
+  const matchEventIdArr = Array.from(matchEventIds)
+
   console.log('matchup object: ', getDeckMatchupObj('color'))
 
   const playerMatchupObj = getDeckMatchupObj(selectedMatchupType)
@@ -127,15 +134,15 @@ export function DeckStats() {
       <div className="deck-stats-headers">
         <div className="deck-stats-header-div">
           <p className="deck-stats-header-title">Winrate</p>
-          <p className="deck-stats-header-stat">25%</p>
+          <p className="deck-stats-header-stat">{Math.floor((deckWins.length / deckMatches.length)*100)}%</p>
         </div>
         <div className="deck-stats-header-div">
           <p className="deck-stats-header-title">Matches</p>
-          <p className="deck-stats-header-stat">4-12</p>
+          <p className="deck-stats-header-stat">{deckWins.length} - {deckMatches.length - deckWins.length}</p>
         </div>
         <div className="deck-stats-header-div">
           <p className="deck-stats-header-title">Events</p>
-          <p className="deck-stats-header-stat">6</p>
+          <p className="deck-stats-header-stat">{matchEventIdArr.length}</p>
         </div>
       </div>
       <div className="deck-stats-matchups-header">
@@ -157,42 +164,12 @@ export function DeckStats() {
           </div>
           <div className={setMatchupVisibilityClass("player", "deck-stats-matchups-content-matchup-div")}>
             {Object.keys(playerMatchupObj).map(playerId => <MatchupTile key={playerId} matchup={usersById[playerId]?.username} winrate={Math.floor((playerMatchupObj[playerId].wins / playerMatchupObj[playerId].count)*100)} matches={`${playerMatchupObj[playerId].wins}-${playerMatchupObj[playerId].count - playerMatchupObj[playerId].wins}`} /> )}
-            {/* <p>Test Player</p>
-            <p>Test Player</p>
-            <p>Test Player</p>
-            <p>Test Player</p>
-            <p>Test Player</p>
-            <p>Test Player</p>
-            <p>Test Player</p>
-            <p>Test Player</p>
-            <p>Test Player</p>
-            <p>Test Player</p> */}
           </div>
           <div className={setMatchupVisibilityClass("deck", "deck-stats-matchups-content-matchup-div")}>
-            {/* {deckMatchups.map(matchup => <MatchupTile matchup={matchup}/>)} */}
             {Object.keys(playerMatchupObj).map(deckId => <MatchupTile key={deckId} matchup={decksById[deckId]?.name} winrate={Math.floor((playerMatchupObj[deckId].wins / playerMatchupObj[deckId].count)*100)} matches={`${playerMatchupObj[deckId].wins}-${playerMatchupObj[deckId].count - playerMatchupObj[deckId].wins}`} /> )}
-            {/* <p>Test Deck</p>
-            <p>Test Deck</p>
-            <p>Test Deck</p>
-            <p>Test Deck</p>
-            <p>Test Deck</p>
-            <p>Test Deck</p>
-            <p>Test Deck</p>
-            <p>Test Deck</p>
-            <p>Test Deck</p>
-            <p>Test Deck</p>
-            <p>Test Deck</p>
-            <p>Test Deck</p>
-            <p>Test Deck</p> */}
           </div>
           <div className={setMatchupVisibilityClass("color", "deck-stats-matchups-content-matchup-div")}>
-            {/* {colorMatchups.map(matchup => <MatchupTile matchup={matchup}/>)} */}
             {Object.keys(playerMatchupObj).map(color => <MatchupTile key={deckId} matchup={color} winrate={playerMatchupObj[color].count == 0 ? 0 : Math.floor((playerMatchupObj[color].wins / playerMatchupObj[color].count)*100)} matches={`${playerMatchupObj[color].wins}-${playerMatchupObj[color].count - playerMatchupObj[color].wins}`} /> )}
-            {/* <p>Test Color</p>
-            <p>Test Color</p>
-            <p>Test Color</p>
-            <p>Test Color</p>
-            <p>Test Color</p> */}
           </div>
         </div>
       </div>
