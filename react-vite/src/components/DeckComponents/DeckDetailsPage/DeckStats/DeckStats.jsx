@@ -1,18 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './DeckStats.css'
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { thunkFetchAllCards } from '../../../../redux/card';
+import { MatchupTile } from './MatchupTile/MatchupTile';
 
 
 export function DeckStats() {
   const { deckId } = useParams()
+  const dispatch = useDispatch();
 
   const [selectedMatchupType, setSelectedMatchupType] = useState('player');
 
   const setMatchupVisibilityClass = (matchupType, baseClassName) => matchupType == selectedMatchupType ? baseClassName : `${baseClassName} hidden`
   
+  useEffect(() => {
+    dispatch(thunkFetchAllCards())
+  }, [dispatch])
+
   const cardsById = useSelector(state => state.cards)
   const decksById = useSelector(state => state.decks)
+  const usersById = useSelector(state => state.users)
   const deck = decksById[deckId]
   const matchesById = useSelector(state => state.matches)
   const deckMatches = Object.values(matchesById).filter(match => {
@@ -28,17 +36,17 @@ export function DeckStats() {
     if (matchupType == 'deck') {
       const matchCountByMatchupId = {}
       for (const match of deckMatches) {
-        const winner = match.userIdWinner == decksById[deck.id].userId ? true : false
+        const winner = match.userIdWinner == deck.userId
         for (const deckId of match.deckIds) {
-          if (matchCountByMatchupId[deckId]){
-            matchCountByMatchupId[deckId].count++;
-            winner ? matchCountByMatchupId[deckId].wins++ : null
-          } else {
+          if (!matchCountByMatchupId[deckId]) {
             matchCountByMatchupId[deckId] = {
-              count: 1,
-              wins: winner ? 1 : 0
+              count: 0,
+              wins: 0
             }
           }
+
+          matchCountByMatchupId[deckId].count++;
+          if(winner) matchCountByMatchupId[deckId].wins++;
         }
       }
       return matchCountByMatchupId;
@@ -46,18 +54,18 @@ export function DeckStats() {
     if (matchupType == 'player') {
       const matchCountByPlayerId = {}
       for (const match of deckMatches) {
-        const winner = match.userIdWinner == decksById[deck.id].userId ? true : false
+        const winner = match.userIdWinner == decksById[deck.id].userId
         for (const deckId of match.deckIds) {
           const playerId = decksById[deckId].userId
-          if (matchCountByPlayerId[playerId]) {
-            matchCountByPlayerId[playerId].count++;
-            winner ? matchCountByPlayerId[playerId].wins++ : null
-          } else {
+          if (!matchCountByPlayerId[playerId]) {
             matchCountByPlayerId[playerId] = {
-              count: 1,
-              wins: winner ? 1 : 0
+              count: 0,
+              wins: 0
             }
           }
+          
+          matchCountByPlayerId[playerId].count++;
+          if(winner) matchCountByPlayerId[playerId].wins++;
         }
       }
       return matchCountByPlayerId;
@@ -86,18 +94,15 @@ export function DeckStats() {
         }
       }
       for (const match of deckMatches) {
-        const winner = match.userIdWinner == decksById[deck.id].userId ? true : false
+        const winner = match.userIdWinner == deck.userId
         for (const deckId of match.deckIds) {
           const deckColors = new Set([])
           const tempDeck = decksById[deckId]
           for (const card of tempDeck.cards) {
-            console.log('cardId: ', card.cardId)
             const tempCard = cardsById[card.cardId]
-            console.log(cardsById)
-            console.log('tempCard: ', tempCard)
 
-            if (tempCard.colors) {
-              const cardColors = card.colors.split('')
+            if (tempCard?.colors) {
+              const cardColors = tempCard.colors.split('')
               for (const color of cardColors) {
                 deckColors.add(color)
               }
@@ -106,7 +111,7 @@ export function DeckStats() {
           const deckColorsArr = Array.from(deckColors)
           for (const color of deckColorsArr) {
             matchCountByColor[color].count++
-            winner ? matchCountByColor[color].wins++ : null
+            if(winner) matchCountByColor[color].wins++;
           }
         }
       }
@@ -114,8 +119,9 @@ export function DeckStats() {
     }
   }
 
-  console.log('matchup object: ', getDeckMatchupObj('player'))
+  console.log('matchup object: ', getDeckMatchupObj('color'))
 
+  const playerMatchupObj = getDeckMatchupObj(selectedMatchupType)
   return (
     <div className="deck-stats-content-div">
       <div className="deck-stats-headers">
@@ -150,7 +156,8 @@ export function DeckStats() {
             <p className="deck-stats-matchups-content-header">Matches</p>
           </div>
           <div className={setMatchupVisibilityClass("player", "deck-stats-matchups-content-matchup-div")}>
-            {/* {playerMatchups.map(matchup => <MatchupTile matchup={matchup}/>)} */}
+            {Object.keys(playerMatchupObj).map(playerId => <MatchupTile key={playerId} matchup={usersById[playerId].username} winrate={Math.floor((playerMatchupObj[playerId].wins / playerMatchupObj[playerId].count)*100)} matches={`${playerMatchupObj[playerId].wins}-${playerMatchupObj[playerId].count - playerMatchupObj[playerId].wins}`} /> )}
+            {/* <p>Test Player</p>
             <p>Test Player</p>
             <p>Test Player</p>
             <p>Test Player</p>
@@ -159,11 +166,11 @@ export function DeckStats() {
             <p>Test Player</p>
             <p>Test Player</p>
             <p>Test Player</p>
-            <p>Test Player</p>
-            <p>Test Player</p>
+            <p>Test Player</p> */}
           </div>
           <div className={setMatchupVisibilityClass("deck", "deck-stats-matchups-content-matchup-div")}>
             {/* {deckMatchups.map(matchup => <MatchupTile matchup={matchup}/>)} */}
+            {Object.keys(playerMatchupObj).map(playerId => <MatchupTile key={playerId} matchup={usersById[playerId].username} winrate={Math.floor((playerMatchupObj[playerId].wins / playerMatchupObj[playerId].count)*100)} matches={`${playerMatchupObj[playerId].wins}-${playerMatchupObj[playerId].count - playerMatchupObj[playerId].wins}`} /> )}
             <p>Test Deck</p>
             <p>Test Deck</p>
             <p>Test Deck</p>

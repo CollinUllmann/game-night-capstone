@@ -96,3 +96,13 @@
 .deck-stats-matchups-content-matchup-div::-webkit-scrollbar {
   display: none;
 }
+
+.matchup-tile-body-div {
+  width: 60%;
+}
+
+.matchup-tile-content-div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}

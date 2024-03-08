@@ -37,6 +37,7 @@ export function DeckDetailsPage() {
     dispatch(thunkFetchAllMatches())
     dispatch(thunkFetchAllUsers())
     dispatch(thunkFetchAllCards())
+    dispatch(thunkFetchAllMatches())
   }, [dispatch])
 
   function handleNavigateUserProfile() {

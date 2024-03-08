@@ -2,7 +2,7 @@
 
 
 
-export function MatchupTile() {
+export function MatchupTile({ matchup, winrate, matches }) {
 
 
 
@@ -12,8 +12,12 @@ export function MatchupTile() {
 
 
   return (
-    <div>
-      <p></p>
+    <div className="matchup-tile-body-div">
+      <div className="matchup-tile-content-div">
+        <p className="matchup-tile-content">{matchup}</p>
+        <p className="matchup-tile-content">{winrate}%</p>
+        <p className="matchup-tile-content">{matches}</p>
+      </div>
     </div>
   )
 }
