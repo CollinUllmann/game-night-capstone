@@ -11,7 +11,7 @@ export function DeckStats() {
 
   const setMatchupVisibilityClass = (matchupType, baseClassName) => matchupType == selectedMatchupType ? baseClassName : `${baseClassName} hidden`
   
-
+  const cardsById = useSelector(state => state.cards)
   const decksById = useSelector(state => state.decks)
   const deck = decksById[deckId]
   const matchesById = useSelector(state => state.matches)
@@ -48,7 +48,7 @@ export function DeckStats() {
       for (const match of deckMatches) {
         const winner = match.userIdWinner == decksById[deck.id].userId ? true : false
         for (const deckId of match.deckIds) {
-          const playerId = deckByDeckId[deckId].userId
+          const playerId = decksById[deckId].userId
           if (matchCountByPlayerId[playerId]) {
             matchCountByPlayerId[playerId].count++;
             winner ? matchCountByPlayerId[playerId].wins++ : null
@@ -89,10 +89,18 @@ export function DeckStats() {
         const winner = match.userIdWinner == decksById[deck.id].userId ? true : false
         for (const deckId of match.deckIds) {
           const deckColors = new Set([])
-          for (const card of decksById[deckId].cards) {
-            const cardColors = card.colors.split('')
-            for (const color of cardColors) {
-              deckColors.add(color)
+          const tempDeck = decksById[deckId]
+          for (const card of tempDeck.cards) {
+            console.log('cardId: ', card.cardId)
+            const tempCard = cardsById[card.cardId]
+            console.log(cardsById)
+            console.log('tempCard: ', tempCard)
+
+            if (tempCard.colors) {
+              const cardColors = card.colors.split('')
+              for (const color of cardColors) {
+                deckColors.add(color)
+              }
             }
           }
           const deckColorsArr = Array.from(deckColors)
@@ -102,11 +110,11 @@ export function DeckStats() {
           }
         }
       }
+      return matchCountByColor;
     }
-    return matchCountByColor;
   }
 
-  console.log('matchup object: ', getDeckMatchupObj('deck'))
+  console.log('matchup object: ', getDeckMatchupObj('player'))
 
   return (
     <div className="deck-stats-content-div">

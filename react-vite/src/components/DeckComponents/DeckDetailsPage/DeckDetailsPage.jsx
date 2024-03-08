@@ -10,6 +10,7 @@ import { DeckStats } from "./DeckStats/DeckStats";
 
 import './DeckDetailsPage.css'
 import { thunkFetchAllUsers } from "../../../redux/users";
+import { thunkFetchAllCards } from "../../../redux/card";
 
 
 export function DeckDetailsPage() {
@@ -35,6 +36,7 @@ export function DeckDetailsPage() {
     dispatch(thunkFetchAllDecks())
     dispatch(thunkFetchAllMatches())
     dispatch(thunkFetchAllUsers())
+    dispatch(thunkFetchAllCards())
   }, [dispatch])
 
   function handleNavigateUserProfile() {
