@@ -156,7 +156,7 @@ export function DeckStats() {
             <p className="deck-stats-matchups-content-header">Matches</p>
           </div>
           <div className={setMatchupVisibilityClass("player", "deck-stats-matchups-content-matchup-div")}>
-            {Object.keys(playerMatchupObj).map(playerId => <MatchupTile key={playerId} matchup={usersById[playerId].username} winrate={Math.floor((playerMatchupObj[playerId].wins / playerMatchupObj[playerId].count)*100)} matches={`${playerMatchupObj[playerId].wins}-${playerMatchupObj[playerId].count - playerMatchupObj[playerId].wins}`} /> )}
+            {Object.keys(playerMatchupObj).map(playerId => <MatchupTile key={playerId} matchup={usersById[playerId]?.username} winrate={Math.floor((playerMatchupObj[playerId].wins / playerMatchupObj[playerId].count)*100)} matches={`${playerMatchupObj[playerId].wins}-${playerMatchupObj[playerId].count - playerMatchupObj[playerId].wins}`} /> )}
             {/* <p>Test Player</p>
             <p>Test Player</p>
             <p>Test Player</p>
@@ -170,7 +170,8 @@ export function DeckStats() {
           </div>
           <div className={setMatchupVisibilityClass("deck", "deck-stats-matchups-content-matchup-div")}>
             {/* {deckMatchups.map(matchup => <MatchupTile matchup={matchup}/>)} */}
-            {Object.keys(playerMatchupObj).map(playerId => <MatchupTile key={playerId} matchup={usersById[playerId].username} winrate={Math.floor((playerMatchupObj[playerId].wins / playerMatchupObj[playerId].count)*100)} matches={`${playerMatchupObj[playerId].wins}-${playerMatchupObj[playerId].count - playerMatchupObj[playerId].wins}`} /> )}
+            {Object.keys(playerMatchupObj).map(deckId => <MatchupTile key={deckId} matchup={decksById[deckId]?.name} winrate={Math.floor((playerMatchupObj[deckId].wins / playerMatchupObj[deckId].count)*100)} matches={`${playerMatchupObj[deckId].wins}-${playerMatchupObj[deckId].count - playerMatchupObj[deckId].wins}`} /> )}
+            {/* <p>Test Deck</p>
             <p>Test Deck</p>
             <p>Test Deck</p>
             <p>Test Deck</p>
@@ -182,16 +183,16 @@ export function DeckStats() {
             <p>Test Deck</p>
             <p>Test Deck</p>
             <p>Test Deck</p>
-            <p>Test Deck</p>
-            <p>Test Deck</p>
+            <p>Test Deck</p> */}
           </div>
           <div className={setMatchupVisibilityClass("color", "deck-stats-matchups-content-matchup-div")}>
             {/* {colorMatchups.map(matchup => <MatchupTile matchup={matchup}/>)} */}
+            {Object.keys(playerMatchupObj).map(color => <MatchupTile key={deckId} matchup={color} winrate={playerMatchupObj[color].count == 0 ? 0 : Math.floor((playerMatchupObj[color].wins / playerMatchupObj[color].count)*100)} matches={`${playerMatchupObj[color].wins}-${playerMatchupObj[color].count - playerMatchupObj[color].wins}`} /> )}
+            {/* <p>Test Color</p>
             <p>Test Color</p>
             <p>Test Color</p>
             <p>Test Color</p>
-            <p>Test Color</p>
-            <p>Test Color</p>
+            <p>Test Color</p> */}
           </div>
         </div>
       </div>

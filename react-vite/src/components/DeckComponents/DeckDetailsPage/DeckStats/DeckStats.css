@@ -79,7 +79,6 @@
   background-color: rgba(0, 0, 0, 0.200);
 }
 .deck-stats-matchups-content-headers-div {
-  width: 60%;
   display: flex;
   justify-content: space-between;
   padding: 0 2vh;
@@ -87,22 +86,23 @@
 .deck-stats-matchups-content-header {
   font-size: medium;
   font-weight: 600;
+  width: 33%;
 }
 
 .deck-stats-matchups-content-matchup-div {
   overflow-y: scroll;
-  padding: 0 2vh;
+  padding: 0 0 0 3vh;
 }
 .deck-stats-matchups-content-matchup-div::-webkit-scrollbar {
   display: none;
-}
-
-.matchup-tile-body-div {
-  width: 60%;
 }
 
 .matchup-tile-content-div {
   display: flex;
   width: 100%;
   justify-content: space-between;
+}
+
+.matchup-tile-content {
+  width: 33%;
 }
