@@ -5,6 +5,7 @@ import { thunkFetchAllMatches } from "../../../redux/match";
 import { DeckTile } from "../../DeckComponents/DeckTile/DeckTile";
 import { thunkFetchAllDecks } from "../../../redux/deck";
 import { DecklistPanel } from "../../DeckComponents/DecklistPanel/DecklistPanel";
+import { MatchStats } from "./MatchStats/MatchStats";
 
 
 import './MatchDetailsPage.css'
@@ -60,6 +61,7 @@ export function MatchDetailsPage() {
         <div className="match-details-stats-decks-div">
           <div className="match-details-match-stats-div">
             <p onClick={handleEventNavigate}>Link to Event</p>
+            <MatchStats />
           </div>
           <p className="match-details-match-decks-title">Decks</p>
           <div className="match-details-match-decks-div">

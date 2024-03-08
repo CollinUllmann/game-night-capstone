@@ -58,6 +58,7 @@ export function DeckStats() {
         const winner = match.userIdWinner == decksById[deck.id].userId
         for (const deckId of match.deckIds) {
           const playerId = decksById[deckId].userId
+          if (playerId == deck.userId) continue
           if (!matchCountByPlayerId[playerId]) {
             matchCountByPlayerId[playerId] = {
               count: 0,
