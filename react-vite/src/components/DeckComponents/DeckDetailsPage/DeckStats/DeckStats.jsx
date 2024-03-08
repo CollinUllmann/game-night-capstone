@@ -97,6 +97,8 @@ export function DeckStats() {
       for (const match of deckMatches) {
         const winner = match.userIdWinner == deck.userId
         for (const deckId of match.deckIds) {
+          if(deck.id === deckId) continue;
+          
           const deckColors = new Set([])
           const tempDeck = decksById[deckId]
           for (const card of tempDeck.cards) {

@@ -1,0 +1,29 @@
+.deck-construction-content-div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+
+.deck-construction-type-pie-chart-div {
+  display: flex;
+  justify-content: space-around;
+  height: 20vh;
+  width: 100%;
+  padding: 0 10%;
+  box-sizing: border-box;
+}
+
+.deck-construction-test {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.deck-construction-mana-curve-chart-div {
+  display: flex;
+  justify-content: center;
+  height: 25vh;
+  width: 100%;
+}

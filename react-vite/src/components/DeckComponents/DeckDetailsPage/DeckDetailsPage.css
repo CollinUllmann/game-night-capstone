@@ -27,7 +27,9 @@
   font-weight: 600;
 }
 
-
+.deck-details-deck-stats-selection-div {
+  display: flex;
+}
 
 .deck-details-stats-matches-div {
   display: flex;

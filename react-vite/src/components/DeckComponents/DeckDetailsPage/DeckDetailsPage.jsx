@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { thunkFetchAllDecks } from "../../../redux/deck";
@@ -6,6 +6,7 @@ import { thunkFetchAllMatches } from "../../../redux/match";
 import { DecklistPanel } from "../DecklistPanel/DecklistPanel";
 import { MatchTile } from "../../MatchComponents/MatchTile/MatchTile";
 import { DeckStats } from "./DeckStats/DeckStats";
+import { DeckConstruction } from "./DeckStats/DeckConstruction/DeckConstruction";
 
 
 import './DeckDetailsPage.css'
@@ -17,6 +18,8 @@ export function DeckDetailsPage() {
   const {deckId} = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [statsPage, setStatsPage] = useState('performance');
 
   // const sessionUser = useSelector((state) => state.session.user);
   const deckById = useSelector(state => state.decks)
@@ -59,8 +62,13 @@ export function DeckDetailsPage() {
         </div>
         <div className="deck-details-stats-matches-div">
           <div className="deck-details-deck-stats-div">
-            <p onClick={handleNavigateUserProfile}>Link to Deck Owner Profile</p>
-            <DeckStats />
+            <div className="deck-details-deck-stats-selection-div">
+              <p onClick={() => setStatsPage('performance')}>Performance</p>
+              <p onClick={() => setStatsPage('construction')}>Construction</p>
+              <p onClick={handleNavigateUserProfile}>Link to Deck Owner Profile</p>
+            </div>
+            {statsPage == 'performance' && <DeckStats />}
+            {statsPage == 'construction' && <DeckConstruction />}
           </div>
           <p className="deck-details-deck-matches-title">Matches</p>
           <div className="deck-details-deck-matches-div">

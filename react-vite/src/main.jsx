@@ -6,6 +6,27 @@ import configureStore from "./redux/store";
 import { router } from "./router";
 import * as sessionActions from "./redux/session";
 import "./index.css";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement
+} from 'chart.js';
+
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const store = configureStore();
 
