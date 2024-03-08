@@ -27,8 +27,27 @@
   font-weight: 600;
 }
 
+.deck-details-deck-stats-page-selector {
+  font-size: large;
+  font-weight: 300;
+}
+.deck-details-deck-stats-page-selector-selected {
+  font-size: x-large;
+  font-weight: 600;
+}
+
 .deck-details-deck-stats-selection-div {
   display: flex;
+  align-items: baseline;
+  width: 90%;
+  column-gap: 2%;
+}
+
+.deck-details-deck-stats-page-selector:hover {
+  cursor: pointer;
+}
+.deck-details-deck-stats-page-selector-selected:hover {
+  cursor: default;
 }
 
 .deck-details-stats-matches-div {

@@ -47,6 +47,7 @@ export function DeckDetailsPage() {
     navigate(`/users/${deck.userId}`)
   }
 
+  const setStatsPageSelectionClass = (thisStatsPage, baseClassName) => statsPage == thisStatsPage ? `${baseClassName}-selected` : `${baseClassName}`
 
   
   // if (sessionUser?.id != deck?.userId) return <Navigate to="/" replace={true} />;
@@ -63,9 +64,9 @@ export function DeckDetailsPage() {
         <div className="deck-details-stats-matches-div">
           <div className="deck-details-deck-stats-div">
             <div className="deck-details-deck-stats-selection-div">
-              <p onClick={() => setStatsPage('performance')}>Performance</p>
-              <p onClick={() => setStatsPage('construction')}>Construction</p>
-              <p onClick={handleNavigateUserProfile}>Link to Deck Owner Profile</p>
+              <p className={setStatsPageSelectionClass('performance', 'deck-details-deck-stats-page-selector')} onClick={() => setStatsPage('performance')}>Performance</p>
+              <p className={setStatsPageSelectionClass('construction', 'deck-details-deck-stats-page-selector')} onClick={() => setStatsPage('construction')}>Construction</p>
+              <p onClick={handleNavigateUserProfile}></p>
             </div>
             {statsPage == 'performance' && <DeckStats />}
             {statsPage == 'construction' && <DeckConstruction />}

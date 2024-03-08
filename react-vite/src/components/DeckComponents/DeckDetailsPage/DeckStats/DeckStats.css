@@ -2,9 +2,7 @@
   display: none;
 }
 
-.bold {
-  font-weight: 600;
-}
+
 
 .deck-stats-content-div {
   display: flex;
@@ -62,9 +60,10 @@
 .deck-stats-matchups-header-filters-div {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 }
 .deck-stats-matchups-header-filter {
-  font-size: large;
+  font-size: medium;
   margin: 0 .5vh;
 }
 .deck-stats-matchups-header-filter:hover {
@@ -75,7 +74,7 @@
   display: flex;
   flex-direction: column;
   width: 80%;
-  height: 30vh;
+  height: 28vh;
   background-color: rgba(0, 0, 0, 0.200);
 }
 .deck-stats-matchups-content-headers-div {
@@ -105,4 +104,11 @@
 
 .matchup-tile-content {
   width: 33%;
+}
+
+
+
+.bold {
+  font-size: large;
+  font-weight: 600;
 }
