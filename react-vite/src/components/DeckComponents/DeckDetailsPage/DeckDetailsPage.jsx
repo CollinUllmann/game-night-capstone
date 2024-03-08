@@ -9,6 +9,7 @@ import { DeckStats } from "./DeckStats/DeckStats";
 
 
 import './DeckDetailsPage.css'
+import { thunkFetchAllUsers } from "../../../redux/users";
 
 
 export function DeckDetailsPage() {
@@ -33,6 +34,7 @@ export function DeckDetailsPage() {
   useEffect(() => {
     dispatch(thunkFetchAllDecks())
     dispatch(thunkFetchAllMatches())
+    dispatch(thunkFetchAllUsers())
   }, [dispatch])
 
   function handleNavigateUserProfile() {

@@ -1,3 +1,11 @@
+.hidden {
+  display: none;
+}
+
+.bold {
+  font-weight: 600;
+}
+
 .deck-stats-content-div {
   display: flex;
   flex-direction: column;
@@ -33,14 +41,13 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 0 2vh;
   align-items: center;
 }
 .deck-stats-matchups-header-container {
   display: flex;
   justify-content: start;
   align-items: center;
-  width: 80%;
+  width: 90%;
 }
 .deck-stats-matchups-header-title-div {
   display: flex;
@@ -60,18 +67,32 @@
   font-size: large;
   margin: 0 .5vh;
 }
+.deck-stats-matchups-header-filter:hover {
+  cursor: pointer;
+}
 
 .deck-stats-matchups-content-div {
   display: flex;
   flex-direction: column;
   width: 80%;
+  height: 30vh;
+  background-color: rgba(0, 0, 0, 0.200);
 }
 .deck-stats-matchups-content-headers-div {
-  width: 100%;
+  width: 60%;
   display: flex;
   justify-content: space-between;
+  padding: 0 2vh;
 }
 .deck-stats-matchups-content-header {
   font-size: medium;
   font-weight: 600;
+}
+
+.deck-stats-matchups-content-matchup-div {
+  overflow-y: scroll;
+  padding: 0 2vh;
+}
+.deck-stats-matchups-content-matchup-div::-webkit-scrollbar {
+  display: none;
 }
