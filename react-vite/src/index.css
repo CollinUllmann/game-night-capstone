@@ -1,1 +1,57 @@
 /* TODO: Add sitewide styles */
+
+:root {
+  --main-bg-color: #1a1b1c;
+  --main-highlight-color: #2b2d2e;
+}
+
+body {
+  background-color: var(--main-bg-color);
+  color: white;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+#root > div  {
+  width: 100%;
+  max-width: 1450px;
+}
+
+input {
+  border: 1px solid white;
+  padding:4px;
+  margin:4px;
+  border-radius:5px;
+  background-color: var(--main-bg-color);
+  color: white;
+}
+input:focus {
+  box-shadow: rgb(255, 255, 255) 0px 5px 30px 0px;
+  background-color: var(--main-highlight-color);
+}
+
+
+button {
+  border-radius: 5px;
+  background: var(--main-highlight-color);
+  color: white;
+  outline: 3px solid white;
+  border: 1px solid black;
+  padding:4px 12px;
+  margin:4px;
+  box-sizing:border-box;
+}
+button:hover {
+  scale:1.1;
+  cursor: pointer;
+}

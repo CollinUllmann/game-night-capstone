@@ -79,7 +79,7 @@ export function DeckTile({ deck, onClick }) {
         <div className='deck-tile-win-percent-matches-div'>
           <div className='deck-tile-win-percent-div'>
             <p className='deck-tile-win-percent-title'>Winrate</p>
-            <p className='deck-tile-win-percent'>{Math.floor(winPercent * 100)}%</p>
+            <p className='deck-tile-win-percent'>{winPercent ? Math.floor(winPercent * 100) : 0}%</p>
           </div>
           <div className='deck-tile-matches-div'>
             <p className='deck-tile-matches-title'>Matches</p>

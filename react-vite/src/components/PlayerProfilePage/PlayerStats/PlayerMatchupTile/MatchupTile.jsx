@@ -1,4 +1,4 @@
-import { ManaSymbol } from "../../../../ManaSymbol/ManaSymbol"
+import { ManaSymbol } from "../../../ManaSymbol/ManaSymbol"
 
 
 
@@ -7,7 +7,6 @@ export function MatchupTile({ matchup, winrate, matches }) {
   if (matchupDisplay === 'W' || matchupDisplay === 'U' || matchupDisplay === 'B' || matchupDisplay === 'R' || matchupDisplay === 'G') {
     matchupDisplay = <ManaSymbol symbol={matchupDisplay} />
   }
-
 
   return (
     <div className="matchup-tile-content-div">

@@ -4,6 +4,9 @@ import './SplashPage.css'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkAuthenticate } from '../../redux/session';
+import OpenModalButton from '../OpenModalButton/OpenModalButton'
+import SignupFormModal from '../SignupFormModal';
+import LoginFormModal from '../LoginFormModal';
 
 export function SplashPage() {
 
@@ -36,12 +39,18 @@ export function SplashPage() {
   return (
     <div className="splash-page-root-div">
       <div className="splash-page-div">
-        <div className="splash-page-title-signup-login-div">
+        <div className={currentUser ? "hidden" : "splash-page-title-signup-login-div"}>
           <p className="splash-page-title">Knowledge is Power</p>
           <p className="splash-page-title-blurb">Know more, win more. Powered by data, not opinions.</p>
           <div className="splash-page-signup-login-div">
-            <div className="splash-page-signup splash-page-button" onClick={() => navigate('/signup')}>Sign Up</div>
-            <div className="splash-page-login splash-page-button" onClick={() => navigate('/login')}>Login</div>
+              <OpenModalButton
+                buttonText="Sign Up"
+                modalComponent={<SignupFormModal />}
+              />
+              <OpenModalButton
+                buttonText="Log In"
+                modalComponent={<LoginFormModal />}
+              />
           </div>
         </div>
         <div className="splash-page-deck-builder-content-div">

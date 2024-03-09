@@ -141,7 +141,7 @@ export function PlayerStats() {
       <div className="deck-stats-headers">
         <div className="deck-stats-header-div">
           <p className="deck-stats-header-title">Winrate</p>
-          <p className="deck-stats-header-stat">{Math.floor((playerWins.length / playerMatches.length)*100)}%</p>
+          <p className="deck-stats-header-stat">{playerMatches.length == 0 ? 0 : Math.floor((playerWins.length / playerMatches.length)*100)}%</p>
         </div>
         <div className="deck-stats-header-div">
           <p className="deck-stats-header-title">Matches</p>

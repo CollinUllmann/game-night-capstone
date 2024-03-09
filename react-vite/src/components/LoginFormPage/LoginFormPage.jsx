@@ -32,12 +32,28 @@ function LoginFormPage() {
     }
   };
 
-  return (
-    <>
+  return (<div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  }}>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+
+      background: '#222',
+      padding: 20,
+      borderRadius: 10,
+      boxShadow: '0 5px 30px 0 rgba(255, 255, 255, 0.2)'
+    }}>
       <h1>Log In</h1>
       {errors.length > 0 &&
         errors.map((message) => <p key={message}>{message}</p>)}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{
+        display: 'flex',
+        flexDirection: 'column'
+      }}>
         <label>
           Email
           <input
@@ -60,7 +76,9 @@ function LoginFormPage() {
         {errors.password && <p>{errors.password}</p>}
         <button type="submit">Log In</button>
       </form>
-    </>
+    </div>
+      
+      </div>
   );
 }
 

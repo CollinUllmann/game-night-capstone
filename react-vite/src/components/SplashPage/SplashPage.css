@@ -29,7 +29,7 @@
 
 .splash-page-signup-login-div {
   display: flex;
-
+  column-gap: 8px;
 }
 
 .splash-page-login {

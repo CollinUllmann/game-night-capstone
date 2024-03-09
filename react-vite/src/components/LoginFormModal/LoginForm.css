@@ -20,7 +20,7 @@
 
 #modal-content {
   position: absolute;
-  background-color:black;
+  background-color:var(--main-bg-color);
 }
 
 .login-header-div {
@@ -33,24 +33,20 @@
 }
 
 .login-form-input {
-  width: 100%;
-  margin: 5px 5px;
+  margin: 20px 5px;
   display: flex;
-  justify-content: start;
+  justify-content: start;;
 }
 .login-form-input input{
-  width: 100%;
   margin: 0 5px;
 }
 
 .signup-form-input {
-  width: 100%;
-  margin: 5px 5px;
+  margin: 20px 5px;
   display: flex;
   justify-content: start;
 }
 .signup-form-input input{
-  width: 100%;
   margin: 0 5px;
 }
 
@@ -59,10 +55,17 @@
   margin: 0 0 5px 0;
   justify-content: center;
 }
+.login-modal-button {
+  width: 70%
+}
 .signup-form-submit-button-div {
   display: flex;
   margin: 0 0 5px 0;
   justify-content: center;
+}
+.signup-form-submit-button {
+  width: 70%;
+  margin: 0 0 20px 0;
 }
 
 #modal-content {
@@ -73,14 +76,47 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  margin: 0 10px 20px 0;
+  margin: 0 20px 20px 20px;
 }
 .signup-form {
   display: flex;
   flex-direction: column;
-  margin: 0 10px 20px 0;
+  margin: 20px;
+}
+
+.signup-form-errors-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: small;
+  height:50px;
+}
+
+.login-form-errors-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: small;
+  height:50px;
+}
+
+.signup-form-submit-button {
+  width: 70%;
+  margin: 0 0 20px 0;
 }
 
 .modal-error {
   color: red;
+}
+
+.login-form-input-span {
+  flex-grow:1;
+  display: flex;
+  justify-content: end;
+}
+
+.signup-form-input-span {
+  flex-grow:1;
+  display: flex;
+  justify-content: end;
 }

@@ -1,20 +1,3 @@
-:root {
-  --main-bg-color: #1a1b1c;
-  --main-highlight-color: #2b2d2e;
-}
-
-body {
-  background-color: var(--main-bg-color);
-  color: white;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-#root {
-  width: 100%;
-  max-width: 1450px;
-}
-
 .deck-index-tile-div {
   display: flex;
   flex-wrap: wrap;

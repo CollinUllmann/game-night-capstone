@@ -19,7 +19,7 @@ function SignupFormModal() {
     if (password !== confirmPassword) {
       return setErrors({
         confirmPassword:
-          "Confirm Password field must be the same as the Password field",
+          "Confirm Password must be the same as Password",
       });
     }
 
@@ -44,23 +44,19 @@ function SignupFormModal() {
       <div className="signup-header-div">
         <h1>Sign Up</h1>
       </div>
-      {errors.server && <p className="modal-error">{errors.server}</p>}
-      {errors.email && <p className="modal-error">{errors.email}</p>}
-      {errors.confirmPassword && <p className="modal-error">{errors.confirmPassword}</p>}
-      {errors.password && <p className="modal-error">{errors.password}</p>}
       <form className="signup-form" onSubmit={handleSubmit}>
         <label className="signup-form-input">
-          Email
+        <span className="signup-form-input-span">Email</span>
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-          />
+            />
         </label>
         
         <label className="signup-form-input">
-          Username
+        <span className="signup-form-input-span">Username</span>
           <input
             type="text"
             value={username}
@@ -69,9 +65,8 @@ function SignupFormModal() {
           />
         </label>
 
-        {errors.username && <p>{errors.username}</p>}
         <label className="signup-form-input">
-          Password
+        <span className="signup-form-input-span">Password</span>
           <input
             type="password"
             value={password}
@@ -81,17 +76,25 @@ function SignupFormModal() {
         </label>
         
         <label className="signup-form-input">
-          Confirm Password
+          <span className="signup-form-input-span">Confirm Password</span>
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
-          />
+            />
         </label>
+        <div className="signup-form-errors-div">
+            {errors.username && <p className="modal-error">{errors.username}</p>}
+            {errors.server && <p className="modal-error">{errors.server}</p>}
+            {errors.email && <p className="modal-error">{errors.email}</p>}
+            {errors.confirmPassword && <p className="modal-error">{errors.confirmPassword}</p>}
+            {errors.password && <p className="modal-error">{errors.password}</p>}
+
+        </div>
         <div className="signup-form-submit-button-div">
           
-          <button type="submit">Sign Up</button>
+          <button className="signup-form-submit-button" type="submit">Sign Up</button>
         </div>
       </form>
     </>
