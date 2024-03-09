@@ -28,12 +28,18 @@
   font-size: medium;
   width: 67%;
 }
+.match-stats-player-tile:hover {
+  cursor: pointer;
+}
 .match-stats-deck-tile {
   font-size: medium;
   width: 67%;
   display: flex;
   justify-content: space-between;
   padding: 0 2vh;
+}
+.match-stats-deck-tile:hover {
+  cursor: pointer;
 }
 
 .match-stats-matchups-content-headers-div {

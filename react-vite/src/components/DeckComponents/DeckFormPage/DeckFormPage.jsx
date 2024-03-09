@@ -81,9 +81,9 @@ export function DeckFormPage({ formtype }) {
     deckFormData.append('cards', cards)
 
     if (formtype == 'update') {
-      dispatch(thunkUpdateDeck(deckId, deckFormData)).then(() => navigate('/decks'))
+      dispatch(thunkUpdateDeck(deckId, deckFormData)).then(() => navigate(`/decks/${deckId}`))
     } else {
-      dispatch(thunkCreateDeck(deckFormData)).then(() => navigate('/decks'))
+      dispatch(thunkCreateDeck(deckFormData)).then(returnDeck => navigate(`/decks/${returnDeck.id}`))
     }
   };
   let key = 0;

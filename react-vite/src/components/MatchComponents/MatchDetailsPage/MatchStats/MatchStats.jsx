@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { thunkFetchAllMatches } from "../../../../redux/match";
 import { thunkFetchAllUsers } from "../../../../redux/users";
 import { thunkFetchAllDecks } from "../../../../redux/deck";
@@ -13,6 +13,7 @@ import './MatchStats.css'
 export function MatchStats() {
   const { matchId } = useParams()
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(thunkFetchAllMatches())
@@ -151,7 +152,7 @@ export function MatchStats() {
             <p className="match-stats-matchups-content-header">Winrate</p>
           </div>
           {Object.keys(matchPlayersObj).map(playerId => {
-            return <div key={playerId} className="match-stats-player-tile">
+            return <div key={playerId} onClick={() => navigate(`/users/${playerId}`)} className="match-stats-player-tile">
                 <p>{usersById[playerId]?.username}</p>
                 <p>{matchPlayersObj[playerId]}%</p>
             </div>
@@ -163,7 +164,7 @@ export function MatchStats() {
             <p className="match-stats-matchups-content-header">Winrate</p>
           </div>
           {Object.keys(matchDecksObj).map(deckId => {
-            return <div key={deckId} className="match-stats-deck-tile">
+            return <div key={deckId} onClick={() => navigate(`/decks/${deckId}`)} className="match-stats-deck-tile">
                 <p>{decksById[deckId]?.name}</p>
                 <p>{matchDecksObj[deckId]}%</p>
             </div>

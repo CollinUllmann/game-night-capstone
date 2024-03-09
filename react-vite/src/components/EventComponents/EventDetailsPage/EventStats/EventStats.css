@@ -33,12 +33,19 @@
   font-size: medium;
   width: 67%;
 }
+.match-stats-player-tile:hover {
+  background-color: rgba(105, 105, 105, 0.202);
+}
+
 .match-stats-deck-tile {
   font-size: medium;
   width: 67%;
   display: flex;
   justify-content: space-between;
   padding: 0 2vh;
+}
+.match-stats-deck-tile:hover {
+  background-color: rgba(105, 105, 105, 0.202);
 }
 
 .match-stats-matchups-content-headers-div {

@@ -129,21 +129,26 @@ export function PlayerConstruction() {
     'green': 0
   }
   for (const deck of userDecks) {
+    const deckColors = new Set([])
     for (const card of deck.cards) {
       const cardObj = cardsById[card.cardId]
       const cardColors = cardObj.colors.split('')
       for (const color of cardColors) {
-        if (color == 'W') {
-          colorDataObj['white']++
-        } else if (color == 'U') {
-          colorDataObj['blue']++
-        } else if (color == 'B') {
-          colorDataObj['black']++
-        } else if (color == 'R') {
-          colorDataObj['red']++
-        } else if (color == 'G') {
-          colorDataObj['green']++
-        }
+        deckColors.add(color)
+      }
+    }
+    const deckColorsArr = Array.from(deckColors)
+    for (const color of deckColorsArr) {
+      if (color == 'W') {
+        colorDataObj['white']++
+      } else if (color == 'U') {
+        colorDataObj['blue']++
+      } else if (color == 'B') {
+        colorDataObj['black']++
+      } else if (color == 'R') {
+        colorDataObj['red']++
+      } else if (color == 'G') {
+        colorDataObj['green']++
       }
     }
   }
@@ -152,7 +157,7 @@ export function PlayerConstruction() {
     labels: ['White', 'Blue', 'Black', 'Red', 'Green'],
     datasets: [
       {
-        label: '# of cards',
+        label: '# of decks',
         data: [colorDataObj['white'], colorDataObj['blue'], colorDataObj['black'], colorDataObj['red'], colorDataObj['green']],
         backgroundColor: [
           'rgba(255, 206, 86, 0.2)',
@@ -195,7 +200,7 @@ export function PlayerConstruction() {
       },
       title: {
         display: true,
-        text: 'Color Breakdown',
+        text: 'Deck Color Breakdown',
         position: 'top'
       }
     }

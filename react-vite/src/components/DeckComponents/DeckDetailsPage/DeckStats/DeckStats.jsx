@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import './DeckStats.css'
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { thunkFetchAllCards } from '../../../../redux/card';
+// import { thunkFetchAllCards } from '../../../../redux/card';
 import { MatchupTile } from './MatchupTile/MatchupTile';
+import { thunkFetchAllDecks } from '../../../../redux/deck';
 
 
 export function DeckStats() {
@@ -15,7 +16,7 @@ export function DeckStats() {
   const setMatchupVisibilityClass = (matchupType, baseClassName) => matchupType == selectedMatchupType ? baseClassName : `${baseClassName} hidden`
   
   useEffect(() => {
-    dispatch(thunkFetchAllCards())
+    dispatch(thunkFetchAllDecks())
   }, [dispatch])
 
   const cardsById = useSelector(state => state.cards)
@@ -23,6 +24,7 @@ export function DeckStats() {
   const usersById = useSelector(state => state.users)
   const deck = decksById[deckId]
   const matchesById = useSelector(state => state.matches)
+  if (!deck) return
   const deckMatches = Object.values(matchesById).filter(match => {
     for (const deckId of match.deckIds) {
       if (deckId == deck.id) {
@@ -137,7 +139,7 @@ export function DeckStats() {
       <div className="deck-stats-headers">
         <div className="deck-stats-header-div">
           <p className="deck-stats-header-title">Winrate</p>
-          <p className="deck-stats-header-stat">{Math.floor((deckWins.length / deckMatches.length)*100)}%</p>
+          <p className="deck-stats-header-stat">{deckMatches.length == 0 ? 0 : Math.floor((deckWins.length / deckMatches.length)*100)}%</p>
         </div>
         <div className="deck-stats-header-div">
           <p className="deck-stats-header-title">Matches</p>

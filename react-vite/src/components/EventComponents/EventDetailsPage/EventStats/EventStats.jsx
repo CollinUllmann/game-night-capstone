@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { thunkFetchAllMatches } from "../../../../redux/match";
 import { thunkFetchAllUsers } from "../../../../redux/users";
 import { thunkFetchAllDecks } from "../../../../redux/deck";
@@ -13,6 +13,7 @@ import './EventStats.css'
 export function EventStats() {
   const { eventId } = useParams()
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(thunkFetchAllMatches())
@@ -30,11 +31,12 @@ export function EventStats() {
 
   const eventMatches = Object.values(matchesById).filter(match => match.eventId == eventId)
 
+  
   const matchPlayersObj = {}
   const playerIds = []
   for (const match of eventMatches) {
     for (const deckId of match.deckIds) {
-      playerIds.push(decksById[deckId].userId)
+      playerIds.push(decksById[deckId]?.userId)
     }
     for (const playerId of playerIds) {
       // const user = usersById[playerId]
@@ -42,7 +44,7 @@ export function EventStats() {
       const userMatches = Object.values(matchesById).filter(match => {
         if (match.userIdWinner == playerId) userWins++
         for (const deckId of match.deckIds) {
-          if (decksById[deckId].userId == playerId) {
+          if (decksById[deckId]?.userId == playerId) {
             return true
           }
         }
@@ -61,7 +63,7 @@ export function EventStats() {
         const matchDeckIds = match.deckIds
         for (const matchDeckId of matchDeckIds) {
           if (matchDeckId == deckId) {
-            if (match.userIdWinner == decksById[deckId].userId) deckWins++
+            if (match.userIdWinner == decksById[deckId]?.userId) deckWins++
             return true
           }
         }
@@ -82,6 +84,7 @@ export function EventStats() {
     for (const deckId of match.deckIds) {
       const deck = decksById[deckId]
       const deckColors = new Set([])
+      if (!deck) return
       for (const card of deck.cards) {
         const cardObj = cardsById[card.cardId]
         const cardColors = cardObj?.colors.split('')
@@ -158,7 +161,7 @@ export function EventStats() {
             <p className="match-stats-matchups-content-header">Winrate</p>
           </div>
           {Object.keys(matchPlayersObj).map(playerId => {
-            return <div key={playerId} className="match-stats-player-tile">
+            return <div key={playerId} onClick={() => navigate(`/users/${playerId}`)} className="match-stats-player-tile">
                 <p>{usersById[playerId]?.username}</p>
                 <p>{matchPlayersObj[playerId]}%</p>
             </div>
@@ -170,7 +173,7 @@ export function EventStats() {
             <p className="match-stats-matchups-content-header">Winrate</p>
           </div>
           {Object.keys(matchDecksObj).map(deckId => {
-            return <div key={deckId} className="match-stats-deck-tile">
+            return <div key={deckId} onClick={() => navigate(`/decks/${deckId}`)} className="match-stats-deck-tile">
                 <p>{decksById[deckId]?.name}</p>
                 <p>{matchDecksObj[deckId]}%</p>
             </div>
