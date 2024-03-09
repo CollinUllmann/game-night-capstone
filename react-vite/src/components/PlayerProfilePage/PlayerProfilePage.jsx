@@ -8,6 +8,7 @@ import { thunkFetchAllEvents } from "../../redux/event";
 import { DeckTile } from "../DeckComponents/DeckTile/DeckTile";
 import { AddDeckTile } from "../DeckComponents/DeckTile/AddDeckTile";
 import { PlayerStats } from "./PlayerStats/PlayerStats";
+import { PlayerConstruction } from "./PlayerStats/PlayerConstruction/PlayerConstruction";
 
 import './PlayerProfilePage.css'
 
@@ -88,6 +89,8 @@ export function PlayerProfilePage() {
               {/* <p onClick={handleNavigateUserProfile}></p> */}
             </div>
             {statsPage == 'performance' && <PlayerStats />}
+            {statsPage == 'construction' && <PlayerConstruction />}
+
           </div>
           <p className="player-profiel-player-decks-title">Decks</p>
           <div className="player-profile-player-decks-div">
