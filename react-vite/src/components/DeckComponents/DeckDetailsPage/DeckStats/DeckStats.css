@@ -105,6 +105,10 @@
   background-color: rgba(105, 105, 105, 0.202);
 }
 
+.deck-stats-matchup-tile-div:hover {
+  cursor: pointer;
+}
+
 .matchup-tile-content {
   width: 33%;
 }
