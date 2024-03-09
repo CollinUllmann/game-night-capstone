@@ -25,6 +25,7 @@ export function PlayerProfilePage() {
   const deckById = useSelector(state => state.decks)
   const eventById = useSelector(state => state.events)
   const matchesById = useSelector(state => state.matches)
+  const currentUser = useSelector(state => state.session.user)
   const user = userById[userId]
   const userDecks = Object.values(deckById).filter(deck => deck.userId == userId)
 
@@ -94,7 +95,7 @@ export function PlayerProfilePage() {
           </div>
           <p className="player-profiel-player-decks-title">Decks</p>
           <div className="player-profile-player-decks-div">
-            <div className="player-profile-add-deck-button-div" onClick={() => navigate('/decks/new')}>
+            <div className={currentUser.id == userId ? "player-profile-add-deck-button-div" : "hidden"} onClick={() => navigate('/decks/new')}>
               <AddDeckTile />
             </div>
             {userDecks.map(deck => <div key={key++} onClick={() => navigate(`/decks/${deck.id}`)} className="player-profile-decktile-div"><DeckTile deck={deck} key={key++} /></div>)}
