@@ -1,0 +1,60 @@
+.match-stats-body {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  column-gap: 10%;
+}
+
+.match-stats-matchup-divs-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 90%;
+  width: 100%;
+}
+
+.match-stats-player-tile {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2vh;
+}
+
+.match-stats-player-tiles-div {
+  background-color: rgba(0, 0, 0, 0.200);
+  margin: 0 0 0 3vh;
+  height: 20vh;
+  overflow-y: scroll;
+}
+.match-stats-player-tiles-div::-webkit-scrollbar {
+  display: none;
+}
+.match-stats-player-tile {
+  font-size: medium;
+  width: 67%;
+}
+.match-stats-deck-tile {
+  font-size: medium;
+  width: 67%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2vh;
+}
+
+.match-stats-matchups-content-headers-div {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2vh;
+}
+.match-stats-matchups-content-header {
+  font-size: medium;
+  font-weight: 600;
+  width: 33%;
+  display: flex;
+  justify-content: start;
+}
+
+.match-stats-pie-chart-div {
+  width: 100%;
+  height: 100%;
+}

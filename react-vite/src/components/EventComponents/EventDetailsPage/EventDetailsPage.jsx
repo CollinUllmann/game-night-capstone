@@ -7,6 +7,7 @@ import {  thunkDeleteEvent, thunkFetchAllEvents } from "../../../redux/event";
 import { AddMatchTile } from "../../MatchComponents/MatchTile/AddMatchTile";
 import { RxUpdate } from "react-icons/rx";
 import { FaTrashAlt } from "react-icons/fa";
+import { EventStats } from "./EventStats/EventStats";
 
 import './EventDetailsPage.css'
 
@@ -71,6 +72,7 @@ export function EventDetailsPage() {
         </div>
         <div className="event-details-stats-matches-div">
           <div className="event-details-event-stats-div">
+            <EventStats />
           </div>
           <p className="event-details-event-matches-title">Matches</p>
           <div className="event-details-event-matches-div">
