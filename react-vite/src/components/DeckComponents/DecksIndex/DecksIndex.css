@@ -6,6 +6,13 @@
 body {
   background-color: var(--main-bg-color);
   color: white;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+#root {
+  width: 100%;
+  max-width: 1450px;
 }
 
 .deck-index-tile-div {
