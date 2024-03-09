@@ -140,7 +140,6 @@ export function DeckConstruction() {
         colorDataObj['green']++
       }
     }
-    console.log(colorDataObj)
   }
   
   const colorData = {
@@ -168,11 +167,30 @@ export function DeckConstruction() {
     ]
   }
 
-  const options = {
+  const typeOptions = {
     maintainAspectRatio: false,
     plugins: {
       legend: {
         position:'right'
+      },
+      title: {
+        display: true,
+        text: 'Type Breakdown',
+        position: 'top'
+      }
+    }
+  }
+
+  const colorOptions = {
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position:'right'
+      },
+      title: {
+        display: true,
+        text: 'Color Breakdown',
+        position: 'top'
       }
     }
   }
@@ -181,10 +199,10 @@ export function DeckConstruction() {
     <div className='deck-construction-content-div'>
       <div className='deck-construction-type-pie-chart-div'>
         <div className='deck-construction-test'>
-          <Pie data={typeData} options={options} />
+          <Pie data={typeData} options={typeOptions} />
         </div>
         <div className='deck-construction-test'>
-          <Pie data={colorData} options={options} />
+          <Pie data={colorData} options={colorOptions} />
         </div>
       </div>
       <div className='deck-construction-mana-curve-chart-div'>

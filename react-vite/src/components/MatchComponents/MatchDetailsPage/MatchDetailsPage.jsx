@@ -41,9 +41,6 @@ export function MatchDetailsPage() {
     dispatch(thunkFetchAllDecks())
   }, [dispatch])
 
-  function handleEventNavigate() {
-    navigate(`/events/${match.eventId}`)
-  }
 
 
   if (!winningDeckId) return
@@ -60,7 +57,6 @@ export function MatchDetailsPage() {
         </div>
         <div className="match-details-stats-decks-div">
           <div className="match-details-match-stats-div">
-            <p onClick={handleEventNavigate}>Link to Event</p>
             <MatchStats />
           </div>
           <p className="match-details-match-decks-title">Decks</p>
