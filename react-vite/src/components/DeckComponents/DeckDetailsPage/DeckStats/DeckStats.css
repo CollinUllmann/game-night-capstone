@@ -101,6 +101,9 @@
   width: 100%;
   justify-content: space-between;
 }
+.matchup-tile-content-div:hover {
+  background-color: rgba(105, 105, 105, 0.202);
+}
 
 .matchup-tile-content {
   width: 33%;

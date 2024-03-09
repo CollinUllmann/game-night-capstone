@@ -8,7 +8,8 @@
 }
 
 .deck-details-decklist-sidepanel-div {
-  border: 1px solid white;
+  /* border: 1px solid white; */
+  background-color: rgba(47, 51, 109, 0.202);
   width: fit-content;
   height: 80vh;
   display: flex;
@@ -60,11 +61,12 @@
   height: 50vh;
   width: 100%;
   margin: 0 0 0 2vh;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   border-radius: 1vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgba(47, 51, 109, 0.202);
 }
 
 .deck-details-deck-matches-title {

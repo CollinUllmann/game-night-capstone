@@ -55,10 +55,10 @@ export function DeckDetailsPage() {
   let key = 1;
   return (
     <div>
-      <p className="deck-details-title">{deck?.name} Details</p>
+      {/* <p className="deck-details-title">{deck?.name} Details</p> */}
       <div className="deck-details-div">
         <div className="deck-details-decklist-sidepanel-div">
-          <p className="deck-details-decklist-title">DeckList</p>
+          <p className="deck-details-decklist-title">{deck?.name} Decklist</p>
           <DecklistPanel className="deck-details-decklist-panel" deckId={deck?.id} />
         </div>
         <div className="deck-details-stats-matches-div">

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { thunkFetchAllCards } from "../../../redux/card";
 import { thunkFetchAllDecks } from "../../../redux/deck";
 
+
 export function DecklistPanel({ deckId }) {
   const dispatch = useDispatch();
 
