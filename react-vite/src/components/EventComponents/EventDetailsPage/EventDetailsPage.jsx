@@ -14,6 +14,8 @@ import OpenModalDeleteIcon from "../../DeckComponents/DeckTile/OpenDeleteIconMod
 import { EventFormModal } from "../EventFormModal/EventFormModal";
 import { DeleteEventConfirmationModal } from "./DeleteEventConfirmationModal";
 import OpenAddEventModal from "../OpenAddEventModal";
+import OpenModalTile from "../../PlayerProfilePage/OpenModalTile";
+import { MatchFormModal } from "../../MatchComponents/MatchFormModal/MatchFormModal";
 
 import './EventDetailsPage.css'
 
@@ -98,9 +100,7 @@ export function EventDetailsPage() {
           </div>
           <p className="event-details-event-matches-title">Matches</p>
           <div className="event-details-event-matches-div">
-            <div className="event-details-add-match-tile" onClick={() => navigate('/matches/new')}>
-              <AddMatchTile />
-            </div>
+            <OpenModalTile modalComponent={<MatchFormModal formtype={'new'}/>}/>
             {eventMatches.map(match => {
               return <div className="event-details-match-tile-div" key={matchKey++}>
                 <MatchTile className="event-details-match-tile" match={match} onClick={() => navigate(`/matches/${match.id}`)} matchNum={matchKey}/>
