@@ -6,6 +6,10 @@ import { DeckTile } from "../../DeckComponents/DeckTile/DeckTile";
 import { thunkFetchAllDecks } from "../../../redux/deck";
 import { DecklistPanel } from "../../DeckComponents/DecklistPanel/DecklistPanel";
 import { MatchStats } from "./MatchStats/MatchStats";
+import OpenModalUpdateIcon from "../../DeckComponents/DeckTile/OpenUpdateIconModal";
+import OpenModalDeleteIcon from "../../DeckComponents/DeckTile/OpenDeleteIconModal";
+import { MatchFormModal } from "../MatchFormPage/MatchFormModal";
+import { DeleteMatchConfirmationModal } from "../MatchTile/DeleteMatchConfirmationModal";
 
 
 import './MatchDetailsPage.css'
@@ -49,7 +53,15 @@ export function MatchDetailsPage() {
   let key = 1;
   return (
     <div>
-      <p className="match-details-title">Match Details</p>
+      <div style={{display:'flex', alignItems:'center'}}>
+        <p className="match-details-title">Match Details</p>
+        <div className="match-tile-update icon">
+          <OpenModalUpdateIcon modalComponent={<MatchFormModal formtype={'update'} matchId={match?.id}/>} />
+        </div>
+        <div  className="match-tile-delete icon">
+          <OpenModalDeleteIcon modalComponent={<DeleteMatchConfirmationModal matchId={match?.id}/>}/>
+        </div>
+      </div>
       <div className="match-details-div">
         <div className="match-details-decklist-sidepanel-div">
           <p className="match-details-decklist-title">Winning Decklist</p>

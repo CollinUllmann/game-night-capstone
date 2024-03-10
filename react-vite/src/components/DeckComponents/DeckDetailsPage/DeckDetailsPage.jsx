@@ -9,6 +9,8 @@ import { DeckStats } from "./DeckStats/DeckStats";
 import { DeckConstruction } from "./DeckStats/DeckConstruction/DeckConstruction";
 import OpenModalUpdateIcon from "../DeckTile/OpenUpdateIconModal";
 import { DeckFormModal } from "../DeckFormPage/DeckFormModal";
+import OpenModalDeleteIcon from "../DeckTile/OpenDeleteIconModal";
+import { DeleteDeckConfirmationModal } from "../DeckTile/DeleteDeckConfirmationModal";
 
 
 import './DeckDetailsPage.css'
@@ -64,6 +66,9 @@ export function DeckDetailsPage() {
             <p className="deck-details-decklist-title">{deck?.name} Decklist</p>
             <div className="deck-tile-update icon">
               <OpenModalUpdateIcon modalComponent={<DeckFormModal deckId={deck?.id} formtype={'update'}/>}/>
+            </div>
+            <div className="deck-tile-delete icon">
+              <OpenModalDeleteIcon modalComponent={<DeleteDeckConfirmationModal deckId={deck?.id}/>}/>
             </div>
           </div>
           <DecklistPanel className="deck-details-decklist-panel" deckId={deck?.id} />

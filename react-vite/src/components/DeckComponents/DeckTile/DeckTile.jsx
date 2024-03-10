@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import './DeckTile.css'
 // import OpenModalMenuItem from '../../Navigation/OpenModalMenuItem';
 // import DeckDeleteConfirmationModal from '../../DeckDeleteConfirmationModal/DeckDeleteConfirmationModal'
-import { FaTrashAlt } from "react-icons/fa";
+// import { FaTrashAlt } from "react-icons/fa";
 // import { RxUpdate } from "react-icons/rx";
-import { thunkDeleteDeck } from '../../../redux/deck';
+// import { thunkDeleteDeck } from '../../../redux/deck';
 // import { useNavigate } from 'react-router-dom';
 import { ManaSymbol } from '../../ManaSymbol/ManaSymbol';
 import { useEffect } from 'react';
@@ -16,6 +16,8 @@ import { thunkFetchUserById } from '../../../redux/users';
 import { thunkFetchAllMatches } from '../../../redux/match';
 import OpenModalUpdateIcon from './OpenUpdateIconModal';
 import { DeckFormModal } from '../DeckFormPage/DeckFormModal';
+import OpenModalDeleteIcon from './OpenDeleteIconModal';
+import { DeleteDeckConfirmationModal } from './DeleteDeckConfirmationModal';
 
 export function DeckTile({ deck, onClick }) {
   const dispatch = useDispatch();
@@ -32,10 +34,10 @@ export function DeckTile({ deck, onClick }) {
   }, [dispatch, deck.userId])
 
 
-  const handleDelete = (e) => {
-    e.stopPropagation();
-    dispatch(thunkDeleteDeck(deck.id))
-  }
+  // const handleDelete = (e) => {
+  //   e.stopPropagation();
+  //   dispatch(thunkDeleteDeck(deck.id))
+  // }
 
   // const handleNavigate = (e) => {
   //   e.stopPropagation()
@@ -94,8 +96,9 @@ export function DeckTile({ deck, onClick }) {
           <div className="deck-tile-update icon">
             <OpenModalUpdateIcon modalComponent={<DeckFormModal deckId={deck.id} formtype={'update'}/>}/>
           </div>
-          {/* <RxUpdate className="deck-tile-update icon" onClick={handleNavigate}/> */}
-          <FaTrashAlt className="deck-tile-delete icon" onClick={handleDelete} />
+          <div className='deck-tile-delete icon'>
+            <OpenModalDeleteIcon modalComponent={<DeleteDeckConfirmationModal deckId={deck.id}/>}/>
+          </div>
         </div>
       
       }
