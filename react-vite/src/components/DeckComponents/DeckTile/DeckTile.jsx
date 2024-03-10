@@ -92,7 +92,7 @@ export function DeckTile({ deck, onClick }) {
       {currentUser?.id == deck.userId && 
         <div className='deck-tile-icon-div'>
           <div className="deck-tile-update icon">
-            <OpenModalUpdateIcon modalComponent={<DeckFormModal deckId={deck.id} formType={'update'}/>}/>
+            <OpenModalUpdateIcon modalComponent={<DeckFormModal deckId={deck.id} formtype={'update'}/>}/>
           </div>
           {/* <RxUpdate className="deck-tile-update icon" onClick={handleNavigate}/> */}
           <FaTrashAlt className="deck-tile-delete icon" onClick={handleDelete} />

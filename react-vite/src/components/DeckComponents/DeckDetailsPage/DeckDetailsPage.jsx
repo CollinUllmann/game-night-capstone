@@ -7,6 +7,8 @@ import { DecklistPanel } from "../DecklistPanel/DecklistPanel";
 import { MatchTile } from "../../MatchComponents/MatchTile/MatchTile";
 import { DeckStats } from "./DeckStats/DeckStats";
 import { DeckConstruction } from "./DeckStats/DeckConstruction/DeckConstruction";
+import OpenModalUpdateIcon from "../DeckTile/OpenUpdateIconModal";
+import { DeckFormModal } from "../DeckFormPage/DeckFormModal";
 
 
 import './DeckDetailsPage.css'
@@ -58,7 +60,12 @@ export function DeckDetailsPage() {
       {/* <p className="deck-details-title">{deck?.name} Details</p> */}
       <div className="deck-details-div">
         <div className="deck-details-decklist-sidepanel-div">
-          <p className="deck-details-decklist-title">{deck?.name} Decklist</p>
+          <div style={{display:'flex', alignItems:'center', height:'1vh', margin:'1.5vh 0'}}>
+            <p className="deck-details-decklist-title">{deck?.name} Decklist</p>
+            <div className="deck-tile-update icon">
+              <OpenModalUpdateIcon modalComponent={<DeckFormModal deckId={deck?.id} formtype={'update'}/>}/>
+            </div>
+          </div>
           <DecklistPanel className="deck-details-decklist-panel" deckId={deck?.id} />
         </div>
         <div className="deck-details-stats-matches-div">
