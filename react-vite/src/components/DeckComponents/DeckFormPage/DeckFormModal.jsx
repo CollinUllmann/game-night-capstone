@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkCreateDeck, thunkFetchDeckById, thunkUpdateDeck } from "../../../redux/deck";
 
 import './DeckFormPage.css'
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { thunkFetchAllCards } from "../../../redux/card";
 
 import { useModal } from "../../../context/Modal";
 
-export function DeckFormModal({ formtype }) {
-  const { deckId } = useParams()
+export function DeckFormModal({ formtype, deckId }) {
+  // const { deckId } = useParams()
 
   const cardById = useSelector(state => state.cards)
   const deckById = useSelector(state => state.decks)

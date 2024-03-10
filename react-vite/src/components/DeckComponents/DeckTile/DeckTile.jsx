@@ -6,19 +6,20 @@ import './DeckTile.css'
 // import OpenModalMenuItem from '../../Navigation/OpenModalMenuItem';
 // import DeckDeleteConfirmationModal from '../../DeckDeleteConfirmationModal/DeckDeleteConfirmationModal'
 import { FaTrashAlt } from "react-icons/fa";
-import { RxUpdate } from "react-icons/rx";
+// import { RxUpdate } from "react-icons/rx";
 import { thunkDeleteDeck } from '../../../redux/deck';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { ManaSymbol } from '../../ManaSymbol/ManaSymbol';
 import { useEffect } from 'react';
 import { thunkFetchAllCards } from '../../../redux/card';
 import { thunkFetchUserById } from '../../../redux/users';
 import { thunkFetchAllMatches } from '../../../redux/match';
-
+import OpenModalUpdateIcon from './OpenUpdateIconModal';
+import { DeckFormModal } from '../DeckFormPage/DeckFormModal';
 
 export function DeckTile({ deck, onClick }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const cardsById = useSelector(state => state.cards)
   const currentUser = useSelector(state => state.session.user)
@@ -36,10 +37,10 @@ export function DeckTile({ deck, onClick }) {
     dispatch(thunkDeleteDeck(deck.id))
   }
 
-  const handleNavigate = (e) => {
-    e.stopPropagation()
-    navigate(`/decks/${deck.id}/update`)
-  }
+  // const handleNavigate = (e) => {
+  //   e.stopPropagation()
+  //   navigate(`/decks/${deck.id}/update`)
+  // }
 
   if (!matchesById) return
 
@@ -90,7 +91,10 @@ export function DeckTile({ deck, onClick }) {
       </div>
       {currentUser?.id == deck.userId && 
         <div className='deck-tile-icon-div'>
-          <RxUpdate className="deck-tile-update icon" onClick={handleNavigate}/>
+          <div className="deck-tile-update icon">
+            <OpenModalUpdateIcon modalComponent={<DeckFormModal deckId={deck.id} formType={'update'}/>}/>
+          </div>
+          {/* <RxUpdate className="deck-tile-update icon" onClick={handleNavigate}/> */}
           <FaTrashAlt className="deck-tile-delete icon" onClick={handleDelete} />
         </div>
       
