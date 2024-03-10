@@ -59,7 +59,10 @@ export function SplashPage() {
             <p className="splash-page-deck-builder-title">Before the Game</p>
             <p className="splash-page-deck-builder-title-2">MTG&apos;s Massive Catalogue</p>
             <p className="splash-page-deck-builder-description">• Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br></br>• Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br></br>• Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div className="splash-page-deck-builder splash-page-button" onClick={handleNavigateToDeckBuild}>Build the Perfect Deck</div>
+            <div>
+              {currentUser ? <div className="splash-page-deck-builder splash-page-button" onClick={handleNavigateToDeckBuild}>Build the Perfect Deck</div> : <OpenModalButton buttonText="Build the Perfect Deck" modalComponent={<LoginFormModal />}
+              />}
+            </div>
           </div>
         </div>
         <div className="splash-page-deck-analysis-content-div">
@@ -67,7 +70,10 @@ export function SplashPage() {
             <p className="splash-page-deck-analysis-title">After the Game</p>
             <p className="splash-page-deck-analysis-title-2">Personalized Statistics</p>
             <p className="splash-page-deck-analysis-description">• Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br></br>• Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br></br>• Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div className="splash-page-deck-analysis splash-page-button" onClick={handleNavigateToDeckAnalysis}>Crunch the Numbers</div>
+            <div>
+              {currentUser ? <div className="splash-page-deck-analysis splash-page-button" onClick={handleNavigateToDeckAnalysis}>Crunch the Numbers</div> : <OpenModalButton buttonText="Crunch the Numbers" modalComponent={<LoginFormModal />}
+              />}
+            </div>
           </div>
           <div className="splash-page-deck-analysis-media"></div>
         </div>
