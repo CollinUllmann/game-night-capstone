@@ -1,4 +1,10 @@
+.deck-form-errors-div {
+  height:1vh;
+}
 .validation-error {
+  display: flex;
+  justify-content: center;
+  font-size:small;
   color: red;
 }
 

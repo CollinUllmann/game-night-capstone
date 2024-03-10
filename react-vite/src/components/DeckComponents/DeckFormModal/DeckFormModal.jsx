@@ -142,11 +142,13 @@ export function DeckFormModal({ formtype, deckId }) {
             required
           />
         </label>
+        <div className="deck-form-errors-div">
+          {errors.deckList && errors.deckList.split('\n').map(errorLine => <div className="validation-error" key={key++}>{errorLine}</div>)}
+        </div>
         <div className="deck-form-submit-button-div">
           <button className='deck-form-modal-button'
             onClick={() => {handleSubmit}}>Submit</button>
         </div>
-        {errors.deckList && errors.deckList.split('\n').map(errorLine => <div key={key++}>{errorLine}</div>)}
       </form>
       </div>
     </>

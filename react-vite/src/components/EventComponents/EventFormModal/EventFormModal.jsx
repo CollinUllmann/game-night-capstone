@@ -117,7 +117,7 @@ export function EventFormModal({ formtype, eventId }) {
         </label>
 
         <div className="event-form-submit-button-div">
-          <button className="event-form-submit-button" onClick={handleSubmit}>Submit</button>
+          <button className="event-form-submit-button">Submit</button>
         </div>
       </form>
     </div>
