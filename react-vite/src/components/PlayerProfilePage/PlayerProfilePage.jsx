@@ -10,6 +10,10 @@ import { AddDeckTile } from "../DeckComponents/DeckTile/AddDeckTile";
 import { PlayerStats } from "./PlayerStats/PlayerStats";
 import { PlayerConstruction } from "./PlayerStats/PlayerConstruction/PlayerConstruction";
 
+// import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import OpenModalTile from "./OpenModalTile";
+import { DeckFormModal } from "../DeckComponents/DeckFormPage/DeckFormModal";
+
 import './PlayerProfilePage.css'
 
 
@@ -95,8 +99,10 @@ export function PlayerProfilePage() {
           </div>
           <p className="player-profiel-player-decks-title">Decks</p>
           <div className="player-profile-player-decks-div">
-            <div className={currentUser?.id == userId ? "player-profile-add-deck-button-div" : "hidden"} onClick={() => navigate('/decks/new')}>
-              <AddDeckTile />
+            <div className={currentUser?.id == userId ? "player-profile-add-deck-button-div" : "hidden"}>
+              <OpenModalTile 
+                modalComponent={<DeckFormModal className="deck-tile-div add"/>}
+              />
             </div>
             {userDecks.map(deck => <div key={key++} onClick={() => navigate(`/decks/${deck.id}`)} className="player-profile-decktile-div"><DeckTile deck={deck} key={key++} /></div>)}
           </div>

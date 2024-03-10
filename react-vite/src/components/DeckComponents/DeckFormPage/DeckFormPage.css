@@ -9,7 +9,6 @@
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
-  min-height: 84vh;
 }
 
 .form-input {
@@ -18,7 +17,7 @@
 
 .deck-form-input {
   width: 100%;
-  margin: 20px 5px 0 5px;
+  margin: 20px 5px;
   display: flex;
   justify-content: start;
   align-items: center;

@@ -43,14 +43,18 @@ export function SplashPage() {
           <p className="splash-page-title">Knowledge is Power</p>
           <p className="splash-page-title-blurb">Know more, win more. Powered by data, not opinions.</p>
           <div className="splash-page-signup-login-div">
+            <div className='splash-page-signup splash-page-button'>
               <OpenModalButton
                 buttonText="Sign Up"
                 modalComponent={<SignupFormModal />}
               />
+            </div>
+            <div className='splash-page-signup splash-page-button'>
               <OpenModalButton
                 buttonText="Log In"
                 modalComponent={<LoginFormModal />}
               />
+            </div>
           </div>
         </div>
         <div className="splash-page-deck-builder-content-div">
