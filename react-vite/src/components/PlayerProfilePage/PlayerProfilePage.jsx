@@ -6,13 +6,16 @@ import { thunkFetchAllDecks } from "../../redux/deck";
 import { thunkFetchAllMatches } from "../../redux/match";
 import { thunkFetchAllEvents } from "../../redux/event";
 import { DeckTile } from "../DeckComponents/DeckTile/DeckTile";
-import { AddDeckTile } from "../DeckComponents/DeckTile/AddDeckTile";
+// import { AddDeckTile } from "../DeckComponents/DeckTile/AddDeckTile";
 import { PlayerStats } from "./PlayerStats/PlayerStats";
 import { PlayerConstruction } from "./PlayerStats/PlayerConstruction/PlayerConstruction";
 
 // import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import OpenModalTile from "./OpenModalTile";
+// import OpenModalTile from "../EventComponents/OpenAddEventModalTile";
+import OpenAddEventModal from "../EventComponents/OpenAddEventModal";
 import { DeckFormModal } from "../DeckComponents/DeckFormPage/DeckFormModal";
+import { EventFormModal } from "../EventComponents/EventFormModal/EventFormModal";
 
 import './PlayerProfilePage.css'
 
@@ -84,7 +87,11 @@ export function PlayerProfilePage() {
               </div>
             </div>
           )}
-          <div className="player-profile-add-event-button" onClick={() => navigate('/events/new')}>+</div>
+          <div className="player-profile-add-event-button">
+            <OpenAddEventModal modalComponent={<EventFormModal />}/>
+              
+            
+          </div>
         </div>
         <div className="player-profile-stats-decks-div">
           <div className="player-profile-player-stats-div">

@@ -55,21 +55,8 @@
 .player-profile-add-event-button {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 3vh;
-  width: 90%;
-  background-color: gray;
-  border-radius: 1.5vh;
-  font-size: xx-large;
-  font-weight: 600;
-  border: .3vh solid gray;
-  color: white;
-  margin: 1vh 0;
-}
-.player-profile-add-event-button:hover {
-  color: gray;
-  background-color:white;
-  cursor: pointer;
+  width: 100%;
+  
 }
 
 .player-profile-player-stats-selection-div {

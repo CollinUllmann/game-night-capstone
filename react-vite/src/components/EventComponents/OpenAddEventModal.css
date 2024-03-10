@@ -1,0 +1,19 @@
+.add-event-modal-tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3vh;
+  width: 90%;
+  background-color: gray;
+  border-radius: 1vh;
+  font-size: xx-large;
+  font-weight: 600;
+  border: 0.3vh solid gray;
+  color: #fff;
+  margin: 1vh 0;
+}
+.add-event-modal-tile:hover {
+  color: gray;
+  background-color:white;
+  cursor: pointer;
+}

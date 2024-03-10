@@ -138,7 +138,7 @@ export function DeckStats() {
 
   const playerMatchupObj = getDeckMatchupObj(selectedMatchupType)
   return (
-    <div className="deck-stats-content-div">
+    <>
       <div className="deck-stats-headers">
         <div className="deck-stats-header-div">
           <p className="deck-stats-header-title">Winrate</p>
@@ -153,44 +153,46 @@ export function DeckStats() {
           <p className="deck-stats-header-stat">{matchEventIdArr.length}</p>
         </div>
       </div>
-      <div className="deck-stats-matchups-header">
-        <div className="deck-stats-matchups-header-container">
-          <div className="deck-stats-matchups-header-title-div">
-            <p className="deck-stats-matchups-header-title">Matchups</p>
+      <div className="deck-stats-content-div">
+        <div className="deck-stats-matchups-header">
+          <div className="deck-stats-matchups-header-container">
+            <div className="deck-stats-matchups-header-title-div">
+              <p className="deck-stats-matchups-header-title">Matchups</p>
+            </div>
+            <div className="deck-stats-matchups-header-filters-div">
+              <p className={selectedMatchupType == 'player' ? "deck-stats-matchups-header-filter bold" : "deck-stats-matchups-header-filter"} onClick={() => setSelectedMatchupType('player')}>Player</p>
+              <p className={selectedMatchupType == 'deck' ? "deck-stats-matchups-header-filter bold" : "deck-stats-matchups-header-filter"} onClick={() => setSelectedMatchupType('deck')}>Deck</p>
+              <p className={selectedMatchupType == 'color' ? "deck-stats-matchups-header-filter bold" : "deck-stats-matchups-header-filter"} onClick={() => setSelectedMatchupType('color')}>Color</p>
+            </div>
           </div>
-          <div className="deck-stats-matchups-header-filters-div">
-            <p className={selectedMatchupType == 'player' ? "deck-stats-matchups-header-filter bold" : "deck-stats-matchups-header-filter"} onClick={() => setSelectedMatchupType('player')}>Player</p>
-            <p className={selectedMatchupType == 'deck' ? "deck-stats-matchups-header-filter bold" : "deck-stats-matchups-header-filter"} onClick={() => setSelectedMatchupType('deck')}>Deck</p>
-            <p className={selectedMatchupType == 'color' ? "deck-stats-matchups-header-filter bold" : "deck-stats-matchups-header-filter"} onClick={() => setSelectedMatchupType('color')}>Color</p>
-          </div>
-        </div>
-        <div className="deck-stats-matchups-content-div">
-          <div className="deck-stats-matchups-content-headers-div">
-            <p className="deck-stats-matchups-content-header">Matchup</p>
-            <p className="deck-stats-matchups-content-header">Winrate</p>
-            <p className="deck-stats-matchups-content-header">Matches</p>
-          </div>
-          <div className={setMatchupVisibilityClass("player", "deck-stats-matchups-content-matchup-div")}>
-            {Object.keys(playerMatchupObj).map(playerId => {
-              return <div className='deck-stats-matchup-tile-div' key={playerId} onClick={() => navigate(`/users/${playerId}`)}>
-                <MatchupTile key={playerId} matchup={usersById[playerId]?.username} winrate={Math.floor((playerMatchupObj[playerId].wins / playerMatchupObj[playerId].count)*100)} matches={`${playerMatchupObj[playerId].wins}-${playerMatchupObj[playerId].count - playerMatchupObj[playerId].wins}`} /> 
-              </div>
-            }
-            )}
-          </div>
-          <div className={setMatchupVisibilityClass("deck", "deck-stats-matchups-content-matchup-div")}>
-            {Object.keys(playerMatchupObj).map(deckId => {
-              return <div className='deck-stats-matchup-tile-div' key={deckId} onClick={() => navigate(`/decks/${deckId}`)}>
-                <MatchupTile key={deckId} matchup={decksById[deckId]?.name} winrate={Math.floor((playerMatchupObj[deckId].wins / playerMatchupObj[deckId].count)*100)} matches={`${playerMatchupObj[deckId].wins}-${playerMatchupObj[deckId].count - playerMatchupObj[deckId].wins}`} /> 
-              </div>
-            }
-            )}
-          </div>
-          <div className={setMatchupVisibilityClass("color", "deck-stats-matchups-content-matchup-div")}>
-            {Object.keys(playerMatchupObj).map(color => <MatchupTile key={deckId} matchup={color} winrate={playerMatchupObj[color].count == 0 ? 0 : Math.floor((playerMatchupObj[color].wins / playerMatchupObj[color].count)*100)} matches={`${playerMatchupObj[color].wins}-${playerMatchupObj[color].count - playerMatchupObj[color].wins}`} /> )}
+          <div className="deck-stats-matchups-content-div">
+            <div className="deck-stats-matchups-content-headers-div">
+              <p className="deck-stats-matchups-content-header">Matchup</p>
+              <p className="deck-stats-matchups-content-header">Winrate</p>
+              <p className="deck-stats-matchups-content-header">Matches</p>
+            </div>
+            <div className={setMatchupVisibilityClass("player", "deck-stats-matchups-content-matchup-div")}>
+              {Object.keys(playerMatchupObj).map(playerId => {
+                return <div className='deck-stats-matchup-tile-div' key={playerId} onClick={() => navigate(`/users/${playerId}`)}>
+                  <MatchupTile key={playerId} matchup={usersById[playerId]?.username} winrate={Math.floor((playerMatchupObj[playerId].wins / playerMatchupObj[playerId].count)*100)} matches={`${playerMatchupObj[playerId].wins}-${playerMatchupObj[playerId].count - playerMatchupObj[playerId].wins}`} /> 
+                </div>
+              }
+              )}
+            </div>
+            <div className={setMatchupVisibilityClass("deck", "deck-stats-matchups-content-matchup-div")}>
+              {Object.keys(playerMatchupObj).map(deckId => {
+                return <div className='deck-stats-matchup-tile-div' key={deckId} onClick={() => navigate(`/decks/${deckId}`)}>
+                  <MatchupTile key={deckId} matchup={decksById[deckId]?.name} winrate={Math.floor((playerMatchupObj[deckId].wins / playerMatchupObj[deckId].count)*100)} matches={`${playerMatchupObj[deckId].wins}-${playerMatchupObj[deckId].count - playerMatchupObj[deckId].wins}`} /> 
+                </div>
+              }
+              )}
+            </div>
+            <div className={setMatchupVisibilityClass("color", "deck-stats-matchups-content-matchup-div")}>
+              {Object.keys(playerMatchupObj).map(color => <MatchupTile key={deckId} matchup={color} winrate={playerMatchupObj[color].count == 0 ? 0 : Math.floor((playerMatchupObj[color].wins / playerMatchupObj[color].count)*100)} matches={`${playerMatchupObj[color].wins}-${playerMatchupObj[color].count - playerMatchupObj[color].wins}`} /> )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

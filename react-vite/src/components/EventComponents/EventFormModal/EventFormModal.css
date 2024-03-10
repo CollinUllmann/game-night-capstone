@@ -1,0 +1,56 @@
+.validation-error {
+  color: red;
+}
+
+.event-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.form-input {
+  display: flex;
+}
+
+.event-form-input {
+  width: 100%;
+  margin: 20px 5px 0 5px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.event-form-input-file {
+  margin: 20px 5px 0 5px;
+}
+.event-form-input-file input {
+  margin: 0 5px;
+}
+.event-form-input-file select {
+  margin: 0 5px;
+}
+
+.event-form-input input {
+  width: 100%;
+  margin: 0 5px;
+}
+
+.event-form {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-form-eventlist-textarea {
+  display: flex;
+  justify-content: start;
+}
+
+.event-form-submit-button-div {
+  display: flex;
+  justify-content: center;
+  margin: 2vh 0 0 0;
+}
