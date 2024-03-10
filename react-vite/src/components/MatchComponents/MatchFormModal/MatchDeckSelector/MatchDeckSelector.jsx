@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import '../MatchFormPage.css'
+import './MatchDeckSelector.css'
 
 
 export function MatchDeckSelector({ index, deckId, onChangeDeckId }) {

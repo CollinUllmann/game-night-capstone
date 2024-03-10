@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkCreateMatch, thunkFetchMatchById, thunkUpdateMatch } from "../../../redux/match";
 
-import './MatchFormPage.css'
+import './MatchFormModal.css'
 import { useNavigate } from "react-router-dom";
 import { thunkFetchAllDecks } from "../../../redux/deck";
 import { MatchDeckSelector } from "./MatchDeckSelector/MatchDeckSelector";

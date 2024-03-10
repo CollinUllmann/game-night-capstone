@@ -14,8 +14,8 @@ import { PlayerConstruction } from "./PlayerStats/PlayerConstruction/PlayerConst
 import OpenModalTile from "./OpenModalTile";
 // import OpenModalTile from "../EventComponents/OpenAddEventModalTile";
 import OpenAddEventModal from "../EventComponents/OpenAddEventModal";
-import { DeckFormModal } from "../DeckComponents/DeckFormPage/DeckFormModal";
-import { EventFormModal } from "../EventComponents/EventFormPage/EventFormModal";
+import { DeckFormModal } from "../DeckComponents/DeckFormModal/DeckFormModal";
+import { EventFormModal } from "../EventComponents/EventFormModal/EventFormModal";
 
 import './PlayerProfilePage.css'
 
@@ -31,12 +31,23 @@ export function PlayerProfilePage() {
   const userById = useSelector(state => state.users)
   const deckById = useSelector(state => state.decks)
   const eventById = useSelector(state => state.events)
-  const matchesById = useSelector(state => state.matches)
   const currentUser = useSelector(state => state.session.user)
   const user = userById[userId]
   const userDecks = Object.values(deckById).filter(deck => deck.userId == userId)
+  const playerEventIds = useSelector(state => {
+    const playerMatches = Object.values(state.matches).filter(match => {
+      for (const deckId of match.deckIds) {
+        if (state.decks[deckId]?.userId == userId) {
+          return true
+        }
+      }
+      return false
+    })
 
-  const [playerEventIds, setPlayerEventIds] = useState([])
+    const playerEventIdsSet = new Set([])
+    playerMatches.forEach(match => playerEventIdsSet.add(match.eventId))
+    return Array.from(playerEventIdsSet);
+  })
   
   useEffect(() => {
     dispatch(thunkFetchAllUsers())
@@ -44,21 +55,6 @@ export function PlayerProfilePage() {
     dispatch(thunkFetchAllMatches())
     dispatch(thunkFetchAllEvents())
   }, [dispatch])
-
-  useEffect(() => {
-    const playerEventIdsSet = new Set([])
-    const playerMatches = Object.values(matchesById).filter(match => {
-      for (const deckId of match.deckIds) {
-         if (deckById[deckId]?.userId == userId) {
-          return true
-         }
-      }
-      return false
-    })
-    playerMatches?.forEach(match => playerEventIdsSet.add(match.eventId))
-    const playerEventIdsArr = Array.from(playerEventIdsSet)
-    setPlayerEventIds(playerEventIdsArr)
-  }, [userId, matchesById, deckById, setPlayerEventIds])
 
   function formatDate(date) {
     if (!date) return
@@ -79,11 +75,11 @@ export function PlayerProfilePage() {
       <div className="player-profile-div">
         <div className="player-profile-player-event-list-sidepanel-div">
           <p className="player-profile-player-event-list-title">Events</p>
-          {playerEventIds?.map(eventId => 
+          {playerEventIds.map(eventId => eventById[eventId]).filter(event => event).map(event => 
             <div key={key++} className="player-profile-player-event-tile-div">
-              <div className="player-profile-player-event-tile" onClick={() => navigate(`/events/${eventId}`)}>
-                <p className="player-profile-player-event-tile-event">{eventById[eventId]?.name}</p>
-                <p className="player-profile-player-event-tile-date">{formatDate(eventById[eventId]?.date)}</p>
+              <div className="player-profile-player-event-tile" onClick={() => navigate(`/events/${event.id}`)}>
+                <p className="player-profile-player-event-tile-event">{event.name}</p>
+                <p className="player-profile-player-event-tile-date">{formatDate(event.date)}</p>
               </div>
             </div>
           )}

@@ -13,7 +13,7 @@ import { thunkFetchAllEvents } from '../../../redux/event';
 import OpenModalDeleteIcon from '../../DeckComponents/DeckTile/OpenDeleteIconModal';
 import { DeleteMatchConfirmationModal } from './DeleteMatchConfirmationModal';
 import OpenModalUpdateIcon from '../../DeckComponents/DeckTile/OpenUpdateIconModal';
-import { MatchFormModal } from '../MatchFormPage/MatchFormModal';
+import { MatchFormModal } from '../MatchFormModal/MatchFormModal';
 
 
 export function MatchTile({ match, onClick, matchNum }) {

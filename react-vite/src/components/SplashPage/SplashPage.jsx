@@ -7,7 +7,7 @@ import { thunkAuthenticate } from '../../redux/session';
 import OpenModalButton from '../OpenModalButton/OpenModalButton'
 import SignupFormModal from '../SignupFormModal';
 import LoginFormModal from '../LoginFormModal';
-import { DeckFormModal } from '../DeckComponents/DeckFormPage/DeckFormModal';
+import { DeckFormModal } from '../DeckComponents/DeckFormModal/DeckFormModal';
 
 export function SplashPage() {
 
@@ -20,22 +20,11 @@ export function SplashPage() {
     dispatch(thunkAuthenticate())
   }, [dispatch])
 
-  // function handleNavigateToDeckBuild() {
-  //   if (currentUser) {
-  //     navigate('/decks/new')
-  //   } else {
-  //     navigate('/login')
-  //   }
-  // }
-
   function handleNavigateToDeckAnalysis() {
     if (currentUser) {
       navigate(`/users/${currentUser.id}`)
-    } else {
-      navigate('/login')
     }
   }
-
 
   return (
     <div className="splash-page-root-div">

@@ -8,7 +8,7 @@ import { MatchTile } from "../../MatchComponents/MatchTile/MatchTile";
 import { DeckStats } from "./DeckStats/DeckStats";
 import { DeckConstruction } from "./DeckStats/DeckConstruction/DeckConstruction";
 import OpenModalUpdateIcon from "../DeckTile/OpenUpdateIconModal";
-import { DeckFormModal } from "../DeckFormPage/DeckFormModal";
+import { DeckFormModal } from "../DeckFormModal/DeckFormModal";
 import OpenModalDeleteIcon from "../DeckTile/OpenDeleteIconModal";
 import { DeleteDeckConfirmationModal } from "../DeckTile/DeleteDeckConfirmationModal";
 

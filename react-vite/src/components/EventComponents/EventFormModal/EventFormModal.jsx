@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { thunkCreateEvent, thunkFetchEventById, thunkUpdateEvent } from "../../../redux/event";
 
-import './EventFormPage.css'
+import './EventFormModal.css'
+import { useModal } from "../../../context/Modal";
 
-export function EventFormPage({ formtype }) {
-  const { eventId } = useParams();
+export function EventFormModal({ formtype, eventId }) {
+  // const { eventId } = useParams();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,10 +17,14 @@ export function EventFormPage({ formtype }) {
   const [date, setDate] = useState();
   const [format, setFormat] = useState();
 
+  const { closeModal } = useModal();
+
   const eventsById = useSelector(state => state.events)
 
   useEffect(() => {
-    dispatch(thunkFetchEventById(eventId))
+    if(eventId != null) {
+      dispatch(thunkFetchEventById(eventId))
+    }
   }, [dispatch, eventId])
 
   useEffect(() => {
@@ -60,9 +65,14 @@ export function EventFormPage({ formtype }) {
     eventFormData.append('format', format)
 
     if (formtype == 'update') {
-      dispatch(thunkUpdateEvent(eventId, eventFormData)).then(returnEvent => console.log(returnEvent)).then(() => navigate(`/events/${eventId}`))
+      dispatch(thunkUpdateEvent(eventId, eventFormData)).then(() => navigate(`/events/${eventId}`)).then(() => closeModal())
     } else {
-      dispatch(thunkCreateEvent(eventFormData)).then(() => navigate('/matches/new'))
+      dispatch(thunkCreateEvent(eventFormData)).then(eventOrFailureMessage => {
+        if(typeof eventOrFailureMessage === 'object') {
+          closeModal();
+          navigate(`/events/${eventOrFailureMessage.id}`)
+        }
+      })
     }
   }
 

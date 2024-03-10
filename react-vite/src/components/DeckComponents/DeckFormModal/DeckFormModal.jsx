@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkCreateDeck, thunkFetchDeckById, thunkUpdateDeck } from "../../../redux/deck";
 
-import './DeckFormPage.css'
-import { useNavigate, useParams } from "react-router-dom";
+import './DeckFormModal.css'
+import { useNavigate } from "react-router-dom";
 import { thunkFetchAllCards } from "../../../redux/card";
 
-export function DeckFormPage({ formtype }) {
-  const { deckId } = useParams()
+import { useModal } from "../../../context/Modal";
+
+export function DeckFormModal({ formtype, deckId }) {
+  // const { deckId } = useParams()
 
   const cardById = useSelector(state => state.cards)
   const deckById = useSelector(state => state.decks)
@@ -21,6 +23,8 @@ export function DeckFormPage({ formtype }) {
   const [cards, setCards] = useState("")
 
   const [errors, setErrors] = useState({});
+
+  const { closeModal } = useModal();
 
   useEffect(() => {
     dispatch(thunkFetchAllCards())
@@ -81,12 +85,12 @@ export function DeckFormPage({ formtype }) {
     deckFormData.append('cards', cards)
 
     if (formtype == 'update') {
-      dispatch(thunkUpdateDeck(deckId, deckFormData)).then(() => navigate('/decks'))
+      dispatch(thunkUpdateDeck(deckId, deckFormData)).then(() => navigate(`/decks/${deckId}`)).then(() => closeModal())
     } else {
-      dispatch(thunkCreateDeck(deckFormData)).then(() => navigate('/decks'))
+      dispatch(thunkCreateDeck(deckFormData)).then(returnDeck => navigate(`/users/${returnDeck.userId}`)).then(() => closeModal())
     }
-  };
 
+  };
   let key = 0;
   return (
     <>
@@ -114,7 +118,7 @@ export function DeckFormPage({ formtype }) {
             onChange={(e) => setFormat(e.target.value)}
             required
           >
-            <option value="">(Pick One)</option>
+            <option value="">(Select One)</option>
             <option value="Commander">Commander</option>
             <option value="Modern">Modern</option>
             <option value="Legacy">Legacy</option>

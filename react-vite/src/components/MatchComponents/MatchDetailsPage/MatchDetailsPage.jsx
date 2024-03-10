@@ -8,7 +8,7 @@ import { DecklistPanel } from "../../DeckComponents/DecklistPanel/DecklistPanel"
 import { MatchStats } from "./MatchStats/MatchStats";
 import OpenModalUpdateIcon from "../../DeckComponents/DeckTile/OpenUpdateIconModal";
 import OpenModalDeleteIcon from "../../DeckComponents/DeckTile/OpenDeleteIconModal";
-import { MatchFormModal } from "../MatchFormPage/MatchFormModal";
+import { MatchFormModal } from "../MatchFormModal/MatchFormModal";
 import { DeleteMatchConfirmationModal } from "../MatchTile/DeleteMatchConfirmationModal";
 
 

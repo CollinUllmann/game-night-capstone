@@ -11,10 +11,9 @@ import { EventStats } from "./EventStats/EventStats";
 
 import OpenModalUpdateIcon from "../../DeckComponents/DeckTile/OpenUpdateIconModal";
 import OpenModalDeleteIcon from "../../DeckComponents/DeckTile/OpenDeleteIconModal";
-import { EventFormModal } from "../EventFormPage/EventFormModal";
+import { EventFormModal } from "../EventFormModal/EventFormModal";
 import { DeleteEventConfirmationModal } from "./DeleteEventConfirmationModal";
 import OpenAddEventModal from "../OpenAddEventModal";
-// import { EventFormModal } from "../EventFormPage/EventFormModal";
 
 import './EventDetailsPage.css'
 

@@ -1,8 +1,0 @@
-.deck-index-tile-div {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.add-deck-button-div:hover {
-  cursor: pointer;
-}

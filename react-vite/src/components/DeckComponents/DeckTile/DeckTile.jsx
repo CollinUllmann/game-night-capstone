@@ -15,7 +15,7 @@ import { thunkFetchAllCards } from '../../../redux/card';
 import { thunkFetchUserById } from '../../../redux/users';
 import { thunkFetchAllMatches } from '../../../redux/match';
 import OpenModalUpdateIcon from './OpenUpdateIconModal';
-import { DeckFormModal } from '../DeckFormPage/DeckFormModal';
+import { DeckFormModal } from '../DeckFormModal/DeckFormModal';
 import OpenModalDeleteIcon from './OpenDeleteIconModal';
 import { DeleteDeckConfirmationModal } from './DeleteDeckConfirmationModal';
 
