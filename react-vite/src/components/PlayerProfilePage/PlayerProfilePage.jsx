@@ -15,7 +15,7 @@ import OpenModalTile from "./OpenModalTile";
 // import OpenModalTile from "../EventComponents/OpenAddEventModalTile";
 import OpenAddEventModal from "../EventComponents/OpenAddEventModal";
 import { DeckFormModal } from "../DeckComponents/DeckFormPage/DeckFormModal";
-import { EventFormModal } from "../EventComponents/EventFormModal/EventFormModal";
+import { EventFormModal } from "../EventComponents/EventFormPage/EventFormModal";
 
 import './PlayerProfilePage.css'
 

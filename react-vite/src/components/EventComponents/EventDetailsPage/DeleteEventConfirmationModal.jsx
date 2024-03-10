@@ -1,29 +1,29 @@
 import { useDispatch, useSelector } from "react-redux"
-import { thunkDeleteMatch, thunkFetchMatchById } from "../../../redux/match";
+// import { thunkDeleteMatch, thunkFetchMatchById } from "../../../redux/match";
 import { useModal } from "../../../context/Modal";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { thunkDeleteEvent, thunkFetchEventById } from "../../../redux/event";
 
 
 
 
-export function DeleteMatchConfirmationModal({ matchId }) {
+export function DeleteEventConfirmationModal({ eventId }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { closeModal } = useModal();
-  const matchesById = useSelector(state => state.matches)
-  const match = matchesById[matchId]
+const { closeModal } = useModal();
+  const currentUser = useSelector(state => state.session.user)
 
   useEffect(() => {
-    dispatch(thunkFetchMatchById(matchId))
-  }, [dispatch, matchId])
+    dispatch(thunkFetchEventById(eventId))
+  }, [dispatch, eventId])
 
 
 
 
 
   function handleDelete() {
-    dispatch(thunkDeleteMatch(matchId)).then(() => navigate(`/events/${match?.eventId}`)).then(() => closeModal())
+    dispatch(thunkDeleteEvent(eventId)).then(() => navigate(`/users/${currentUser.id}`)).then(() => closeModal())
   }
 
   return (

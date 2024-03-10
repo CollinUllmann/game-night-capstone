@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import './MatchTile.css'
 // import { FaTrashAlt } from "react-icons/fa";
 // import { RxUpdate } from "react-icons/rx";
-import { thunkDeleteMatch } from '../../../redux/match';
-import { useNavigate } from 'react-router-dom';
+// import { thunkDeleteMatch } from '../../../redux/match';
+// import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { thunkFetchDeckById } from '../../../redux/deck';
 import { thunkFetchAllEvents } from '../../../redux/event';
@@ -18,7 +18,7 @@ import { MatchFormModal } from '../MatchFormPage/MatchFormModal';
 
 export function MatchTile({ match, onClick, matchNum }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const decks = useSelector(state => state.decks)
   const cards = useSelector(state => state.cards)
@@ -34,15 +34,15 @@ export function MatchTile({ match, onClick, matchNum }) {
     })
   }, [match, dispatch])
 
-  const handleDelete = (e) => {
-    e.stopPropagation();
-    dispatch(thunkDeleteMatch(match.id))
-  }
+  // const handleDelete = (e) => {
+  //   e.stopPropagation();
+  //   dispatch(thunkDeleteMatch(match.id))
+  // }
 
-  const handleUpdate = (e) => {
-    e.stopPropagation();
-    navigate(`/matches/${match.id}/update`)
-  }
+  // const handleUpdate = (e) => {
+  //   e.stopPropagation();
+  //   navigate(`/matches/${match.id}/update`)
+  // }
   
   const isWinningDeck = (deck) => {
     if (deck.userId == match.userIdWinner) {

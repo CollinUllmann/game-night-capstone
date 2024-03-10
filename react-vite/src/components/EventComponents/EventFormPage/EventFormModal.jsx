@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { thunkCreateEvent, thunkFetchEventById, thunkUpdateEvent } from "../../../redux/event";
-import { useModal } from "../../../context/Modal";
 
 import './EventFormModal.css'
+import { useModal } from "../../../context/Modal";
 
-export function EventFormModal({ formtype }) {
-  const { eventId } = useParams();
+export function EventFormModal({ formtype, eventId }) {
+  // const { eventId } = useParams();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -65,7 +65,7 @@ export function EventFormModal({ formtype }) {
     if (formtype == 'update') {
       dispatch(thunkUpdateEvent(eventId, eventFormData)).then(() => navigate(`/events/${eventId}`)).then(() => closeModal())
     } else {
-      dispatch(thunkCreateEvent(eventFormData)).then(() => navigate('/matches/new')).then(() => closeModal())
+      dispatch(thunkCreateEvent(eventFormData)).then(() => closeModal()).then(() => navigate('/matches/new'))
     }
   }
 
