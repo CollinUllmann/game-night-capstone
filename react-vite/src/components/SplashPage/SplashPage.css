@@ -15,6 +15,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin: 10vh 0 0 0;
 }
 
 .splash-page-title {
@@ -59,6 +60,12 @@
   height: 40vh;
   width: 100%;
   border: .2vh solid white;
+  border-radius: 10px;
+  background-size:950px;
+  transition: background-size .2s ease;
+}
+.splash-page-deck-builder-media:hover {
+  background-size: 850px;
 }
 .splash-page-deck-builder-description-button-div {
   display: flex;
@@ -92,7 +99,12 @@
   height: 40vh;
   width: 100%;
   border: .2vh solid white;
-
+  border-radius: 10px;
+  background-size: 1200px;
+  transition: background-size .2s ease;
+}
+.splash-page-deck-analysis-media:hover {
+  background-size: 1100px
 }
 .splash-page-deck-analysis-description-button-div {
   display: flex;

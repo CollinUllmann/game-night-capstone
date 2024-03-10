@@ -1,18 +1,38 @@
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
+import { FaHome } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 function Navigation() {
-  return (
-    <ul>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
+  const navigate = useNavigate()
+  const currentUser = useSelector(state => state.session.user)
 
-      <li>
+  function handleHomeNav(e) {
+    e.stopPropagation();
+    navigate('/')
+  }
+
+  function handleProfileNav(e) {
+    e.stopPropagation();
+    navigate(`/users/${currentUser.id}`)
+  }
+
+  return (
+    <div className="nav-bar-div">
+      <div className="nav-bar-home-profile-div">
+        <div className="nav-bar-home-icon-div"  onClick={handleHomeNav}>
+          <FaHome className="nav-bar-home-icon"/>
+        </div>
+        <div className="nav-bar-profile-div" onClick={handleProfileNav}>
+          <div>Profile</div>
+        </div>
+      </div>
+
+      <div>
         <ProfileButton />
-      </li>
-    </ul>
+      </div>
+    </div>
   );
 }
 

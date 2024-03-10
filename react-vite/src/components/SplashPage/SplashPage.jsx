@@ -48,7 +48,7 @@ export function SplashPage() {
           </div>
         </div>
         <div className="splash-page-deck-builder-content-div">
-          <div className="splash-page-deck-builder-media"></div>
+          <div className="splash-page-deck-builder-media" style={{backgroundImage: `url('/splash-page-images/media_1.png')`, backgroundPositionX: '38%', backgroundPositionY: '25%', }} />
           <div className="splash-page-deck-builder-description-button-div">
             <p className="splash-page-deck-builder-title">Before the Game</p>
             <p className="splash-page-deck-builder-title-2">MTG&apos;s Massive Catalogue</p>
@@ -68,7 +68,8 @@ export function SplashPage() {
               />}
             </div>
           </div>
-          <div className="splash-page-deck-analysis-media"></div>
+          <div className="splash-page-deck-analysis-media" style={{backgroundImage: `url('/splash-page-images/media_2.png')`, backgroundPositionX: '20%', backgroundPositionY: '20%', }} />
+          
         </div>
       </div>
 
