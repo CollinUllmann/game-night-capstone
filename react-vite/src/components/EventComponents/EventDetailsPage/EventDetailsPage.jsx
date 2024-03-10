@@ -13,6 +13,8 @@ import OpenModalUpdateIcon from "../../DeckComponents/DeckTile/OpenUpdateIconMod
 import OpenModalDeleteIcon from "../../DeckComponents/DeckTile/OpenDeleteIconModal";
 import { EventFormModal } from "../EventFormPage/EventFormModal";
 import { DeleteEventConfirmationModal } from "./DeleteEventConfirmationModal";
+import OpenAddEventModal from "../OpenAddEventModal";
+// import { EventFormModal } from "../EventFormPage/EventFormModal";
 
 import './EventDetailsPage.css'
 
@@ -57,7 +59,17 @@ export function EventDetailsPage() {
   let matchKey = 1;
   return (
     <div>
-      <p className="event-details-title">{event?.name} Details</p>
+      <div style={{display:'flex', alignItems:'center', columnGap:'1vh'}}>
+        <p className="event-details-title">{event?.name} Details</p>
+        <div style={{display:'flex'}}>
+          <div className="event-details-event-tile-icon" >
+            <OpenModalUpdateIcon modalComponent={<EventFormModal formtype={'update'} eventId={event?.id}/>}/>
+          </div>
+          <div className="event-details-event-tile-icon" >
+            <OpenModalDeleteIcon modalComponent={<DeleteEventConfirmationModal eventId={event?.id}/>}/>
+          </div>
+        </div>
+      </div>
       <div className="event-details-div">
         <div className="event-details-eventlist-sidepanel-div">
           <p className="event-details-eventlist-title">All Events</p>
@@ -77,7 +89,9 @@ export function EventDetailsPage() {
               </div>
             </div>
           )}
-          <div className="event-details-add-event-button" onClick={() => navigate('/events/new')}>+</div>
+          <div style={{width:'100%', display:'flex', justifyContent:'center'}}>
+            <OpenAddEventModal modalComponent={<EventFormModal formtype={'new'} eventId={null} />} />
+          </div>
         </div>
         <div className="event-details-stats-matches-div">
           <div className="event-details-event-stats-div">
