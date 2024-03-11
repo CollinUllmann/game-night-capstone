@@ -30,7 +30,7 @@ export function MatchFormModal({ formtype, matchId }) {
   const [deckIds, setDeckIds] = useState([undefined, undefined])
 
 
-  const [errors] = useState({});
+  const [errors, setErrors] = useState({});
   
   useEffect(() => {
     dispatch(thunkFetchAllUsers())
@@ -73,6 +73,12 @@ export function MatchFormModal({ formtype, matchId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if(deckIds.length < 2) {
+      return setErrors({
+        deckCount: 'At least two decks must be selected'
+      })
+    }
     
     const matchFormData = new FormData()
     matchFormData.append('event_id', eventId)
@@ -98,12 +104,12 @@ export function MatchFormModal({ formtype, matchId }) {
             name="eventId"
             value={eventId}
             onChange={(e) => setEventId(e.target.value)}
+            required
           >
           <option value="">(Choose One)</option>
           {Object.values(eventById).map(event => <option key={event.id} value={event.id}>{event.name}</option>)}
           </select>
         </label>
-        {errors.eventId && <p>{errors.eventId}</p>}
 
         <label className="match-form-input">
           Number of Players
@@ -124,7 +130,12 @@ export function MatchFormModal({ formtype, matchId }) {
 
         <label className="match-form-input">
           Winner
-          <select name="userIdWinner" value={userIdWinner} onChange={e => setUserIdWinner(e.target.value)}>
+          <select
+            name="userIdWinner"
+            value={userIdWinner}
+            onChange={e => setUserIdWinner(e.target.value)}
+            required
+          >
             <option value=''>(Choose One)</option>
             {playingUsers.map((user, index) => user == null ? <></> : <option key={index} value={user.id}>{user.username}</option>)}
 
@@ -132,11 +143,13 @@ export function MatchFormModal({ formtype, matchId }) {
 
         </label>
 
+        <div className="validation-error">
+        {errors.deckCount && <p>{errors.deckCount}</p>}
+        </div>
 
         <div className="match-form-submit-button-div">
           <button className='match-form-modal-button standard' onClick={() => {handleSubmit}}>Submit</button>
           <button className="standard match-form-modal-button" onClick={closeModal}>Cancel</button>
-
         </div>
       </form>
       </div>

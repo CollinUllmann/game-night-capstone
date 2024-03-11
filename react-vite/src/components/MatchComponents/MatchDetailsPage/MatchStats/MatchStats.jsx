@@ -32,8 +32,8 @@ export function MatchStats() {
 
   const matchPlayersObj = {}
   const playerIds = []
-  for (const deckId of match.deckIds) {
-    playerIds.push(decksById[deckId].userId)
+  for (const deckId of match?.deckIds ?? []) {
+    playerIds.push(decksById[deckId]?.userId)
   }
   for (const playerId of playerIds) {
     // const user = usersById[playerId]
@@ -41,7 +41,7 @@ export function MatchStats() {
     const userMatches = Object.values(matchesById).filter(match => {
       if (match.userIdWinner == playerId) userWins++
       for (const deckId of match.deckIds) {
-        if (decksById[deckId].userId == playerId) {
+        if (decksById[deckId]?.userId == playerId) {
           return true
         }
       }
@@ -51,14 +51,14 @@ export function MatchStats() {
   }
 
   const matchDecksObj = {}
-  const deckIds = match.deckIds
+  const deckIds = match?.deckIds
   for (const deckId of deckIds) {
     let deckWins = 0;
     const deckMatches = Object.values(matchesById).filter(match => {
       const matchDeckIds = match.deckIds
       for (const matchDeckId of matchDeckIds) {
         if (matchDeckId == deckId) {
-          if (match.userIdWinner == decksById[deckId].userId) deckWins++
+          if (match.userIdWinner == decksById[deckId]?.userId) deckWins++
           return true
         }
       }
@@ -77,7 +77,7 @@ export function MatchStats() {
   for (const deckId of match.deckIds) {
     const deck = decksById[deckId]
     const deckColors = new Set([])
-    for (const card of deck.cards) {
+    for (const card of deck?.cards ?? []) {
       const cardObj = cardsById[card.cardId]
       const cardColors = cardObj?.colors.split('')
       if (!cardObj) continue

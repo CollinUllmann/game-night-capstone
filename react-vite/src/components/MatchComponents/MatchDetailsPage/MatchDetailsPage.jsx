@@ -13,6 +13,7 @@ import { DeleteMatchConfirmationModal } from "../MatchTile/DeleteMatchConfirmati
 
 
 import './MatchDetailsPage.css'
+import { thunkFetchAllEvents } from "../../../redux/event";
 
 
 export function MatchDetailsPage() {
@@ -23,6 +24,7 @@ export function MatchDetailsPage() {
   // const sessionUser = useSelector((state) => state.session.user);
   const matchById = useSelector(state => state.matches)
   const decksById = useSelector(state => state.decks)
+  const eventsById = useSelector(state => state.events);
   const match = matchById[matchId]
   const matchDecks = Object.values(decksById).filter(deck => {
     if (!match) return
@@ -33,28 +35,31 @@ export function MatchDetailsPage() {
    }
    return false
   })
+  const eventId = match?.eventId;
+  const event = eventId != null ? eventsById[eventId] : undefined;
 
-  let winningDeckId
-  if (match) {
-    winningDeckId = Object.values(match.deckIds).filter(deckId => decksById[deckId].userId == match?.userIdWinner)
-  } 
-
+  const winningDeckId = match ? Object.values(match.deckIds).filter(deckId => decksById[deckId]?.userId == match?.userIdWinner) : undefined;
   
   useEffect(() => {
     dispatch(thunkFetchAllMatches())
     dispatch(thunkFetchAllDecks())
+    dispatch(thunkFetchAllEvents())
   }, [dispatch])
-
-
 
   if (!winningDeckId) return
   // if (sessionUser?.id != match?.userId) return <Navigate to="/" replace={true} />;
+
+  function onClickEventName() {
+    if(eventId != null) {
+      navigate(`/events/${eventId}`)
+    }
+  }
   
   let key = 1;
   return (
     <div>
       <div style={{display:'flex', alignItems:'center'}}>
-        <p className="match-details-title">Match Details</p>
+        <p className="match-details-title">Match Details // <span className="page-title" style={{cursor: 'pointer'}} onClick={onClickEventName}>{event?.name}</span></p>
         <div className="match-tile-update icon">
           <OpenModalUpdateIcon modalComponent={<MatchFormModal formtype={'update'} matchId={match?.id}/>} />
         </div>
