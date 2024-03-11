@@ -109,6 +109,7 @@
   display: flex;
   margin: 1vh 2vh;
   column-gap: 2vh;
+  row-gap: 2vh;
   flex-wrap: wrap;
 }
 

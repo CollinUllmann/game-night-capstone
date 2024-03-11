@@ -23,7 +23,7 @@ export function DeleteDeckConfirmationModal({ deckId }) {
 
   return (
     <div style={{display:'flex', flexDirection:'column', alignItems:'center', margin:'20px'}}>
-      <h1>Deleting "{deck?.name}"</h1>
+      <h1>Deleting &quot;{deck?.name}&quot;</h1>
       <p style={{marginBottom:40}}>Are you sure?</p>
       <div style={{display:'flex', columnGap:'12px'}}>
         <button className="delete-confirmation-yes button standard" onClick={handleDelete}>Yes</button>

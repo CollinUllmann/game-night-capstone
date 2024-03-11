@@ -91,7 +91,7 @@ export function EventDetailsPage() {
         </div>
         <div className="event-details-stats-matches-div">
           <div className="event-details-event-stats-div top-level-section">
-            <EventStats />
+            {eventMatches.length ? <EventStats /> : <div className="no-data">No Data</div>}
           </div>
           <p className="event-details-event-matches-title">Matches</p>
           <div className="event-details-event-matches-div">

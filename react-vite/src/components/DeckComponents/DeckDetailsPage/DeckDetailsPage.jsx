@@ -80,10 +80,10 @@ export function DeckDetailsPage() {
               <p className={setStatsPageSelectionClass('construction', 'deck-details-deck-stats-page-selector')} onClick={() => setStatsPage('construction')}>Construction</p>
               <p onClick={handleNavigateUserProfile}></p>
             </div>
-            {statsPage == 'performance' && <DeckStats />}
+            {statsPage == 'performance' && (deckMatches.length ? <DeckStats /> : <div className="no-data">No Data</div>)}
             {statsPage == 'construction' && <DeckConstruction />}
           </div>
-          <p className="deck-details-deck-matches-title">Matches</p>
+          {deckMatches.length ? <p className="deck-details-deck-matches-title">Matches</p> : undefined}
           <div className="deck-details-deck-matches-div">
             {deckMatches.map(match => {
               return <div className="deck-details-match-tile-div top-level-section" key={key++}>
