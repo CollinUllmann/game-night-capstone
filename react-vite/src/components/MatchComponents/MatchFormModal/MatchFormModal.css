@@ -58,4 +58,5 @@
   display: flex;
   justify-content: center;
   margin: 2vh 0 0 0;
+  column-gap: 12px;
 }
