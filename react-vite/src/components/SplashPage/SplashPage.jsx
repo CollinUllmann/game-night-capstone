@@ -66,7 +66,7 @@ export function SplashPage() {
             <p className="splash-page-deck-analysis-title-2">Personalized Statistics</p>
             <p className="splash-page-deck-analysis-description">• Track win rates and performance metrics for each of your decks. <br></br>• Identify trends and patterns in your gameplay to improve your strategy.<br></br>• Analyze specific matchups to prepare for future matches.</p>
             <div className="splash-page-deck-analysis splash-page-button">
-              {currentUser ? <div onClick={handleNavigateToDeckAnalysis}>Crunch the Numbers</div> : <OpenModalButton classNameButton="block" buttonText="Crunch the Numbers" modalComponent={<LoginFormModal />}
+              {currentUser ? <button className='block' onClick={handleNavigateToDeckAnalysis}>Crunch the Numbers</button> : <OpenModalButton classNameButton="block" buttonText="Crunch the Numbers" modalComponent={<LoginFormModal />}
               />}
             </div>
           </div>

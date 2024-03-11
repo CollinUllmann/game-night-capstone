@@ -3,6 +3,12 @@
 :root {
   --main-bg-color: #1a1b1c;
   --main-highlight-color: #2b2d2e;
+
+  --red: rgba(200, 10, 10, 0.100);
+  --blue: rgba(10, 10, 200, 0.100);
+  --black: rgba(64, 10, 200, 0.1);
+  --green: rgba(10, 128, 10, 0.1);
+  --white: rgba(228, 233, 80, 0.1);
 }
 
 body {

@@ -9,13 +9,14 @@
 }
 
 .player-profile-player-event-list-sidepanel-div {
-  border: 1px solid white;
+  border: 3px solid white;
   width: 26.3vh;
   height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 1vh;
+  background-color: var(--blue)
 }
 
 .player-profile-player-event-list-title{
@@ -35,7 +36,7 @@
   align-items: center;
 }
 .player-profile-player-event-tile:hover {
-  background-color: gray;
+  background-color: var(--main-highlight-color);
   cursor: pointer;
 }
 .player-profile-player-event-tile-event {
@@ -91,11 +92,13 @@
   height: 50vh;
   width: 100%;
   margin: 0 0 0 2vh;
-  border: 1px solid white;
+  border: 3px solid white;
   border-radius: 1vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--blue);
+
 }
 
 .player-profiel-player-decks-title {
