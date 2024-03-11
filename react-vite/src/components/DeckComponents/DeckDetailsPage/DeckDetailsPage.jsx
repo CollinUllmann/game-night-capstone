@@ -59,7 +59,7 @@ export function DeckDetailsPage() {
   let key = 1;
   return (
     <div>
-      {/* <p className="deck-details-title">{deck?.name} Details</p> */}
+      <p className="deck-details-title"><span className="page-title">{deck?.name}</span> Deck Details</p>
       <div className="deck-details-div">
         <div className="deck-details-decklist-sidepanel-div">
           <div style={{display:'flex', alignItems:'center', height:'1vh', margin:'1.5vh 0'}}>

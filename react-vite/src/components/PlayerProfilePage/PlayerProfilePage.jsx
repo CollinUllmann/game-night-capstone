@@ -71,7 +71,7 @@ export function PlayerProfilePage() {
   let key = 0;
   return (
     <div>
-      <p className="player-profile-title">{user?.username}&apos;s Profile</p>
+      <p className="player-profile-title"><span className="page-title">{user?.username}&apos;s</span> Profile</p>
       <div className="player-profile-div">
         <div className="player-profile-player-event-list-sidepanel-div">
           <p className="player-profile-player-event-list-title">Events</p>

@@ -56,7 +56,7 @@ export function EventDetailsPage() {
   return (
     <div>
       <div style={{display:'flex', alignItems:'center', columnGap:'1vh'}}>
-        <p className="event-details-title">{event?.name} Details</p>
+        <p className="event-details-title"><span className="page-title">{event?.name}</span> Event Details</p>
         <div style={{display:'flex'}}>
           <div className="event-details-event-tile-icon" >
             <OpenModalUpdateIcon modalComponent={<EventFormModal formtype={'update'} eventId={event?.id}/>}/>

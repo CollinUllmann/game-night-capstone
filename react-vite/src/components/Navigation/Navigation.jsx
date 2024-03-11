@@ -19,6 +19,7 @@ function Navigation() {
 
   return (
     <div className="nav-bar-div">
+      <div className="nav-bar-inner-div">
       <div className="nav-bar-home-profile-div">
         <div className="nav-bar-home-icon-div"  onClick={handleHomeNav}>
           <div className="nav-bar-home-icon">
@@ -32,6 +33,7 @@ function Navigation() {
           <div>Profile</div>
         </div>
         <ProfileButton />
+      </div>
       </div>
     </div>
   );

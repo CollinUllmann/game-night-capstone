@@ -29,7 +29,7 @@ body {
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
-#root > div  {
+#root > div:not(.nav-bar-div)  {
   width: 100%;
   max-width: 1450px;
 }
@@ -76,4 +76,9 @@ button.block {
   background: none;
   padding: 10px 25px;
   margin: 0;
+}
+
+.page-title {
+  font-style:italic;
+  color: rgb(241, 241, 139);
 }
