@@ -63,17 +63,17 @@ export function MatchDetailsPage() {
         </div>
       </div>
       <div className="match-details-div">
-        <div className="match-details-decklist-sidepanel-div">
+        <div className="match-details-decklist-sidepanel-div top-level-section">
           <p className="match-details-decklist-title">Winning Decklist</p>
           <DecklistPanel className="match-details-decklist-panel" deckId={winningDeckId} />
         </div>
         <div className="match-details-stats-decks-div">
-          <div className="match-details-match-stats-div">
+          <div className="match-details-match-stats-div top-level-section">
             <MatchStats />
           </div>
           <p className="match-details-match-decks-title">Decks</p>
           <div className="match-details-match-decks-div">
-            {matchDecks.map(deck => <div key={key++} onClick={() => navigate(`/decks/${deck.id}`)} className="match-details-decktile-div"><DeckTile deck={deck} key={key++} /></div>)}
+            {matchDecks.map(deck => <div key={key++} onClick={() => navigate(`/decks/${deck.id}`)} className="match-details-decktile-div top-level-section"><DeckTile deck={deck} key={key++} /></div>)}
 
           </div>
         </div>

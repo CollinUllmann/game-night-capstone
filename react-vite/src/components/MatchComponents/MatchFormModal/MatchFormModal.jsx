@@ -27,7 +27,7 @@ export function MatchFormModal({ formtype, matchId }) {
   //state variables for data needed for creation
   const [eventId, setEventId] = useState();
   const [userIdWinner, setUserIdWinner] = useState()
-  const [deckIds, setDeckIds] = useState([])
+  const [deckIds, setDeckIds] = useState([undefined, undefined])
 
 
   const [errors] = useState({});

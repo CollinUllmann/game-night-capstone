@@ -67,7 +67,7 @@ export function EventDetailsPage() {
         </div>
       </div>
       <div className="event-details-div">
-        <div className="event-details-eventlist-sidepanel-div">
+        <div className="event-details-eventlist-sidepanel-div top-level-section">
           <p className="event-details-eventlist-title">All Events</p>
           {Object.keys(eventsById)?.map(tempEventId => 
             <div key={eventKey++} className="event-details-event-tile-div">
@@ -90,14 +90,16 @@ export function EventDetailsPage() {
           </div>
         </div>
         <div className="event-details-stats-matches-div">
-          <div className="event-details-event-stats-div">
+          <div className="event-details-event-stats-div top-level-section">
             <EventStats />
           </div>
           <p className="event-details-event-matches-title">Matches</p>
           <div className="event-details-event-matches-div">
-            <OpenModalTile modalComponent={<MatchFormModal formtype={'new'}/>}/>
+            <div className="event-details-match-tile-div top-level-section">
+              <OpenModalTile modalComponent={<MatchFormModal formtype={'new'}/>}/>
+            </div>
             {eventMatches.map(match => {
-              return <div className="event-details-match-tile-div" key={matchKey++}>
+              return <div className="event-details-match-tile-div top-level-section" key={matchKey++}>
                 <MatchTile className="event-details-match-tile" match={match} onClick={() => navigate(`/matches/${match.id}`)} matchNum={matchKey}/>
               </div>
             })}

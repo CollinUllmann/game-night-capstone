@@ -10,7 +10,6 @@ body {
   width: 200px;
   background-color: lightgray;
   background-size: 420px;
-  margin: 0 1vh 0 0;
   transition: background-size .2s ease;
 }
 .deck-tile-div:hover {

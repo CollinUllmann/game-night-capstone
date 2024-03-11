@@ -77,10 +77,10 @@
 
 .deck-details-deck-matches-div {
   display: flex;
-  margin: 1vh 0 0 1vh;
+  margin: 1vh 2vh;
   flex-wrap: wrap;
+  column-gap: 2vh;
 }
 
 .deck-details-match-tile-div {
-  margin: 0 1vh 2vh 1vh;
 }

@@ -73,7 +73,7 @@ export function PlayerProfilePage() {
     <div>
       <p className="player-profile-title"><span className="page-title">{user?.username}&apos;s</span> Profile</p>
       <div className="player-profile-div">
-        <div className="player-profile-player-event-list-sidepanel-div">
+        <div className="player-profile-player-event-list-sidepanel-div top-level-section">
           <p className="player-profile-player-event-list-title">Events</p>
           {playerEventIds.map(eventId => eventById[eventId]).filter(event => event).map(event => 
             <div key={key++} className="player-profile-player-event-tile-div">
@@ -90,7 +90,7 @@ export function PlayerProfilePage() {
           </div>
         </div>
         <div className="player-profile-stats-decks-div">
-          <div className="player-profile-player-stats-div">
+          <div className="player-profile-player-stats-div top-level-section">
           <div className="player-profile-player-stats-selection-div">
               <p className={setStatsPageSelectionClass('performance', 'player-profile-player-stats-page-selector')} onClick={() => setStatsPage('performance')}>Performance</p>
               <p className={setStatsPageSelectionClass('construction', 'player-profile-player-stats-page-selector')} onClick={() => setStatsPage('construction')}>Construction</p>
@@ -107,7 +107,7 @@ export function PlayerProfilePage() {
                 modalComponent={<DeckFormModal className="deck-tile-div add"/>}
               />
             </div>
-            {userDecks.map(deck => <div key={key++} onClick={() => navigate(`/decks/${deck.id}`)} className="player-profile-decktile-div"><DeckTile deck={deck} key={key++} /></div>)}
+            {userDecks.map(deck => <div key={key++} onClick={() => navigate(`/decks/${deck.id}`)} className="player-profile-decktile-div top-level-section"><DeckTile deck={deck} key={key++} /></div>)}
           </div>
         </div>
       </div>

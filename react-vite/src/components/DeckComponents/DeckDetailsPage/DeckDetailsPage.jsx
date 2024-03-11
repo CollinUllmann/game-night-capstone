@@ -61,7 +61,7 @@ export function DeckDetailsPage() {
     <div>
       <p className="deck-details-title"><span className="page-title">{deck?.name}</span> Deck Details</p>
       <div className="deck-details-div">
-        <div className="deck-details-decklist-sidepanel-div">
+        <div className="deck-details-decklist-sidepanel-div top-level-section">
           <div style={{display:'flex', alignItems:'center', height:'1vh', margin:'1.5vh 0'}}>
             <p className="deck-details-decklist-title">{deck?.name} Decklist</p>
             <div className="deck-tile-update icon">
@@ -74,7 +74,7 @@ export function DeckDetailsPage() {
           <DecklistPanel className="deck-details-decklist-panel" deckId={deck?.id} />
         </div>
         <div className="deck-details-stats-matches-div">
-          <div className="deck-details-deck-stats-div">
+          <div className="deck-details-deck-stats-div top-level-section">
             <div className="deck-details-deck-stats-selection-div">
               <p className={setStatsPageSelectionClass('performance', 'deck-details-deck-stats-page-selector')} onClick={() => setStatsPage('performance')}>Performance</p>
               <p className={setStatsPageSelectionClass('construction', 'deck-details-deck-stats-page-selector')} onClick={() => setStatsPage('construction')}>Construction</p>
@@ -86,7 +86,7 @@ export function DeckDetailsPage() {
           <p className="deck-details-deck-matches-title">Matches</p>
           <div className="deck-details-deck-matches-div">
             {deckMatches.map(match => {
-              return <div className="deck-details-match-tile-div" key={key++}>
+              return <div className="deck-details-match-tile-div top-level-section" key={key++}>
                 <MatchTile className="deck-details-match-tile" match={match} onClick={() => navigate(`/matches/${match.id}`)} matchNum={key}/>
               </div>
             })}

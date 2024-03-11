@@ -82,3 +82,7 @@ button.block {
   font-style:italic;
   color: rgb(241, 241, 139);
 }
+
+.top-level-section {
+  box-shadow: 0 10px 30px black;
+}

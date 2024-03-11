@@ -16,7 +16,7 @@
   align-items: center;
   border-radius: 1vh;
   overflow-y: scroll;
-  background-color: #315b856b;
+  background-color: var(--blue);
 }
 .match-details-decklist-sidepanel-div::-webkit-scrollbar {
   display: none;
@@ -40,8 +40,8 @@
   height: 50vh;
   width: 100%;
   margin: 0 0 0 2vh;
-  border: 1px solid white;
   border-radius: 1vh;
+  background-color: var(--blue);
 }
 
 .match-details-match-decks-title {
@@ -52,13 +52,13 @@
 
 .match-details-match-decks-div {
   display: flex;
-  margin: 0 0 1vh 2vh;
+  margin: 1vh 2vh;
   flex-wrap: wrap;
+  column-gap: 2vh;
 }
 
 .match-details-decktile-div {
   display: flex;
-  margin: 0 0 2vh 0;
 }
 .match-details-decktile-div:hover {
   cursor: pointer;

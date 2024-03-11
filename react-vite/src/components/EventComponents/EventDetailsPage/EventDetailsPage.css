@@ -9,7 +9,7 @@
 
 
 .event-details-eventlist-sidepanel-div {
-  border: 1px solid white;
+  background-color: var(--green);
   width: 26.3vh;
   height: 80vh;
   display: flex;
@@ -35,11 +35,11 @@
   align-items: center;
 }
 .event-details-event-tile:hover {
-  background-color: gray;
+  background-color: rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 .selected-event {
-  background-color: gray;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .event-details-event-tile-event {
   margin: 1vh;
@@ -112,8 +112,8 @@
   height: 50vh;
   width: 100%;
   margin: 0 0 0 2vh;
-  border: 1px solid white;
   border-radius: 1vh;
+  background-color: var(--green);
 }
 
 .event-details-event-matches-title {
@@ -124,14 +124,12 @@
 
 .event-details-event-matches-div {
   display: flex;
-  margin: 1vh 0 0 2vh;
+  margin: 1vh 2vh;
   flex-wrap: wrap;
+  column-gap: 2vh;
+  row-gap: 2vh;
 }
 
-.event-details-add-match-tile {
-  margin: 0 1vh 0 0;
-}
-
+.event-details-add-match-tile,
 .event-details-match-tile-div {
-  margin: 0 1vh 1vh 0;
 }
