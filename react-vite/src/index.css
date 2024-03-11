@@ -27,16 +27,18 @@ body {
   max-width: 1450px;
 }
 
-input {
+input, select, textarea {
   border: 1px solid white;
   padding:4px;
   margin:4px;
   border-radius:5px;
   background-color: var(--main-bg-color);
   color: white;
+  transition: box-shadow 250ms ease-in-out, background-color 200ms ease-in-out;
+  box-shadow: none;
 }
-input:focus {
-  box-shadow: rgb(255, 255, 255) 0px 5px 30px 0px;
+input:focus, select:focus, textarea:focus {
+  box-shadow: rgb(255, 255, 255, 0.6) 0px 5px 30px 0px;
   background-color: var(--main-highlight-color);
 }
 

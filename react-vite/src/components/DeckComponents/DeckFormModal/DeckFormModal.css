@@ -17,6 +17,13 @@
   box-sizing: border-box;
 }
 
+.deck-form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 450px;
+}
+
 .form-input {
   display: flex;
 }
@@ -26,7 +33,15 @@
   margin: 20px 5px;
   display: flex;
   justify-content: start;
-  align-items: center;
+  align-items: start;
+  column-gap: 16px;
+}
+
+.deck-form-input-label-span {
+  flex-basis: 100px;
+  display: flex;
+  justify-content: end;
+  margin: 4px 0;
 }
 
 .deck-form-input-file {
@@ -39,20 +54,14 @@
   margin: 0 5px;
 }
 
-.deck-form-input input {
-  width: 100%;
-  margin: 0 5px;
-}
-
-.deck-form {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
+.deck-form-input input, .deck-form-input select, .deck-form-input textarea {
+  flex-grow: 1;
 }
 
 .deck-form-decklist-textarea {
   display: flex;
   justify-content: start;
+  resize: vertical;
 }
 
 .deck-form-submit-button-div {

@@ -52,7 +52,7 @@ export function SplashPage() {
           <div className="splash-page-deck-builder-description-button-div">
             <p className="splash-page-deck-builder-title">Before the Game</p>
             <p className="splash-page-deck-builder-title-2">MTG&apos;s Massive Catalogue</p>
-            <p className="splash-page-deck-builder-description">• Track win rates and performance metrics for each of your decks. <br></br>• Identify trends and patterns in your gameplay to improve your strategy.<br></br>• Analyze specific matchups to prepare for future matches.</p>
+            <p className="splash-page-deck-builder-description">• View detailed statistics on the composition of your decks. <br></br>• Identify weaknesses in your deck construction to optimize card selection.<br></br>• Experiment with different card combinations to improve performance.</p>
             <div onClick={currentUser ? handleNavigateToDeckAnalysis : null} className="splash-page-deck-builder splash-page-button">
               {currentUser ? <OpenModalButton buttonText="Build the Perfect Deck" modalComponent={<DeckFormModal />} /> : <OpenModalButton buttonText="Build the Perfect Deck" modalComponent={<LoginFormModal />}/>}
             </div>
@@ -62,7 +62,7 @@ export function SplashPage() {
           <div className="splash-page-deck-analysis-description-button-div">
             <p className="splash-page-deck-analysis-title">After the Game</p>
             <p className="splash-page-deck-analysis-title-2">Personalized Statistics</p>
-            <p className="splash-page-deck-analysis-description">• View detailed statistics on the composition of your decks. <br></br>• Identify weaknesses in your deck construction to optimize card selection.<br></br>• Experiment with different card combinations to improve performance.</p>
+            <p className="splash-page-deck-analysis-description">• Track win rates and performance metrics for each of your decks. <br></br>• Identify trends and patterns in your gameplay to improve your strategy.<br></br>• Analyze specific matchups to prepare for future matches.</p>
             <div className="splash-page-deck-analysis splash-page-button">
               {currentUser ? <div onClick={handleNavigateToDeckAnalysis}>Crunch the Numbers</div> : <OpenModalButton buttonText="Crunch the Numbers" modalComponent={<LoginFormModal />}
               />}

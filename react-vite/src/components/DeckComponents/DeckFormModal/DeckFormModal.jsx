@@ -28,7 +28,7 @@ export function DeckFormModal({ formtype, deckId }) {
 
   useEffect(() => {
     dispatch(thunkFetchAllCards())
-    if (formtype == 'update') {
+    if (formtype == 'update' && deckId) {
       dispatch(thunkFetchDeckById(deckId))
     }
   }, [formtype, deckId, dispatch])
@@ -91,15 +91,36 @@ export function DeckFormModal({ formtype, deckId }) {
     }
 
   };
+
+  const handleDemo = () => {
+    const cardsAll = Object.values(cardById);
+    const sampleCard = () => {
+      const index = Math.floor(Math.random() * cardsAll.length);
+      const card = cardsAll.splice(index, 1)[0];
+      return card;
+    }
+
+    const cardsDeck = [];
+    for(let i = 0; i < 100; i++) {
+      const card = sampleCard();
+      if(!card) break;
+
+      cardsDeck.push(card);
+    }
+
+    const deckListString = cardsDeck.map(card => `1x ${card.name}`).join('\n');
+    setCards(deckListString);
+  }
+
   let key = 0;
   return (
     <>
       <div className="deck-form-container">
         <h1>Deck Form</h1>        
       
-      <form className="deck-form-div" onSubmit={handleSubmit}>
+      <form className="deck-form" onSubmit={handleSubmit}>
         <label className="deck-form-input">
-          Name
+          <span className="deck-form-input-label-span">Name</span>
           <input
             name="name"
             type="text"
@@ -111,7 +132,7 @@ export function DeckFormModal({ formtype, deckId }) {
         {errors.name && <p>{errors.name}</p>}
 
         <label className="deck-form-input">
-          Format
+          <span className="deck-form-input-label-span">Format</span>
           <select
             name="format"
             value={format}
@@ -127,10 +148,10 @@ export function DeckFormModal({ formtype, deckId }) {
         {errors.format && <p>{errors.format}</p>}
 
         <label className="deck-form-input">
-          Deck
+          <span className="deck-form-input-label-span">Deck</span>
           <textarea
             className="deck-form-decklist-textarea"
-            rows='6'
+            rows='15'
             name="cards"
             value={cards}
             placeholder="4x Birds of Paradise
@@ -148,6 +169,7 @@ export function DeckFormModal({ formtype, deckId }) {
         <div className="deck-form-submit-button-div">
           <button className='deck-form-modal-button'
             onClick={() => {handleSubmit}}>Submit</button>
+          <button type="button" onClick={handleDemo} style={{ backgroundColor: '#000', color: '#ccc', border: '1px solid #ccc', outline: 'none' }}>Demo</button>
         </div>
       </form>
       </div>
