@@ -2,6 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 30px;
+  box-sizing: border-box;
 }
 
 .nav-bar-home-profile-div {
@@ -23,6 +25,13 @@
   width: 100%;
 }
 
+.nav-bar-profile-section {
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+  align-items: center;
+}
+
 .nav-bar-profile-div:hover {
   cursor:pointer;
 }
@@ -33,4 +42,22 @@
 
 .profile-menu-button {
   display: flex;
+}
+
+.logo {
+  width: 50px;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+  transition: filter 500ms ease-in-out, transform 300ms ease-in-out;
+  padding: 15px;
+}
+
+.logo:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  cursor: pointer;
+}
+
+.logo:active {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
 }

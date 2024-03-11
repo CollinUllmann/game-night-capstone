@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="52.932 47.638 396.172 388.437" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="mask-1">
+      <ellipse style="paint-order: fill; stroke: rgb(0, 0, 0); stroke-width: 0px; fill: rgb(255, 255, 255); mask: url('#mask-0');" cx="156" cy="220" rx="105" ry="105"/>
+    </mask>
+    <mask id="mask-0">
+      <rect x="24.837" y="98.127" width="451.14" height="247.964" style="stroke: rgb(0, 0, 0); stroke-width: 0px; fill: rgb(255, 255, 255);"/>
+      <ellipse style="paint-order: fill; stroke: rgb(0, 0, 0); stroke-width: 0px;" cx="346" cy="221" rx="105" ry="105"/>
+    </mask>
+  </defs>
+  <ellipse style="stroke: rgb(0, 0, 0); fill: rgba(216, 216, 216, 0); stroke-width: 8px;" cx="250" cy="250" rx="1" ry="1">
+    <title>Center</title>
+  </ellipse>
+  <ellipse style="paint-order: fill; stroke: rgb(0, 0, 0); fill: rgb(249, 250, 244); stroke-width: 25px; transform-origin: 219px 245px;" cx="251" cy="151" rx="90" ry="90">
+    <title>White (Back)</title>
+  </ellipse>
+  <ellipse style="paint-order: fill; stroke: rgb(0, 0, 0); stroke-width: 25px; fill: rgb(14, 104, 171); transform-origin: 245px 220px;" cx="346" cy="221" rx="90" ry="90">
+    <title>Blue</title>
+  </ellipse>
+  <ellipse style="paint-order: fill; stroke: rgb(0, 0, 0); stroke-width: 25px; fill: rgb(49, 11, 55); transform-origin: 278px 236px;" cx="310" cy="332" rx="90" ry="90">
+    <title>Black</title>
+  </ellipse>
+  <ellipse style="paint-order: fill; stroke: rgb(0, 0, 0); stroke-width: 25px; fill: rgb(209, 0, 12); transform-origin: 272px 272px;" cx="192" cy="332" rx="90" ry="90">
+    <title>Red</title>
+  </ellipse>
+  <ellipse style="paint-order: fill; stroke: rgb(0, 0, 0); stroke-width: 25px; fill: rgb(0, 109, 59); transform-origin: 236px 278px;" cx="156" cy="220" rx="90" ry="90">
+    <title>Green</title>
+  </ellipse>
+  <ellipse style="paint-order: fill; stroke: rgb(0, 0, 0); fill: rgb(249, 250, 244); stroke-width: 25px; mask: url('#mask-1'); transform-origin: 465.557px 344px;" cx="251" cy="151" rx="90" ry="90">
+    <title>White (Front)</title>
+  </ellipse>
+</svg>

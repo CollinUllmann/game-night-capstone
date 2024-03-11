@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
-import { FaHome } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
 function Navigation() {
@@ -22,14 +21,16 @@ function Navigation() {
     <div className="nav-bar-div">
       <div className="nav-bar-home-profile-div">
         <div className="nav-bar-home-icon-div"  onClick={handleHomeNav}>
-          <FaHome className="nav-bar-home-icon"/>
-        </div>
-        <div className="nav-bar-profile-div" onClick={handleProfileNav}>
-          <div>Profile</div>
+          <div className="nav-bar-home-icon">
+            <img src="/logo.svg" className="logo"/>
+          </div>
         </div>
       </div>
 
-      <div>
+      <div className="nav-bar-profile-section">
+        <div className="nav-bar-profile-div" onClick={handleProfileNav}>
+          <div>Profile</div>
+        </div>
         <ProfileButton />
       </div>
     </div>

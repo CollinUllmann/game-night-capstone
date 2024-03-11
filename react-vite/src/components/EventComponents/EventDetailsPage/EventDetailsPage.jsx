@@ -4,11 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { thunkFetchAllMatches } from "../../../redux/match";
 import { MatchTile } from "../../MatchComponents/MatchTile/MatchTile";
 import {  thunkFetchAllEvents } from "../../../redux/event";
-import { AddMatchTile } from "../../MatchComponents/MatchTile/AddMatchTile";
-// import { RxUpdate } from "react-icons/rx";
-// import { FaTrashAlt } from "react-icons/fa";
 import { EventStats } from "./EventStats/EventStats";
-
 import OpenModalUpdateIcon from "../../DeckComponents/DeckTile/OpenUpdateIconModal";
 import OpenModalDeleteIcon from "../../DeckComponents/DeckTile/OpenDeleteIconModal";
 import { EventFormModal } from "../EventFormModal/EventFormModal";
@@ -16,7 +12,6 @@ import { DeleteEventConfirmationModal } from "./DeleteEventConfirmationModal";
 import OpenAddEventModal from "../OpenAddEventModal";
 import OpenModalTile from "../../PlayerProfilePage/OpenModalTile";
 import { MatchFormModal } from "../../MatchComponents/MatchFormModal/MatchFormModal";
-
 import './EventDetailsPage.css'
 
 
