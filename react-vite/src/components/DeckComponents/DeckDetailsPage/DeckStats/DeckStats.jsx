@@ -134,7 +134,6 @@ export function DeckStats() {
   }
   const matchEventIdArr = Array.from(matchEventIds)
 
-  console.log('matchup object: ', getDeckMatchupObj('color'))
 
   const playerMatchupObj = getDeckMatchupObj(selectedMatchupType)
   return (

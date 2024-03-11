@@ -118,6 +118,7 @@ export function EventFormModal({ formtype, eventId }) {
 
         <div className="event-form-submit-button-div">
           <button className="event-form-submit-button standard">Submit</button>
+          <button className="event-form-cancel-button standard" onClick={closeModal}>Cancel</button>
         </div>
       </form>
     </div>
