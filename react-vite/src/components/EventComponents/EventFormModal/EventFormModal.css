@@ -11,16 +11,24 @@
   box-sizing: border-box;
 }
 
+.event-form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 450px;
+}
+
 .form-input {
   display: flex;
 }
 
 .event-form-input {
   width: 100%;
-  margin: 20px 5px 0 5px;
+  margin: 20px 5px;
   display: flex;
   justify-content: start;
-  align-items: center;
+  align-items: start;
+  column-gap: 16px;
 }
 
 .event-form-input-file {
@@ -33,15 +41,16 @@
   margin: 0 5px;
 }
 
-.event-form-input input {
-  width: 100%;
-  margin: 0 5px;
+.event-form-input input, .event-form-input select, .event-form-input textarea {
+  flex-grow: 1;
+  color-scheme: dark;
 }
 
-.event-form {
-  width: 30%;
+.event-form-input-label-span {
+  flex-basis: 100px;
   display: flex;
-  flex-direction: column;
+  justify-content: end;
+  margin: 4px 0;
 }
 
 .event-form-eventlist-textarea {

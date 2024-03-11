@@ -80,9 +80,9 @@ export function EventFormModal({ formtype, eventId }) {
     <div className="event-form-container">
       <h1>Event Form</h1>
 
-      <form className="event-form-div" onSubmit={handleSubmit}>
+      <form className="event-form" onSubmit={handleSubmit}>
         <label className="event-form-input">
-          Name
+          <span className="event-form-input-label-span">Name</span>
           <input 
           type="text" 
           value={name}
@@ -92,7 +92,7 @@ export function EventFormModal({ formtype, eventId }) {
         </label>
 
         <label className="event-form-input">
-          Date
+          <span className="event-form-input-label-span">Date</span>
           <input 
           type="date" 
           value={date}
@@ -102,7 +102,7 @@ export function EventFormModal({ formtype, eventId }) {
         </label>
 
         <label className="event-form-input">
-          Format
+          <span className="event-form-input-label-span">Format</span>
           <select 
             name="format"
             value={format}
