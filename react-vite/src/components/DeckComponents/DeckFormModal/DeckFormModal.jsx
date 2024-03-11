@@ -167,8 +167,8 @@ export function DeckFormModal({ formtype, deckId }) {
           {errors.deckList && errors.deckList.split('\n').map(errorLine => <div className="validation-error" key={key++}>{errorLine}</div>)}
         </div>
         <div className="deck-form-submit-button-div">
-          <button className='standard deck-form-modal-button'
-            onClick={() => {handleSubmit}}>Submit</button>
+          <button className='standard deck-form-modal-button' onClick={() => {handleSubmit}}>Submit</button>
+          <button className="standard deck-form-modal-button" onClick={closeModal}>Cancel</button>
           <button className="standard" type="button" onClick={handleDemo} style={{ backgroundColor: '#000', color: '#ccc', border: '1px solid #ccc', outline: 'none' }}>Demo</button>
         </div>
       </form>
