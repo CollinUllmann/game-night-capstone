@@ -13,6 +13,16 @@ function SignupFormModal() {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
+  function isEmailValid(email) {
+    const atSplit = email.split('@')
+    if (atSplit.length != 2) return false
+    if (atSplit[0].length <= 0) return false
+    const periodSplit = atSplit[1].split('.')
+    if (periodSplit.length <= 1) return false
+    if (periodSplit.some(value => value.length <= 0)) return false
+    return true
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -22,6 +32,11 @@ function SignupFormModal() {
           "Confirm Password must be the same as Password",
       });
     }
+
+    if (!isEmailValid(email)) {
+      return setErrors({
+      email: "Please enter a valid email"
+    })}
 
     const serverResponse = await dispatch(
       thunkSignup({
