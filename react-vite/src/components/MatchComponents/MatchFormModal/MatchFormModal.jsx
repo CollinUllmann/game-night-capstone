@@ -134,7 +134,7 @@ export function MatchFormModal({ formtype, matchId }) {
 
 
         <div className="match-form-submit-button-div">
-          <button className='match-form-modal-button'
+          <button className='match-form-modal-button standard'
             onClick={() => {handleSubmit}}>Submit</button>
         </div>
       </form>

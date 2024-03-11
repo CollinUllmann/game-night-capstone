@@ -117,7 +117,7 @@ export function EventFormModal({ formtype, eventId }) {
         </label>
 
         <div className="event-form-submit-button-div">
-          <button className="event-form-submit-button">Submit</button>
+          <button className="event-form-submit-button standard">Submit</button>
         </div>
       </form>
     </div>

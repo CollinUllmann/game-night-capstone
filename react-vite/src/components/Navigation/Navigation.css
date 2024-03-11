@@ -30,6 +30,7 @@
   flex-direction: row;
   column-gap: 30px;
   align-items: center;
+  position: relative;
 }
 
 .nav-bar-profile-div:hover {
@@ -37,7 +38,34 @@
 }
 
 .profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  row-gap: 15px;
+  
   position: absolute;
+  top: 100%;
+  right: 0;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 12px 0 12px 12px;
+  background: var(--main-bg-color);
+  border: 3px solid white;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-label {
+  text-decoration: underline;
+  color: #bbb;
+}
+
+.profile-button {
+  width: 100px;
 }
 
 .profile-menu-button {

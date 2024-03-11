@@ -45,11 +45,12 @@ input:focus, select:focus, textarea:focus {
 
 
 button {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   border-radius: 5px;
   background: var(--main-highlight-color);
+  border: none;
+  outline: none;
   color: white;
-  outline: 3px solid white;
-  border: 1px solid black;
   padding:4px 12px;
   margin:4px;
   box-sizing:border-box;
@@ -57,4 +58,16 @@ button {
 button:hover {
   scale:1.1;
   cursor: pointer;
+}
+
+button.standard {
+  outline: 3px solid white;
+  border: 1px solid black;
+}
+
+button.block {
+  font-size: large;
+  background: none;
+  padding: 10px 25px;
+  margin: 0;
 }

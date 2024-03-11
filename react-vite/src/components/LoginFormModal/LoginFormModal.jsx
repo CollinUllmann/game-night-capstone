@@ -61,10 +61,10 @@ function LoginFormModal() {
           {!errors.email && errors.password && <p className="modal-error">{errors.password}</p>}
         </div>
         <div className="login-form-submit-button-div">
-          <button className="signup-form-submit-button" type="submit">Log In</button>
+          <button className="signup-form-submit-button standard" type="submit">Log In</button>
         </div>
         <div className="login-form-submit-button-div">
-          <button className='login-modal-button'
+          <button className='login-modal-button standard'
             onClick={() => {
               setEmail('demo@aa.io')
               setPassword('password')

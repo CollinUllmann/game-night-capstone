@@ -41,7 +41,6 @@
   font-size: large;
   border: .2vh solid white;
   width: fit-content;
-  padding: .5vh 1vh;
 }
 .splash-page-button:hover {
   cursor: pointer;
