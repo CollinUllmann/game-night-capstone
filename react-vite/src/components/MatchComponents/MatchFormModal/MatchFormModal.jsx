@@ -116,11 +116,11 @@ export function MatchFormModal({ formtype, matchId }) {
           }}/>
         </label>
 
-        {deckIds.map((deckId, index) => <MatchDeckSelector key={index} index={index} deckId={deckId} onChangeDeckId={newDeckId => {
+        {deckIds.map((deckId, index) => <><MatchDeckSelector key={index} index={index} deckId={deckId} onChangeDeckId={newDeckId => {
           const newDeckIds = [...deckIds];
           newDeckIds[index] = newDeckId;
           setDeckIds(newDeckIds);
-        }}></MatchDeckSelector>)}
+        }}></MatchDeckSelector><hr style={{borderTop:'1px solid #444', borderColor: '#444', backgroundColor: '#444', width:'70%'}} /></>)}
 
         <label className="match-form-input">
           Winner

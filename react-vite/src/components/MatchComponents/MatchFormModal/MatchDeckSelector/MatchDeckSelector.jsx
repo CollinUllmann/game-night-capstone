@@ -35,8 +35,9 @@ export function MatchDeckSelector({ index, deckId, onChangeDeckId }) {
           </select>
         </label>
         <label className="match-form-input">
-        Player {index+1} Deck
+        Deck
           <select
+            style={{width: 150}}
             name="userDeck"
             value={deckId}
             onChange={(e) => onChangeDeckId(e.target.value)}
@@ -45,6 +46,7 @@ export function MatchDeckSelector({ index, deckId, onChangeDeckId }) {
             {Object.values(deckById)?.filter(deck => deck.userId == userId).map(deck => <option key={deck.id} value={deck.id}>{deck.name}</option>)}
           </select>
         </label>
+        
     </div>
   )
 }
