@@ -28,7 +28,7 @@ function Navigation() {
       </div>
 
       <div className="nav-bar-profile-section">
-        <div className="nav-bar-profile-div" onClick={handleProfileNav}>
+        <div className={currentUser ? "nav-bar-profile-div": "hidden"} onClick={handleProfileNav}>
           <div>Profile</div>
         </div>
         <ProfileButton />
