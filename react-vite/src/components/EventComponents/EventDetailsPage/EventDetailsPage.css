@@ -85,7 +85,6 @@
   align-items: center;
   height: 3vh;
   width: 90%;
-  background-color: gray;
   border-radius: 1vh;
   font-size: xx-large;
   font-weight: 600;
@@ -128,8 +127,4 @@
   flex-wrap: wrap;
   column-gap: 2vh;
   row-gap: 2vh;
-}
-
-.event-details-add-match-tile,
-.event-details-match-tile-div {
 }

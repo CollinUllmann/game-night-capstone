@@ -10,25 +10,14 @@ body {
   transition: background-color .2s ease;
   height: 200px;
   width: 200px;
-  background-color: lightgray;
   background-size: 420px;
   transition: background-size .2s ease;
 }
 .match-tile-div:hover {
-  background-color: gray;
   background-size: 500px;
   cursor: pointer;
 }
 
-.add {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: scale .2s ease;
-}
-.add:hover {
-  scale: 1.1;
-}
 .add-match-tile-plus {
   font-size: xxx-large;
   font-weight: 600;

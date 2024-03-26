@@ -53,7 +53,7 @@ export function MatchTile({ match, onClick, matchNum }) {
   }
 
   return (
-    <div onClick={onClick} style={{backgroundColor: 'gray'}} className="match-tile-div">
+    <div onClick={onClick} style={{backgroundColor: 'rgba(0, 0, 0, 0.300)'}} className="match-tile-div">
       <div className='match-tile-content-div'>
         <p className='match-tile-match-name'>Match {matchNum}</p>
         <p className='match-tile-event-name'>{eventById[match.eventId]?.name}</p>

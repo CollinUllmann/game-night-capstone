@@ -95,7 +95,7 @@ export function EventDetailsPage() {
           </div>
           <p className="event-details-event-matches-title">Matches</p>
           <div className="event-details-event-matches-div">
-            <div className="event-details-match-tile-div top-level-section">
+            <div className="event-details-match-tile-div">
               <OpenModalTile modalComponent={<MatchFormModal formtype={'new'}/>}/>
             </div>
             {eventMatches.map(match => {
