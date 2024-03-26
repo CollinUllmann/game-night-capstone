@@ -7,6 +7,10 @@
   font-weight: 600;
 }
 
+.breadcrumb-link:hover {
+  cursor: pointer;
+}
+
 .deck-details-decklist-sidepanel-div {
   /* border: 1px solid white; */
   background-color: rgba(47, 51, 109, 0.202);

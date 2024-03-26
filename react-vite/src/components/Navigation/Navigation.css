@@ -87,16 +87,17 @@
   width: 50px;
   filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
   transition: filter 500ms ease-in-out, transform 300ms ease-in-out;
+  transform-origin: 52% 52%;
   padding: 15px;
 }
 
 .logo:hover {
-  transform: scale(1.15);
+  transform: scale(1.15) rotate(-360deg);
   filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
   cursor: pointer;
 }
 
 .logo:active {
-  transform: scale(1.2);
+  transform: scale(1.2) rotate(-720deg);
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
 }

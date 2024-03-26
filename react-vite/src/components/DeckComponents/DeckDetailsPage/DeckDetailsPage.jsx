@@ -37,6 +37,9 @@ export function DeckDetailsPage() {
    }
    return false
   })
+  const userById = useSelector(state => state.users)
+  const deckOwner = userById[deck?.userId]
+  console.log(deckOwner)
 
   
   useEffect(() => {
@@ -59,7 +62,7 @@ export function DeckDetailsPage() {
   let key = 1;
   return (
     <div>
-      <p className="deck-details-title"><span className="page-title">{deck?.name}</span> Deck Details</p>
+      <p className="deck-details-title"><span className="breadcrumb-link" onClick={() => navigate(`/users/${deckOwner.id}`)}>{deckOwner?.username} / </span><span className="page-title">{deck?.name}</span> Deck Details</p>
       <div className="deck-details-div">
         <div className="deck-details-decklist-sidepanel-div top-level-section">
           <div style={{display:'flex', alignItems:'center', height:'1vh', margin:'1.5vh 0'}}>
