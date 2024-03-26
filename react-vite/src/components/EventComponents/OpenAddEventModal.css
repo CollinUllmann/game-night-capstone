@@ -4,16 +4,18 @@
   align-items: center;
   height: 3vh;
   width: 90%;
-  background-color: gray;
   border-radius: 1vh;
-  font-size: xx-large;
+  box-shadow: inset rgb(0, 0, 0, 0.6) 0px 5px 30px 0px;
+  font-size: x-large;
   font-weight: 600;
-  border: 0.3vh solid gray;
   color: #fff;
   margin: 1vh 0;
+  transition: box-shadow 1s ease;
+
 }
 .add-event-modal-tile:hover {
-  color: gray;
-  background-color:white;
+  box-shadow: rgb(0, 0, 0, 0.6) 0px 5px 30px 0px;
+  font-size: xx-large;
+
   cursor: pointer;
 }
