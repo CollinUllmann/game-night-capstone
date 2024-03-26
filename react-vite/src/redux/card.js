@@ -17,6 +17,14 @@ export const thunkFetchAllCards = () => async dispatch => {
     dispatch(getCards(cards))
   } else return 'get all cards thunk error'
 }
+export const thunkFetchCardById = cardId => async dispatch => {
+  const res = await fetch(`/api/cards/${cardId}`)
+
+  if (res.ok) {
+    const { cards } = await res.json()
+    dispatch(getCards(cards))
+  } else return 'get all cards thunk error'
+}
 
 //Reducer
 const cardReducer = (state = {}, action) => {
