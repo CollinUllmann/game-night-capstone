@@ -59,7 +59,7 @@ export function MatchDetailsPage() {
   return (
     <div>
       <div style={{display:'flex', alignItems:'center'}}>
-        <p className="match-details-title">Match Details // <span className="page-title" style={{cursor: 'pointer'}} onClick={onClickEventName}>{event?.name}</span></p>
+        <p className="match-details-title"><span  style={{cursor: 'pointer'}} onClick={onClickEventName}>{event?.name} / </span><span className="page-title">Match Details</span></p>
         <div className="match-tile-update icon">
           <OpenModalUpdateIcon modalComponent={<MatchFormModal formtype={'update'} matchId={match?.id}/>} />
         </div>

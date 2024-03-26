@@ -39,7 +39,6 @@ export function DeckDetailsPage() {
   })
   const userById = useSelector(state => state.users)
   const deckOwner = userById[deck?.userId]
-  console.log(deckOwner)
 
   
   useEffect(() => {
