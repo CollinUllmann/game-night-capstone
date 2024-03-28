@@ -11,7 +11,6 @@ import './DeckTile.css'
 // import { useNavigate } from 'react-router-dom';
 import { ManaSymbol } from '../../ManaSymbol/ManaSymbol';
 import { useEffect } from 'react';
-import { thunkFetchAllCards } from '../../../redux/card';
 import { thunkFetchUserById } from '../../../redux/users';
 import { thunkFetchAllMatches } from '../../../redux/match';
 import OpenModalUpdateIcon from './OpenUpdateIconModal';
@@ -28,7 +27,6 @@ export function DeckTile({ deck, onClick }) {
   const matchesById = useSelector(state => state.matches)
 
   useEffect(() => {
-    dispatch(thunkFetchAllCards())
     dispatch(thunkFetchUserById(deck.userId))
     dispatch(thunkFetchAllMatches())
   }, [dispatch, deck.userId])

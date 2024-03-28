@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { CardTile } from "./CardTile";
 import { useEffect } from "react";
-import { thunkFetchAllCards } from "../../../redux/card";
-import { thunkFetchAllDecks } from "../../../redux/deck";
+import { thunkFetchDeckById } from "../../../redux/deck";
 
 
 export function DecklistPanel({ deckId }) {
@@ -13,9 +12,8 @@ export function DecklistPanel({ deckId }) {
   const deck = deckById[deckId]
 
   useEffect(() => {
-    dispatch(thunkFetchAllCards)
-    dispatch(thunkFetchAllDecks)
-  })
+    dispatch(thunkFetchDeckById(deckId))
+  }, [dispatch])
 
 
   const cardCounts = deck?.cards.map(deckCard =>({count: deckCard.count, card: cardById[deckCard.cardId]})).filter(cardCount => cardCount.card)

@@ -4,7 +4,6 @@ import { thunkCreateDeck, thunkFetchDeckById, thunkUpdateDeck } from "../../../r
 
 import './DeckFormModal.css'
 import { useNavigate } from "react-router-dom";
-import { thunkFetchAllCards } from "../../../redux/card";
 
 import { useModal } from "../../../context/Modal";
 
@@ -14,7 +13,7 @@ export function DeckFormModal({ formtype, deckId }) {
   const cardById = useSelector(state => state.cards)
   const deckById = useSelector(state => state.decks)
 
-  const cardsAll = Object.values(cardById);
+  // const cardsAll = Object.values(cardById);
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,7 +27,6 @@ export function DeckFormModal({ formtype, deckId }) {
   const { closeModal } = useModal();
 
   useEffect(() => {
-    dispatch(thunkFetchAllCards())
     if (formtype == 'update' && deckId) {
       dispatch(thunkFetchDeckById(deckId))
     }
@@ -135,7 +133,6 @@ export function DeckFormModal({ formtype, deckId }) {
 
   console.log('deckValidationErrors: ', deckValidationErrors)
 
-  let key = 0;
   return (
     <>
       <div className="deck-form-container">

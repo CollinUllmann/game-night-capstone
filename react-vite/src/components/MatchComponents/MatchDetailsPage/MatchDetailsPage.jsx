@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { thunkFetchAllMatches } from "../../../redux/match";
 import { DeckTile } from "../../DeckComponents/DeckTile/DeckTile";
-import { thunkFetchAllDecks } from "../../../redux/deck";
 import { DecklistPanel } from "../../DeckComponents/DecklistPanel/DecklistPanel";
 import { MatchStats } from "./MatchStats/MatchStats";
 import OpenModalUpdateIcon from "../../DeckComponents/DeckTile/OpenUpdateIconModal";

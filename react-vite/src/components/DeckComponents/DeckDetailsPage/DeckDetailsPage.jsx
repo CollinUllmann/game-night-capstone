@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { thunkFetchAllDecks, thunkFetchDeckById } from "../../../redux/deck";
 import { thunkFetchAllMatches } from "../../../redux/match";
 import { DecklistPanel } from "../DecklistPanel/DecklistPanel";
 import { MatchTile } from "../../MatchComponents/MatchTile/MatchTile";
@@ -15,7 +14,6 @@ import { DeleteDeckConfirmationModal } from "../DeckTile/DeleteDeckConfirmationM
 
 import './DeckDetailsPage.css'
 import { thunkFetchAllUsers } from "../../../redux/users";
-import { thunkFetchAllCards, thunkFetchCardById } from "../../../redux/card";
 
 
 export function DeckDetailsPage() {
@@ -45,10 +43,10 @@ export function DeckDetailsPage() {
     dispatch(thunkFetchAllMatches())
     dispatch(thunkFetchAllUsers())
 
-    dispatch(thunkFetchDeckById(deckId)).then(returnDeck => {
-      returnDeck.cards.forEach(card => dispatch(thunkFetchCardById(card.cardId)))
-    })
-  }, [deckId, dispatch])
+    // dispatch(thunkFetchDeckById(deckId)).then(returnDeck => {
+    //   returnDeck.cards.forEach(card => dispatch(thunkFetchCardById(card.cardId)))
+    // })
+  }, [ dispatch])
 
   function handleNavigateUserProfile() {
     navigate(`/users/${deck.userId}`)

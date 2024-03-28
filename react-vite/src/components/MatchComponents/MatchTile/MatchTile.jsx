@@ -7,7 +7,6 @@ import './MatchTile.css'
 // import { thunkDeleteMatch } from '../../../redux/match';
 // import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { thunkFetchDeckById } from '../../../redux/deck';
 import { thunkFetchAllEvents } from '../../../redux/event';
 
 import OpenModalDeleteIcon from '../../DeckComponents/DeckTile/OpenDeleteIconModal';
@@ -28,11 +27,6 @@ export function MatchTile({ match, onClick, matchNum }) {
     dispatch(thunkFetchAllEvents())
   }, [dispatch])
 
-  useEffect(() => {
-    match.deckIds.forEach(deckId => {
-      dispatch(thunkFetchDeckById(deckId))
-    })
-  }, [match, dispatch])
 
   // const handleDelete = (e) => {
   //   e.stopPropagation();

@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { thunkFetchAllMatches } from "../../../redux/match";
 import { MatchTile } from "../../MatchComponents/MatchTile/MatchTile";
 import {  thunkFetchAllEvents } from "../../../redux/event";
 import { EventStats } from "./EventStats/EventStats";
@@ -81,7 +80,7 @@ export function EventDetailsPage() {
                   </div>
                 </div>
                 <p className="event-details-event-tile-date">{formatDate(eventsById[tempEventId]?.date)}</p>
-              </div>
+            </div>
             </div>
           )}
           <div style={{width:'100%', display:'flex', justifyContent:'center'}}>

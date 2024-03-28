@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import './DeckStats.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// import { thunkFetchAllCards } from '../../../../redux/card';
 import { MatchupTile } from './MatchupTile/MatchupTile';
 import { thunkFetchAllDecks } from '../../../../redux/deck';
 

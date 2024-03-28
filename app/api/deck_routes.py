@@ -122,13 +122,6 @@ def update_deck(deckId):
     preview_card_name = first_card_split[1]
     preview_cards = Card.query.filter(Card.name.in_([preview_card_name])).all()
     
-    # print('HERE IS THE PRINT STATEMENT RIGHT OVER HERE')
-    # print('HERE IS THE PRINT STATEMENT RIGHT OVER HERE')
-    # print('HERE IS THE PRINT STATEMENT RIGHT OVER HERE')
-    # print('HERE IS THE PRINT STATEMENT RIGHT OVER HERE')
-    # print('HERE IS THE PRINT STATEMENT RIGHT OVER HERE')
-    # print('HERE IS THE PRINT STATEMENT RIGHT OVER HERE')
-    # print(preview_cards[0].image_url)
     deck.preview_image = preview_cards[0].image_url
 
     for card in cards:
