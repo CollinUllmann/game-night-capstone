@@ -81,7 +81,10 @@ export const thunkUpdateDeck = (deckId, deck) => async dispatch => {
     const updatedDeck = await res.json()
     dispatch(updateDeck(updatedDeck))
     return updatedDeck
-  } else return 'deck update thunk error'
+  } else {
+    const errorMessage = await res.json()
+    return errorMessage
+  }
 }
 
 export const thunkDeleteDeck = (deckId) => async dispatch => {

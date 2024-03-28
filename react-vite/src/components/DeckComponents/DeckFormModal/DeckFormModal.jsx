@@ -87,10 +87,19 @@ export function DeckFormModal({ formtype, deckId }) {
     deckFormData.append('cards', cards)
 
     if (formtype == 'update') {
-      dispatch(thunkUpdateDeck(deckId, deckFormData)).then(() => navigate(`/decks/${deckId}`)).then(() => closeModal())
+      const res = await dispatch(thunkUpdateDeck(deckId, deckFormData))
+      if (res.card_names_requested_but_not_found) {
+        setDeckValidationErrors(res.card_names_requested_but_not_found)
+        return
+      } else {
+        navigate(`/decks/${deckId}`)
+        closeModal()
+      }
+      
+      
+      // .then(() => navigate(`/decks/${deckId}`)).then(() => closeModal())
     } else {
       const res = await dispatch(thunkCreateDeck(deckFormData))
-      console.log('res: ', res)
       if (res.card_names_requested_but_not_found) {
         setDeckValidationErrors(res.card_names_requested_but_not_found)
         return
