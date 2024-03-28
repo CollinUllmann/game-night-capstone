@@ -10,8 +10,6 @@
   font-weight: 600;
   color: #fff;
   margin: 1vh 0;
-  transition: box-shadow 1s ease;
-
 }
 .add-event-modal-tile:hover {
   box-shadow: rgb(0, 0, 0, 0.6) 0px 5px 30px 0px;
