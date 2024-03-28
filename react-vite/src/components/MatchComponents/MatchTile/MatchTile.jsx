@@ -21,7 +21,7 @@ export function MatchTile({ match, onClick, matchNum }) {
   // const navigate = useNavigate()
 
   const decks = useSelector(state => state.decks)
-  const cards = useSelector(state => state.cards)
+  // const cards = useSelector(state => state.cards)
   const eventById = useSelector(state => state.events)
   
   useEffect(() => {
@@ -62,8 +62,8 @@ export function MatchTile({ match, onClick, matchNum }) {
             const deck = decks[deckId];
             if (!deck) return undefined
             
-            const firstCardId = deck.cards[0].cardId;
-            const firstCard = firstCardId != null ? cards[firstCardId] : undefined;
+            // const firstCardId = deck.cards[0].cardId;
+            // const firstCard = firstCardId != null ? cards[firstCardId] : undefined;
             return <div
               key={deckId}
               style={{

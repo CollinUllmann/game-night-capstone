@@ -29,7 +29,6 @@ export function EventDetailsPage() {
   
   useEffect(() => {
     dispatch(thunkFetchAllEvents())
-    dispatch(thunkFetchAllMatches())
   }, [dispatch])
 
 

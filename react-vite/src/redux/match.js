@@ -1,3 +1,4 @@
+import { getCards } from "./card"
 import { getDecks } from "./deck"
 
 //Action Types
@@ -38,9 +39,10 @@ export const thunkFetchAllMatches = () => async dispatch => {
   const res = await fetch('/api/matches')
 
   if (res.ok) {
-    const { decks, matches } = await res.json()
+    const { decks, matches, cards } = await res.json()
     dispatch(getMatches(matches))
     dispatch(getDecks(decks))
+    dispatch(getCards(cards))
   } else return 'get all matches thunk error'
 }
 
@@ -48,9 +50,10 @@ export const thunkFetchMatchById = matchId => async dispatch => {
   const res = await fetch(`/api/matches/${matchId}`)
 
   if (res.ok) {
-    const { decks, matches } = await res.json()
+    const { decks, matches, cards } = await res.json()
     dispatch(getMatches(matches))
     dispatch(getDecks(decks))
+    dispatch(getCards(cards))
     return matches[0]
   } else return 'get match by id thunk error'
 }

@@ -2,7 +2,9 @@ from flask import Blueprint, request
 from app.models import Event, db, Card, Deck, User, Event, Match
 from flask_login import current_user, login_required
 from ..forms import NewEventForm
-
+from ..shared.get_matches_in_events import get_matches_in_events
+from ..shared.get_decks_in_matches import get_decks_in_matches
+from ..shared.get_cards_in_decks import get_cards_in_decks
 import json
 
 event_routes = Blueprint('events', __name__)
@@ -10,38 +12,27 @@ event_routes = Blueprint('events', __name__)
 @event_routes.route('/')
 def event_index():
   events = Event.query.all()
+
   events_temp = [event.to_dict() for event in events]
-
-  # get all deck ids in all events
-  match_ids_set = set()
-  for event in events_temp:
-    for matchId in event['matchIds']:
-      match_ids_set.add(matchId)
-  match_ids = list(match_ids_set)
-
-  # query for all matches in all events
-  matches = Match.query.filter(Match.id.in_(match_ids)).all()
+  matches_temp = get_matches_in_events(events_temp)
+  decks_temp = get_decks_in_matches(matches_temp)
+  cards_temp = get_cards_in_decks(decks_temp)
     
-  return {'events': events_temp, 'matches': [match.to_dict() for match in matches] }
+  return {'events': events_temp, 'matches': matches_temp, 'decks': decks_temp, 'cards': cards_temp }
 
 @event_routes.route('/<int:eventId>')
 def event_details(eventId):
   event = Event.query.get(eventId)
   if (not event):
     return {"message": "Event not found"}
-  events_temp = [event.to_dict() for event in [event]]
+  events = [event]
+  events_temp = [event.to_dict() for event in events]
 
-  # get all match ids in all events
-  match_ids_set = set()
-  for event in events_temp:
-    for matchId in event['matchIds']:
-      match_ids_set.add(matchId)
-  match_ids = list(match_ids_set)
-
-  # query for all decks in all events
-  matches = Match.query.filter(Match.id.in_(match_ids)).all()
+  matches_temp = get_matches_in_events(events_temp)
+  decks_temp = get_decks_in_matches(matches_temp)
+  cards_temp = get_cards_in_decks(decks_temp)
     
-  return {'events': events_temp, 'matches': [match.to_dict() for match in matches] }
+  return {'events': events_temp, 'matches': matches_temp, 'decks': decks_temp, 'cards': cards_temp }
 
 @event_routes.route('/', methods = ['POST'])
 # @login_required

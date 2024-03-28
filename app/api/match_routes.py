@@ -2,6 +2,10 @@ from flask import Blueprint, request
 from app.models import Match, db, Card, Deck, User
 from flask_login import current_user, login_required
 from ..forms import NewMatchForm
+from ..shared.get_cards_in_decks import get_cards_in_decks
+from ..shared.get_decks_in_matches import get_decks_in_matches
+
+
 
 import json
 
@@ -10,38 +14,25 @@ match_routes = Blueprint('matches', __name__)
 @match_routes.route('/')
 def match_index():
   matches = Match.query.all()
+
   matches_temp = [match.to_dict() for match in matches]
-
-  # get all deck ids in all matches
-  deck_ids_set = set()
-  for match in matches_temp:
-    for deckId in match['deckIds']:
-      deck_ids_set.add(deckId)
-  deck_ids = list(deck_ids_set)
-
-  # query for all decks in all matches
-  decks = Deck.query.filter(Deck.id.in_(deck_ids)).all()
+  decks_temp = get_decks_in_matches(matches_temp)
+  cards_temp = get_cards_in_decks(decks_temp)
     
-  return {'matches': matches_temp, 'decks': [deck.to_dict() for deck in decks] }
+  return {'matches': matches_temp, 'decks': decks_temp, 'cards': cards_temp }
 
 @match_routes.route('/<int:matchId>')
 def match_details(matchId):
   match = Match.query.get(matchId)
   if (not match):
     return {"message": "Match not found"}
-  matches_temp = [match.to_dict() for match in [match]]
+  matches = [match]
 
-  # get all deck ids in all matches
-  deck_ids_set = set()
-  for match in matches_temp:
-    for deckId in match['deckIds']:
-      deck_ids_set.add(deckId)
-  deck_ids = list(deck_ids_set)
-
-  # query for all decks in all matches
-  decks = Deck.query.filter(Deck.id.in_(deck_ids)).all()
+  matches_temp = [match.to_dict() for match in matches]
+  decks_temp = get_decks_in_matches(matches_temp)
+  cards_temp = get_cards_in_decks(decks_temp)
     
-  return {'matches': matches_temp, 'decks': [deck.to_dict() for deck in decks] }
+  return {'matches': matches_temp, 'decks': decks_temp, 'cards': cards_temp }
 
 @match_routes.route('/', methods = ['POST'])
 # @login_required

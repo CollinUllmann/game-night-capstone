@@ -41,8 +41,6 @@ export function MatchDetailsPage() {
   const winningDeckId = match ? Object.values(match.deckIds).filter(deckId => decksById[deckId]?.userId == match?.userIdWinner) : undefined;
   
   useEffect(() => {
-    dispatch(thunkFetchAllMatches())
-    dispatch(thunkFetchAllDecks())
     dispatch(thunkFetchAllEvents())
   }, [dispatch])
 

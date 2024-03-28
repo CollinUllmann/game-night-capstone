@@ -42,15 +42,13 @@ export function DeckDetailsPage() {
 
   
   useEffect(() => {
-    dispatch(thunkFetchAllDecks())
     dispatch(thunkFetchAllMatches())
     dispatch(thunkFetchAllUsers())
-    dispatch(thunkFetchAllCards())
 
     dispatch(thunkFetchDeckById(deckId)).then(returnDeck => {
       returnDeck.cards.forEach(card => dispatch(thunkFetchCardById(card.cardId)))
     })
-  }, [dispatch])
+  }, [deckId, dispatch])
 
   function handleNavigateUserProfile() {
     navigate(`/users/${deck.userId}`)
