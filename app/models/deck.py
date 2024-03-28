@@ -11,7 +11,7 @@ class Deck(db.Model):
   name = db.Column(db.String(50), nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
   format = db.Column(db.String(50), nullable=False)
-  previewImage = db.Column(db.String, nullable=False)
+  preview_image = db.Column(db.String, nullable=False)
   
   matches = db.relationship("Match", secondary=deck_matches, back_populates="decks")
   user = db.relationship("User", back_populates="decks")
@@ -23,6 +23,6 @@ class Deck(db.Model):
       'name': self.name,
       'userId': self.user_id,
       'format': self.format,
-      'previewImage': self.previewImage,
+      'previewImage': self.preview_image,
       'cards': [card.to_dict() for card in self.cards]
     }

@@ -51,16 +51,23 @@ def create_new_deck():
     cards_string = form.data['cards']
     cards_count_list = list(map(str.strip, cards_string.split('\n')))
     card_count_obj = {}
+    
+    
     for card_count in cards_count_list:
       card_count_split = card_count.split('x ')
       card_count_obj[card_count_split[1]] = card_count_split[0]
 
     cards = Card.query.filter(Card.name.in_(card_count_obj.keys())).all()
 
+    first_card_split = cards_count_list[0].split('x ')
+    preview_card_name = first_card_split[1]
+    preview_cards = Card.query.filter(Card.name.in_([preview_card_name])).all()
+
     params = {
       'name': form.data['name'],
       'user_id': current_user.id,
-      'format': form.data['format']
+      'format': form.data['format'],
+      'preview_image': preview_cards[0].image_url
     }
     new_deck = Deck(**params)
     db.session.add(new_deck)

@@ -46,7 +46,6 @@ export function DeckDetailsPage() {
     dispatch(thunkFetchAllMatches())
     dispatch(thunkFetchAllUsers())
     dispatch(thunkFetchAllCards())
-    dispatch(thunkFetchAllMatches())
 
     dispatch(thunkFetchDeckById(deckId)).then(returnDeck => {
       returnDeck.cards.forEach(card => dispatch(thunkFetchCardById(card.cardId)))
