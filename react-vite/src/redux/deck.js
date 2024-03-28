@@ -65,7 +65,10 @@ export const thunkCreateDeck = (deck) => async dispatch => {
     const newDeck = await res.json()
     dispatch(createDeck(newDeck))
     return newDeck
-  } else return 'deck create thunk error'
+  } else {
+    const errorMessage = await res.json()
+    return errorMessage
+  }
 }
 
 export const thunkUpdateDeck = (deckId, deck) => async dispatch => {

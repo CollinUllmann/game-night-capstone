@@ -23,6 +23,7 @@ export function DeckFormModal({ formtype, deckId }) {
   const [cards, setCards] = useState("")
 
   const [errors, setErrors] = useState({});
+  const [deckValidationErrors, setDeckValidationErrors] = useState()
 
   const { closeModal } = useModal();
 
@@ -88,7 +89,17 @@ export function DeckFormModal({ formtype, deckId }) {
     if (formtype == 'update') {
       dispatch(thunkUpdateDeck(deckId, deckFormData)).then(() => navigate(`/decks/${deckId}`)).then(() => closeModal())
     } else {
-      dispatch(thunkCreateDeck(deckFormData)).then(returnDeck => navigate(`/users/${returnDeck.userId}`)).then(() => closeModal())
+      const res = await dispatch(thunkCreateDeck(deckFormData))
+      console.log('res: ', res)
+      if (res.card_names_requested_but_not_found) {
+        setDeckValidationErrors(res.card_names_requested_but_not_found)
+        return
+      } else {
+        navigate(`/users/${res.userId}`)
+        closeModal()
+      }
+      
+      // .then(returnDeck => navigate(`/users/${returnDeck.userId}`)).then(() => closeModal())
     }
 
   };
@@ -112,6 +123,8 @@ export function DeckFormModal({ formtype, deckId }) {
     const deckListString = cardsDeck.map(card => `1x ${card.name}`).join('\n');
     setCards(deckListString);
   }
+
+  console.log('deckValidationErrors: ', deckValidationErrors)
 
   let key = 0;
   return (
@@ -165,7 +178,8 @@ export function DeckFormModal({ formtype, deckId }) {
           />
         </label>
         <div className="deck-form-errors-div">
-          {errors.deckList && errors.deckList.split('\n').map(errorLine => <div className="validation-error" key={key++}>{errorLine}</div>)}
+          {deckValidationErrors && <div className="validation-error" >Card not found: {deckValidationErrors[0]}</div>}
+          {/* {errors.deckList && errors.deckList.split('\n').map(errorLine => <div className="validation-error" key={key++}>{errorLine}</div>)} */}
         </div>
         <div className="deck-form-submit-button-div">
           <button className='standard deck-form-modal-button' onClick={() => {handleSubmit}}>Submit</button>
