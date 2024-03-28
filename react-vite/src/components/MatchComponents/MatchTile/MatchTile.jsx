@@ -67,7 +67,7 @@ export function MatchTile({ match, onClick, matchNum }) {
             return <div
               key={deckId}
               style={{
-                backgroundImage: `url(${firstCard?.imageUrl})`,
+                backgroundImage: `url(${deck.previewImage})`,
                 backgroundPositionX: '50%',
                 backgroundPositionY: '22%',
               }}

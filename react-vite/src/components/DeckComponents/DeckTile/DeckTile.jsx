@@ -71,10 +71,11 @@ export function DeckTile({ deck, onClick }) {
   //   e.preventDefault()
   //   navigate(`/decks/${deck.id}/update`)
   // }
+  console.log('deck: ', deck)
 
   let key = 0;
   return (
-    <div onClick={onClick} style={{backgroundImage: `url(${cardsById[deck.cards[0]?.cardId]?.imageUrl})`, backgroundPositionX: '50%', backgroundPositionY: '25%', }} className="deck-tile-div">
+    <div onClick={onClick} style={{backgroundImage: `url(${deck.previewImage})`, backgroundPositionX: '50%', backgroundPositionY: '25%', }} className="deck-tile-div">
       <div className='deck-tile-content-div'>
         <p className='deck-tile-deck-name'>{deck.name}</p>
         <p className='deck-tile-deck-format'>{deck.format}</p>
