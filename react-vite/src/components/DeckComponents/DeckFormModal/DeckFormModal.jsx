@@ -52,22 +52,23 @@ export function DeckFormModal({ formtype, deckId }) {
   }, [deckId, deckById, cardById, setName, setFormat, setCards])
 
   function getDeckListErrors() {
-    return cards.split('\n')
-      .map((line, index) => ({ line: line.trim(), lineNumber: index+1 }))
-      .filter(lineAndNumber => lineAndNumber.line)
-      .map(lineAndNumber => {
-        const error = `Error Line ${lineAndNumber.lineNumber} - ${lineAndNumber.line}`
-        const countName = lineAndNumber.line.split('x ')
-        if (countName.length != 2) return error;
+    return ''
+    // return cards.split('\n')
+    //   .map((line, index) => ({ line: line.trim(), lineNumber: index+1 }))
+    //   .filter(lineAndNumber => lineAndNumber.line)
+    //   .map(lineAndNumber => {
+    //     const error = `Error Line ${lineAndNumber.lineNumber} - ${lineAndNumber.line}`
+    //     const countName = lineAndNumber.line.split('x ')
+    //     if (countName.length != 2) return error;
 
-        const count = Number(countName[0]);
-        if(isNaN(count) || count != Math.floor(count) || count <= 0) return error;
+    //     const count = Number(countName[0]);
+    //     if(isNaN(count) || count != Math.floor(count) || count <= 0) return error;
 
-        const cardName = countName[1];
-        if(!cardsAll.some(card => card.name === cardName)) return error;
+    //     const cardName = countName[1];
+    //     if(!cardsAll.some(card => card.name === cardName)) return error;
 
-        return null;
-      }).filter(error => error).join('\n');
+    //     return null;
+    //   }).filter(error => error).join('\n');
   }
 
 

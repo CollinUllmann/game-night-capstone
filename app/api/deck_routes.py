@@ -44,7 +44,15 @@ def create_new_deck():
       card_count_split = card_count.split('x ')
       card_count_obj[card_count_split[1]] = card_count_split[0]
 
-    cards = Card.query.filter(Card.name.in_(card_count_obj.keys())).all()
+    card_names_requested = card_count_obj.keys()
+
+    cards = Card.query.filter(Card.name.in_(card_names_requested)).all()
+
+    card_names_found = [card.name for card in cards]
+
+    card_names_requested_but_not_found = list(set(list(card_names_requested)).difference(set(card_names_found)))
+    if len(card_names_requested_but_not_found) > 0:
+      return { 'card_names_requested_but_not_found': card_names_requested_but_not_found }, 400
 
     first_card_split = cards_count_list[0].split('x ')
     preview_card_name = first_card_split[1]
