@@ -79,6 +79,10 @@ export function PlayerProfilePage() {
   }
 
   const decksList = getMatchesSlice(deckPageNum)
+
+  const deckPageNumMax = userDecks.length % 10 == 0 ? (userDecks.length / 10) + 1 : Math.ceil(userDecks.length / 10)
+
+  console.log('deckPageNumMax: ', deckPageNumMax)
   
   if (!user) return
   let key = 0;
@@ -113,7 +117,7 @@ export function PlayerProfilePage() {
             {statsPage == 'construction' && <PlayerConstruction />}
 
           </div>
-          <p className="player-profiel-player-decks-title"> <MdNavigateBefore onClick={() => deckPageNum == 1 ? null : setDeckPageNum(deckPageNum - 1)} style={{cursor:'pointer'}} /> Decks <MdNavigateNext onClick={() => setDeckPageNum(deckPageNum + 1)} style={{cursor:'pointer'}}/></p>
+          <p className="player-profiel-player-decks-title"> <MdNavigateBefore onClick={() => deckPageNum == 1 ? null : setDeckPageNum(deckPageNum - 1)} style={{cursor:'pointer'}} /> Decks <MdNavigateNext onClick={() => deckPageNum < deckPageNumMax ? setDeckPageNum(deckPageNum + 1) : null} style={{cursor:'pointer'}}/></p>
           <div className="player-profile-player-decks-div">
             {deckPageNum == 1 && <div className={currentUser?.id == userId ? "player-profile-add-deck-button-div" : "hidden"}>
               <OpenModalTile 

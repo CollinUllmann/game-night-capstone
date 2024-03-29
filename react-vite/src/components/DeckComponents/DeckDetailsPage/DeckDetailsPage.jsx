@@ -75,6 +75,9 @@ export function DeckDetailsPage() {
 
   const matchList = getMatchesSlice(matchPageNum)
 
+  const matchPageNumMax = deckMatches.length % 10 == 0 ? (deckMatches.length / 10) + 1 : Math.ceil(deckMatches.length / 10)
+
+
   let key = deckMatches.length - ((matchPageNum - 1) * 10);
   return (
     <div>
@@ -102,7 +105,7 @@ export function DeckDetailsPage() {
             {statsPage == 'performance' && (deckMatches.length ? <DeckStats /> : <div className="no-data">No Data</div>)}
             {statsPage == 'construction' && <DeckConstruction />}
           </div>
-          {deckMatches.length ? <p className="deck-details-deck-matches-title"> <MdNavigateBefore onClick={() => matchPageNum == 1 ? null : setMatchPageNum(matchPageNum - 1)} style={{cursor:'pointer'}} /> Matches <MdNavigateNext onClick={() => setMatchPageNum(matchPageNum + 1)} style={{cursor:'pointer'}}/></p> : undefined}
+          {deckMatches.length ? <p className="deck-details-deck-matches-title"> <MdNavigateBefore onClick={() => matchPageNum == 1 ? null : setMatchPageNum(matchPageNum - 1)} style={{cursor:'pointer'}} /> Matches <MdNavigateNext onClick={() => matchPageNum < matchPageNumMax ? setMatchPageNum(matchPageNum + 1) : null} style={{cursor:'pointer'}}/></p> : undefined}
           <div className="deck-details-deck-matches-div">
             {matchList.map(match => {
               return <div className="deck-details-match-tile-div top-level-section" key={key--}>

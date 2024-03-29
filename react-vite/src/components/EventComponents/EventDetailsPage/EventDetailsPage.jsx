@@ -63,6 +63,8 @@ export function EventDetailsPage() {
   }
 
   const matchList = getMatchesSlice(matchPageNum)
+
+  const matchPageNumMax = eventMatches.length % 10 == 0 ? (eventMatches.length / 10) + 1 : Math.ceil(eventMatches.length / 10)
   
   let eventKey = 1;
   let matchKey = eventMatches.length - (9 + ((matchPageNum - 2) * 10));
@@ -110,7 +112,7 @@ export function EventDetailsPage() {
           <div className="event-details-event-stats-div top-level-section">
             {eventMatches.length ? <EventStats /> : <div className="no-data">No Data</div>}
           </div>
-          <p className="event-details-event-matches-title"> <MdNavigateBefore onClick={() => matchPageNum == 1 ? null : setMatchPageNum(matchPageNum - 1)} style={{cursor:'pointer'}} /> Matches <MdNavigateNext onClick={() => setMatchPageNum(matchPageNum + 1)} style={{cursor:'pointer'}}/></p>
+          <p className="event-details-event-matches-title"> <MdNavigateBefore onClick={() => matchPageNum == 1 ? null : setMatchPageNum(matchPageNum - 1)} style={{cursor:'pointer'}} /> Matches <MdNavigateNext onClick={() => matchPageNum < matchPageNumMax ? setMatchPageNum(matchPageNum + 1) : null} style={{cursor:'pointer'}}/></p>
           {/* <p className="event-details-event-matches-title">Matches</p> */}
           <div className="event-details-event-matches-div">
             {matchPageNum == 1 && <div className="event-details-match-tile-div">
