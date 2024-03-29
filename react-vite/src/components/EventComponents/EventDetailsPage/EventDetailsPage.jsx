@@ -87,7 +87,10 @@ export function EventDetailsPage() {
           <p className="event-details-eventlist-title">All Events</p>
           {Object.keys(eventsById)?.map(tempEventId => 
             <div key={eventKey++} className="event-details-event-tile-div">
-              <div className={tempEventId == eventId ? "event-details-event-tile selected-event" : "event-details-event-tile"} onClick={() => navigate(`/events/${tempEventId}`)}>
+              <div className={tempEventId == eventId ? "event-details-event-tile selected-event" : "event-details-event-tile"} onClick={() => {
+                setMatchPageNum(1)
+                navigate(`/events/${tempEventId}`)}
+                }>
                 <p className="event-details-event-tile-event">{eventsById[tempEventId]?.name}</p>
                 <div className="event-details-event-tile-update-delete-div">
                   <div className="event-details-event-tile-icon" >
