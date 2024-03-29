@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { thunkFetchAllMatches } from "../../../redux/match";
 import { DecklistPanel } from "../DecklistPanel/DecklistPanel";
 import { MatchTile } from "../../MatchComponents/MatchTile/MatchTile";
 import { DeckStats } from "./DeckStats/DeckStats";
@@ -17,6 +16,7 @@ import { MdNavigateBefore } from "react-icons/md";
 
 import './DeckDetailsPage.css'
 import { thunkFetchAllUsers } from "../../../redux/users";
+import { thunkFetchAllEvents } from "../../../redux/event";
 
 
 export function DeckDetailsPage() {
@@ -45,7 +45,7 @@ export function DeckDetailsPage() {
 
   
   useEffect(() => {
-    dispatch(thunkFetchAllMatches())
+    dispatch(thunkFetchAllEvents())
     dispatch(thunkFetchAllUsers())
 
     // dispatch(thunkFetchDeckById(deckId)).then(returnDeck => {

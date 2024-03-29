@@ -12,7 +12,9 @@ export function DecklistPanel({ deckId }) {
   const deck = deckById[deckId]
 
   useEffect(() => {
-    dispatch(thunkFetchDeckById(deckId))
+    if(deckId) {
+      dispatch(thunkFetchDeckById(deckId))
+    }
   }, [deckId, dispatch])
 
 

@@ -22,10 +22,6 @@ export function MatchTile({ match, onClick, matchNum }) {
   const decks = useSelector(state => state.decks)
   // const cards = useSelector(state => state.cards)
   const eventById = useSelector(state => state.events)
-  
-  useEffect(() => {
-    dispatch(thunkFetchAllEvents())
-  }, [dispatch])
 
 
   // const handleDelete = (e) => {
