@@ -13,7 +13,7 @@ export function DecklistPanel({ deckId }) {
 
   useEffect(() => {
     dispatch(thunkFetchDeckById(deckId))
-  }, [dispatch])
+  }, [deckId, dispatch])
 
 
   const cardCounts = deck?.cards.map(deckCard =>({count: deckCard.count, card: cardById[deckCard.cardId]})).filter(cardCount => cardCount.card)

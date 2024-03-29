@@ -57,7 +57,7 @@ export function DeckDetailsPage() {
   
   // if (sessionUser?.id != deck?.userId) return <Navigate to="/" replace={true} />;
   
-  let key = 1;
+  let key = deckMatches.length;
   return (
     <div>
       <p className="deck-details-title"><span className="breadcrumb-link" onClick={() => navigate(`/users/${deckOwner.id}`)}>{deckOwner?.username} / </span><span className="page-title">{deck?.name}</span> Deck Details</p>
@@ -86,8 +86,8 @@ export function DeckDetailsPage() {
           </div>
           {deckMatches.length ? <p className="deck-details-deck-matches-title">Matches</p> : undefined}
           <div className="deck-details-deck-matches-div">
-            {deckMatches.map(match => {
-              return <div className="deck-details-match-tile-div top-level-section" key={key++}>
+            {deckMatches.reverse().map(match => {
+              return <div className="deck-details-match-tile-div top-level-section" key={key--}>
                 <MatchTile className="deck-details-match-tile" match={match} onClick={() => navigate(`/matches/${match.id}`)} matchNum={key}/>
               </div>
             })}
