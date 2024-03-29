@@ -1,6 +1,8 @@
 .nav-bar-div {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 90px;
   width: 100%;
   box-sizing: border-box;
   background: linear-gradient(var(--blue), var(--red));
