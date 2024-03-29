@@ -76,7 +76,8 @@
 .deck-details-deck-matches-title {
   font-size: large;
   font-weight: 600;
-  margin: 1vh 0 0 2vh
+  margin: 1vh 0 0 2vh;
+  display: flex;
 }
 
 .deck-details-deck-matches-div {

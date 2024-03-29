@@ -11,6 +11,9 @@ import { DeckFormModal } from "../DeckFormModal/DeckFormModal";
 import OpenModalDeleteIcon from "../DeckTile/OpenDeleteIconModal";
 import { DeleteDeckConfirmationModal } from "../DeckTile/DeleteDeckConfirmationModal";
 
+import { MdNavigateNext } from "react-icons/md";
+import { MdNavigateBefore } from "react-icons/md";
+
 
 import './DeckDetailsPage.css'
 import { thunkFetchAllUsers } from "../../../redux/users";
@@ -22,6 +25,8 @@ export function DeckDetailsPage() {
   const navigate = useNavigate();
 
   const [statsPage, setStatsPage] = useState('performance');
+
+  const [matchPageNum, setMatchPageNum] = useState(1);
 
   // const sessionUser = useSelector((state) => state.session.user);
   const deckById = useSelector(state => state.decks)
@@ -57,7 +62,20 @@ export function DeckDetailsPage() {
   
   // if (sessionUser?.id != deck?.userId) return <Navigate to="/" replace={true} />;
   
-  let key = deckMatches.length;
+  //pagination
+  // const deckMatchesTimeOrder = deckMatches.reverse()
+  // function getMatchesSlice(pageNum) {
+  //   if (pageNum == 1) return deckMatchesTimeOrder.slice(0, 9)
+  //   return deckMatchesTimeOrder.slice(((((pageNum - 1) * 10) - 1), (pageNum * 10) - 2))
+  // }
+
+  function getMatchesSlice(pageNum) {
+    return deckMatches.reverse().slice(((pageNum - 1) * 10), (pageNum * 10))
+  }
+
+  const matchList = getMatchesSlice(matchPageNum)
+
+  let key = deckMatches.length - ((matchPageNum - 1) * 10);
   return (
     <div>
       <p className="deck-details-title"><span className="breadcrumb-link" onClick={() => navigate(`/users/${deckOwner.id}`)}>{deckOwner?.username} / </span><span className="page-title">{deck?.name}</span> Deck Details</p>
@@ -84,9 +102,9 @@ export function DeckDetailsPage() {
             {statsPage == 'performance' && (deckMatches.length ? <DeckStats /> : <div className="no-data">No Data</div>)}
             {statsPage == 'construction' && <DeckConstruction />}
           </div>
-          {deckMatches.length ? <p className="deck-details-deck-matches-title">Matches</p> : undefined}
+          {deckMatches.length ? <p className="deck-details-deck-matches-title"> <MdNavigateBefore onClick={() => matchPageNum == 1 ? null : setMatchPageNum(matchPageNum - 1)} style={{cursor:'pointer'}} /> Matches <MdNavigateNext onClick={() => setMatchPageNum(matchPageNum + 1)} style={{cursor:'pointer'}}/></p> : undefined}
           <div className="deck-details-deck-matches-div">
-            {deckMatches.reverse().map(match => {
+            {matchList.map(match => {
               return <div className="deck-details-match-tile-div top-level-section" key={key--}>
                 <MatchTile className="deck-details-match-tile" match={match} onClick={() => navigate(`/matches/${match.id}`)} matchNum={key}/>
               </div>
