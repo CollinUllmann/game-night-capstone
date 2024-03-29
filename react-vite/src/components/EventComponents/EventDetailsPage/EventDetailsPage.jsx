@@ -50,7 +50,7 @@ export function EventDetailsPage() {
   // if (sessionUser?.id != deck?.userId) return <Navigate to="/" replace={true} />;
   
   let eventKey = 1;
-  let matchKey = 1;
+  let matchKey = eventMatches.length;
   return (
     <div>
       <div style={{display:'flex', alignItems:'center', columnGap:'1vh'}}>
@@ -96,8 +96,8 @@ export function EventDetailsPage() {
             <div className="event-details-match-tile-div">
               <OpenModalTile modalComponent={<MatchFormModal formtype={'new'}/>}/>
             </div>
-            {eventMatches.map(match => {
-              return <div className="event-details-match-tile-div top-level-section" key={matchKey++}>
+            {eventMatches.reverse().map(match => {
+              return <div className="event-details-match-tile-div top-level-section" key={matchKey--}>
                 <MatchTile className="event-details-match-tile" match={match} onClick={() => navigate(`/matches/${match.id}`)} matchNum={matchKey}/>
               </div>
             })}

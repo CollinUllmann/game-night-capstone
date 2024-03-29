@@ -36,7 +36,7 @@ export function MatchDetailsPage() {
   const eventId = match?.eventId;
   const event = eventId != null ? eventsById[eventId] : undefined;
 
-  const winningDeckId = match ? Object.values(match.deckIds).filter(deckId => decksById[deckId]?.userId == match?.userIdWinner) : undefined;
+  const winningDeckId = match ? Object.values(match.deckIds).filter(deckId => decksById[deckId]?.userId == match?.userIdWinner)[0] : undefined;
   
   useEffect(() => {
     dispatch(thunkFetchAllEvents())
