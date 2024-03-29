@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { MatchTile } from "../../MatchComponents/MatchTile/MatchTile";
@@ -14,10 +14,16 @@ import { MatchFormModal } from "../../MatchComponents/MatchFormModal/MatchFormMo
 import './EventDetailsPage.css'
 
 
+import { MdNavigateNext } from "react-icons/md";
+import { MdNavigateBefore } from "react-icons/md";
+
+
 export function EventDetailsPage() {
   const {eventId} = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [matchPageNum, setMatchPageNum] = useState(2);
 
   // const sessionUser = useSelector((state) => state.session.user);
   const matchesById = useSelector(state => state.matches)
@@ -48,9 +54,21 @@ export function EventDetailsPage() {
   // }
   
   // if (sessionUser?.id != deck?.userId) return <Navigate to="/" replace={true} />;
+
+
+    //pagination
+  function getMatchesSlice(pageNum) {
+    if (pageNum == 1) return eventMatches.reverse().slice(0, 9)
+    // return deckMatches.reverse().slice(((pageNum - 1) * 10), (pageNum * 10))
+    // return eventMatches.reverse().slice(((((pageNum - 1) * 10) - 1), ((pageNum * 10) - 1)))
+    return eventMatches.reverse().slice((((pageNum - 1) * 10) - 1), ((pageNum * 10) - 1))
+  }
+
+  const matchList = getMatchesSlice(matchPageNum)
   
   let eventKey = 1;
-  let matchKey = eventMatches.length;
+  let matchKey = eventMatches.length - (9 + ((matchPageNum - 2) * 10));
+  if (matchPageNum == 1) matchKey = eventMatches.length
   return (
     <div>
       <div style={{display:'flex', alignItems:'center', columnGap:'1vh'}}>
@@ -91,12 +109,13 @@ export function EventDetailsPage() {
           <div className="event-details-event-stats-div top-level-section">
             {eventMatches.length ? <EventStats /> : <div className="no-data">No Data</div>}
           </div>
-          <p className="event-details-event-matches-title">Matches</p>
+          <p className="event-details-event-matches-title"> <MdNavigateBefore onClick={() => matchPageNum == 1 ? null : setMatchPageNum(matchPageNum - 1)} style={{cursor:'pointer'}} /> Matches <MdNavigateNext onClick={() => setMatchPageNum(matchPageNum + 1)} style={{cursor:'pointer'}}/></p>
+          {/* <p className="event-details-event-matches-title">Matches</p> */}
           <div className="event-details-event-matches-div">
-            <div className="event-details-match-tile-div">
+            {matchPageNum == 1 && <div className="event-details-match-tile-div">
               <OpenModalTile modalComponent={<MatchFormModal formtype={'new'}/>}/>
-            </div>
-            {eventMatches.reverse().map(match => {
+            </div>}
+            {matchList.reverse().map(match => {
               return <div className="event-details-match-tile-div top-level-section" key={matchKey--}>
                 <MatchTile className="event-details-match-tile" match={match} onClick={() => navigate(`/matches/${match.id}`)} matchNum={matchKey}/>
               </div>
