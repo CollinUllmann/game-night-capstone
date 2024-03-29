@@ -23,7 +23,7 @@ export function EventDetailsPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [matchPageNum, setMatchPageNum] = useState(2);
+  const [matchPageNum, setMatchPageNum] = useState(1);
 
   // const sessionUser = useSelector((state) => state.session.user);
   const matchesById = useSelector(state => state.matches)
@@ -59,8 +59,6 @@ export function EventDetailsPage() {
     //pagination
   function getMatchesSlice(pageNum) {
     if (pageNum == 1) return eventMatches.reverse().slice(0, 9)
-    // return deckMatches.reverse().slice(((pageNum - 1) * 10), (pageNum * 10))
-    // return eventMatches.reverse().slice(((((pageNum - 1) * 10) - 1), ((pageNum * 10) - 1)))
     return eventMatches.reverse().slice((((pageNum - 1) * 10) - 1), ((pageNum * 10) - 1))
   }
 

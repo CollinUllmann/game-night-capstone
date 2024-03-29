@@ -17,6 +17,9 @@ import OpenAddEventModal from "../EventComponents/OpenAddEventModal";
 import { DeckFormModal } from "../DeckComponents/DeckFormModal/DeckFormModal";
 import { EventFormModal } from "../EventComponents/EventFormModal/EventFormModal";
 
+import { MdNavigateNext } from "react-icons/md";
+import { MdNavigateBefore } from "react-icons/md";
+
 import './PlayerProfilePage.css'
 
 
@@ -26,6 +29,8 @@ export function PlayerProfilePage() {
   const navigate = useNavigate();
 
   const [statsPage, setStatsPage] = useState('performance');
+  const [deckPageNum, setDeckPageNum] = useState(1);
+
 
 
   const userById = useSelector(state => state.users)
@@ -66,6 +71,14 @@ export function PlayerProfilePage() {
 
   
   // if (sessionUser?.id != userId) return <Navigate to="/" replace={true} />;
+
+  //pagination
+  function getMatchesSlice(pageNum) {
+    if (pageNum == 1) return userDecks.reverse().slice(0, 9)
+    return userDecks.reverse().slice((((pageNum - 1) * 10) - 1), ((pageNum * 10) - 1))
+  }
+
+  const decksList = getMatchesSlice(deckPageNum)
   
   if (!user) return
   let key = 0;
@@ -100,14 +113,14 @@ export function PlayerProfilePage() {
             {statsPage == 'construction' && <PlayerConstruction />}
 
           </div>
-          <p className="player-profiel-player-decks-title">Decks</p>
+          <p className="player-profiel-player-decks-title"> <MdNavigateBefore onClick={() => deckPageNum == 1 ? null : setDeckPageNum(deckPageNum - 1)} style={{cursor:'pointer'}} /> Decks <MdNavigateNext onClick={() => setDeckPageNum(deckPageNum + 1)} style={{cursor:'pointer'}}/></p>
           <div className="player-profile-player-decks-div">
-            <div className={currentUser?.id == userId ? "player-profile-add-deck-button-div" : "hidden"}>
+            {deckPageNum == 1 && <div className={currentUser?.id == userId ? "player-profile-add-deck-button-div" : "hidden"}>
               <OpenModalTile 
                 modalComponent={<DeckFormModal className="deck-tile-div add"/>}
               />
-            </div>
-            {userDecks.map(deck => <div key={key++} onClick={() => navigate(`/decks/${deck.id}`)} className="player-profile-decktile-div top-level-section"><DeckTile deck={deck} key={key++} /></div>)}
+            </div>}
+            {decksList.map(deck => <div key={key++} onClick={() => navigate(`/decks/${deck.id}`)} className="player-profile-decktile-div top-level-section"><DeckTile deck={deck} key={key++} /></div>)}
           </div>
         </div>
       </div>

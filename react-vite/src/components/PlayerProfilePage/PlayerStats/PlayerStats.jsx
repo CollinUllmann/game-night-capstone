@@ -172,7 +172,10 @@ export function PlayerStats() {
             </div>
             <div className={setMatchupVisibilityClass("player", "deck-stats-matchups-content-matchup-div")}>
               {Object.keys(playerMatchupObj).map(playerId => {
-                return <div className='deck-stats-matchup-tile-div' key={playerId} onClick={() => navigate(`/users/${playerId}`)}>
+                return <div className='deck-stats-matchup-tile-div' key={playerId} onClick={() => {
+                  navigate(`/users/${playerId}`)
+                  window.location.reload()
+                  }}>
                   <MatchupTile key={playerId} matchup={usersById[playerId]?.username} winrate={Math.floor((playerMatchupObj[playerId].wins / playerMatchupObj[playerId].count)*100)} matches={`${playerMatchupObj[playerId].wins}-${playerMatchupObj[playerId].count - playerMatchupObj[playerId].wins}`} /> 
                 </div>
               }
