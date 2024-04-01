@@ -140,7 +140,6 @@ export function DeckConstruction() {
         colorDataObj['green']++
       }
     }
-    console.log(colorDataObj)
   }
   
   const colorData = {

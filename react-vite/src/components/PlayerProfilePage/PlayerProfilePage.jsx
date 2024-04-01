@@ -82,7 +82,6 @@ export function PlayerProfilePage() {
 
   const deckPageNumMax = userDecks.length % 10 == 0 ? (userDecks.length / 10) + 1 : Math.ceil(userDecks.length / 10)
 
-  console.log('deckPageNumMax: ', deckPageNumMax)
   
   if (!user) return
   let key = 0;

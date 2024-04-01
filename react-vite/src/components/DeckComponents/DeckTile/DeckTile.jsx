@@ -69,7 +69,6 @@ export function DeckTile({ deck, onClick }) {
   //   e.preventDefault()
   //   navigate(`/decks/${deck.id}/update`)
   // }
-  console.log('deck: ', deck)
 
   let key = 0;
   return (
