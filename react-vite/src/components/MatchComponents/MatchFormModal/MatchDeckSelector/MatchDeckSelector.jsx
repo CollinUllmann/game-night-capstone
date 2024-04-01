@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import './MatchDeckSelector.css'
@@ -12,6 +12,9 @@ export function MatchDeckSelector({ index, deckId, onChangeDeckId }) {
 
   const [userId, setUserId] = useState(deckById[deckId]?.userId);
 
+  useEffect(() => {
+    setUserId(deckById[deckId]?.userId)
+  }, [deckId])
 
   return (
     <div className="match-form-player-input-div">

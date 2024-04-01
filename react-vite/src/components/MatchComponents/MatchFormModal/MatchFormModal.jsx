@@ -15,7 +15,6 @@ export function MatchFormModal({ formtype, matchId }) {
 
   const { closeModal } = useModal();
 
-  const cardById = useSelector(state => state.cards)
   const matchById = useSelector(state => state.matches)
   const deckById = useSelector(state => state.decks)
   const userById = useSelector(state => state.users)
@@ -58,17 +57,8 @@ export function MatchFormModal({ formtype, matchId }) {
 
     setEventId(match.eventId)
     setUserIdWinner(match.userIdWinner)
-
-    const matchDeckIds = match.deckIds
-    const matchDeckIdsSet = []
-    for (const deckId of matchDeckIds) {
-      const deckObj = deckById[deckId]
-      if(deckObj) {
-        matchDeckIdsSet.push(deckId)
-        setDeckIds(matchDeckIdsSet)
-      }
-    }
-  }, [deckById, matchId, matchById, cardById])
+    setDeckIds(match.deckIds)
+  }, [matchId, matchById])
 
 
   const handleSubmit = async (e) => {
