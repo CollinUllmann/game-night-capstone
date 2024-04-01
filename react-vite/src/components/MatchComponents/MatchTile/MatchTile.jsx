@@ -1,13 +1,13 @@
 
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import './MatchTile.css'
 // import { FaTrashAlt } from "react-icons/fa";
 // import { RxUpdate } from "react-icons/rx";
 // import { thunkDeleteMatch } from '../../../redux/match';
 // import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import { thunkFetchAllEvents } from '../../../redux/event';
+// import { useEffect } from 'react';
+// import { thunkFetchAllEvents } from '../../../redux/event';
 
 import OpenModalDeleteIcon from '../../DeckComponents/DeckTile/OpenDeleteIconModal';
 import { DeleteMatchConfirmationModal } from './DeleteMatchConfirmationModal';
@@ -16,7 +16,7 @@ import { MatchFormModal } from '../MatchFormModal/MatchFormModal';
 
 
 export function MatchTile({ match, onClick, matchNum }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const navigate = useNavigate()
 
   const decks = useSelector(state => state.decks)
