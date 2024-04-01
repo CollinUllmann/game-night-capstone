@@ -5,53 +5,22 @@ from app.models import Card
 
 def load_oracle_cards():
   cards = []
-  with open('app/seeds/oracle-cards-20240226100154.json') as oracle_cards_file:
-    oracle_cards_file_contents = oracle_cards_file.read()
-    oracle_cards_file_json = json.loads(oracle_cards_file_contents)
+  with open('app/seeds/card_seeder.json') as card_seeder_file:
+    card_seeder_file_contents = card_seeder_file.read()
+    card_seeder_file_json = json.loads(card_seeder_file_contents)
 
-    for oracle_card in oracle_cards_file_json:
-
-      card_face = oracle_card
-      if 'card_faces' in oracle_card.keys() and oracle_card['card_faces'][0] is not None:
-        card_face = oracle_card['card_faces'][0]
-
-      card_face_keys = card_face.keys()
-
-      image_url = ''
-      if 'image_uris' in card_face_keys and 'large' in card_face['image_uris']:
-        image_url = card_face['image_uris']['large']
-
-      type_line = ''
-      if 'type_line' in card_face_keys:
-        type_line = card_face['type_line']
-
-      colors = ''
-      if 'colors' in card_face_keys:
-        colors = ''.join(card_face['colors'])
-
-      mana_cost = ''
-      if 'mana_cost' in card_face_keys:
-        mana_cost = card_face['mana_cost']
-
-      power = ''
-      if 'power' in card_face_keys:
-        power = card_face['power']
-
-      toughness = ''
-      if 'toughness' in card_face_keys:
-        toughness = card_face['toughness']
-
+    for card_seeder_card in card_seeder_file_json:
       card = Card(
-        image_url = image_url,
-        name = card_face['name'],
-        mana_cost = mana_cost,
-        cmc = oracle_card['cmc'],
-        type_line = type_line,
-        colors = colors,
-        color_identity = ''.join(oracle_card['color_identity']),
-        rarity = oracle_card['rarity'],
-        power = power,
-        toughness = toughness
+        image_url = card_seeder_card['image_url'],
+        name = card_seeder_card['name'],
+        mana_cost = card_seeder_card['mana_cost'],
+        cmc = card_seeder_card['cmc'],
+        type_line = card_seeder_card['type_line'],
+        colors = card_seeder_card['colors'],
+        color_identity = card_seeder_card['color_identity'],
+        rarity = card_seeder_card['rarity'],
+        power = card_seeder_card['power'],
+        toughness = card_seeder_card['toughness'],
       )
       
       cards.append(card)
