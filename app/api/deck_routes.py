@@ -8,6 +8,13 @@ import json
 
 deck_routes = Blueprint('decks', __name__)
 
+def transform_card_count(card_count_string):
+  card_count_split = card_count_string.split('x ')
+  return {
+    'count': card_count_split[0],
+    'name': 'x '.join(card_count_split[1:])
+  }
+
 @deck_routes.route('/')
 def deck_index():
   decks = Deck.query.all()
@@ -41,8 +48,8 @@ def create_new_deck():
     
     
     for card_count in cards_count_list:
-      card_count_split = card_count.split('x ')
-      card_count_obj[card_count_split[1]] = card_count_split[0]
+      card_count_split = transform_card_count(card_count)
+      card_count_obj[card_count_split['name']] = card_count_split['count']
 
     card_names_requested = card_count_obj.keys()
 
@@ -54,8 +61,8 @@ def create_new_deck():
     if len(card_names_requested_but_not_found) > 0:
       return { 'card_names_requested_but_not_found': card_names_requested_but_not_found }, 400
 
-    first_card_split = cards_count_list[0].split('x ')
-    preview_card_name = first_card_split[1]
+    first_card_split = transform_card_count(cards_count_list[0])
+    preview_card_name = first_card_split['name']
     preview_cards = Card.query.filter(Card.name.in_([preview_card_name])).all()
 
     params = {
@@ -105,8 +112,8 @@ def update_deck(deckId):
     cards_count_list = list(map(str.strip, cards_string.split('\n')))
     card_count_obj = {}
     for card_count in cards_count_list:
-      card_count_split = card_count.split('x ')
-      card_count_obj[card_count_split[1]] = card_count_split[0]
+      card_count_split = transform_card_count(card_count)
+      card_count_obj[card_count_split.name] = card_count_split.count
 
     card_names_requested = card_count_obj.keys()
 
@@ -118,8 +125,8 @@ def update_deck(deckId):
     if len(card_names_requested_but_not_found) > 0:
       return { 'card_names_requested_but_not_found': card_names_requested_but_not_found }, 400
 
-    first_card_split = cards_count_list[0].split('x ')
-    preview_card_name = first_card_split[1]
+    first_card_split = transform_card_count(cards_count_list[0])
+    preview_card_name = first_card_split.name
     preview_cards = Card.query.filter(Card.name.in_([preview_card_name])).all()
     
     deck.preview_image = preview_cards[0].image_url
