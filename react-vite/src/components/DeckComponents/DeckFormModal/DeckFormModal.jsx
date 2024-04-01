@@ -131,7 +131,7 @@ export function DeckFormModal({ formtype, deckId }) {
     setCards(deckListString);
   }
 
-  console.log('deckValidationErrors: ', deckValidationErrors)
+  // console.log('deckValidationErrors: ', deckValidationErrors)
 
   return (
     <>
