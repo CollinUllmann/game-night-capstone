@@ -6,15 +6,25 @@ from datetime import date
 def seed_events():
     events = [
         Event(
-            name="Saturday Night Gamin",
-            date=date(2024, 12, 4),
+            name="Kitchen Table Commander",
+            date=date(2023, 12, 4),
             format="Commander"
         ),
         Event(
-            name="Friday Webcam Games",
-            date=date(2024, 12, 10),
+            name="Webcam Commander",
+            date=date(2023, 12, 15),
             format="Commander"
-        )
+        ),
+        Event(
+            name="Friday Night Magic",
+            date=date(2024, 1, 6),
+            format="Modern"
+        ),
+        Event(
+            name="PTQ Antarctica",
+            date=date(2023, 2, 11),
+            format="Legacy"
+        ),
     ]
     for event in events:
       db.session.add(event)

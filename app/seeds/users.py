@@ -6,18 +6,32 @@ from sqlalchemy.sql import text
 def seed_users():
     demo = User(
         username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
-    billy = User(
-        username='billy', email='billy@aa.io', password='password'
-    )
+    stu = User(
+        username='Stu', email='stu@email.com', password='password')
+    dynamite = User(
+        username='Dynamite', email='dynamite@email.com', password='password')
+    bassim = User(
+        username='Bassim', email='bassim@email.com', password='password')
+    pearlman = User(
+        username='Pearlman', email='pearlman@email.com', password='password')
+    lax = User(
+        username='Lax', email='lax@email.com', password='password')
+    tim = User(
+        username='Tim', email='tim@email.com', password='password')
+    johnny = User(
+        username='Johnny', email='johnny@email.com', password='password')
+    spike = User(
+        username='Spike', email='spike@email.com', password='password')
 
     db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
-    db.session.add(billy)
+    db.session.add(stu)
+    db.session.add(dynamite)
+    db.session.add(bassim)
+    db.session.add(pearlman)
+    db.session.add(lax)
+    db.session.add(tim)
+    db.session.add(johnny)
+    db.session.add(spike)
     db.session.commit()
 
 

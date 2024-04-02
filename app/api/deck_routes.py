@@ -160,3 +160,118 @@ def delete_deck(deckId):
   db.session.commit()
   
   return {"message": "Successfully deleted!"}
+
+
+
+
+
+
+@deck_routes.route('/test', methods = ['GET'])
+def format_seeders():
+  deckListString = """1x Atraxa, Praetors' Voice
+1x Ajani, Sleeper Agent
+1x Arcane Sanctum
+1x Arcane Signet
+1x Astral Cornucopia
+1x Atomize
+1x Birds of Paradise
+1x Blighted Agent
+1x Bloated Contaminator
+1x Breeding Pool
+1x Brokers Ascendancy
+1x Byrke, Long Ear of the Law
+1x Cankerbloom
+1x Chromatic Lantern
+1x Cleopatra, Exiled Pharaoh
+1x Command Tower
+1x Contagion Engine
+1x Contaminant Grafter
+1x Counterspell
+1x Cultivate
+1x Cyclonic Rift
+1x Deepglow Skate
+1x Demonic Tutor
+1x Doubling Season
+1x Drown in Ichor
+1x Everflowing Chalice
+1x Evolution Sage
+1x Exotic Orchard
+1x Experimental Augury
+1x Ezuri, Stalker of Spheres
+1x Farseek
+1x Fellwar Stone
+1x Flooded Strand
+1x Flux Channeler
+3x Forest
+1x Glistening Sphere
+1x Godless Shrine
+1x Hallowed Fountain
+1x Ichor Rats
+1x Ichormoon Gauntlet
+1x Indatha Triome
+1x Inexorable Tide
+1x Infectious Inquiry
+3x Island
+1x Ixhel, Scion of Atraxa
+1x Karn's Bastion
+1x Lae'zel, Vlaakith's Champion
+1x Lightning Greaves
+1x Marsh Flats
+1x Misty Rainforest
+1x Narset, Parter of Veils
+1x Nature's Lore
+1x Norn's Choirmaster
+1x Norn's Decree
+1x Oath of Teferi
+1x Oko, Thief of Crowns
+1x Oko, the Ringleader
+1x Opulent Palace
+1x Overgrown Tomb
+1x Phyresis Outbreak
+2x Plains
+1x Polluted Delta
+1x Prologue to Phyresis
+1x Radstorm
+1x Raffine's Tower
+1x Rhystic Study
+1x Ripples of Potential
+1x Roaming Throne
+1x Sandsteppe Citadel
+1x Seaside Citadel
+1x Shalai, Voice of Plenty
+1x Skrelv's Hive
+1x Skrelv, Defector Mite
+1x Smothering Tithe
+1x Sol Ring
+1x Spara's Headquarters
+1x Swamp
+1x Swords to Plowshares
+1x Tainted Observer
+1x Tamiyo, Field Researcher
+1x Teferi, Master of Time
+1x Tekuthal, Inquiry Dominus
+1x Temple Garden
+1x Tezzeret's Gambit
+1x Thrummingbird
+1x Unnatural Restoration
+1x Venerated Rotpriest
+1x Verdant Catacombs
+1x Voidwing Hybrid
+1x Vorinclex, Monstrous Raider
+1x Vraska's Fall
+1x Vraska, Betrayal's Sting
+1x Watery Grave
+1x Windswept Heath
+1x Zagoth Triome
+"""
+  cards_count_list = list(map(str.strip, deckListString.split('\n')))
+  card_count_obj = {}
+  for card_count in cards_count_list:
+    card_count_split = transform_card_count(card_count)
+    card_count_obj[card_count_split['name']] = card_count_split['count']
+
+  cards = Card.query.filter(Card.name.in_(card_count_obj.keys())).all()
+  return_str = ''
+  for card in cards:
+    return_str = return_str + f'DeckCard(deck_id = 20, card_id = {card.id}, count = {card_count_obj[card.name]}),\n'
+  return return_str
