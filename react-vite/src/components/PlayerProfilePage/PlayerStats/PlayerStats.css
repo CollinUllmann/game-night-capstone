@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   width: 90%;
+  flex-grow: 1;
 }
 
 .deck-stats-headers {
@@ -40,6 +41,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
+  flex-grow: 1;
 }
 .deck-stats-matchups-header-container {
   display: flex;
@@ -74,8 +76,9 @@
   display: flex;
   flex-direction: column;
   width: 80%;
-  height: 28vh;
   background-color: rgba(0, 0, 0, 0.200);
+  flex-grow: 1;
+
 }
 .deck-stats-matchups-content-headers-div {
   display: flex;
@@ -91,6 +94,8 @@
 .deck-stats-matchups-content-matchup-div {
   overflow-y: scroll;
   padding: 0 0 0 3vh;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 .deck-stats-matchups-content-matchup-div::-webkit-scrollbar {
   display: none;

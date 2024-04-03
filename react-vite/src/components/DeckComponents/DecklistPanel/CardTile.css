@@ -1,7 +1,6 @@
 .card-tile-div {
   display: flex;
   width: fit-content;
-  height: 4vh;
   align-items: center;
 }
 .card-tile-div:hover {

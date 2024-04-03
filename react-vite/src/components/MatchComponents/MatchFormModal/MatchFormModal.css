@@ -1,11 +1,11 @@
 .match-form-div {
   display: flex;
   flex-direction: column;
-  width: 30vh;
 }
 
 .match-form-player-input-div {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .validation-error {
@@ -15,7 +15,6 @@
 .match-form-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
@@ -26,7 +25,6 @@
 }
 
 .match-form-input {
-  width: 100%;
   margin: 10px 5px 10px 5px;
   display: flex;
   justify-content: start;
