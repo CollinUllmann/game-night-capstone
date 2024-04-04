@@ -9,7 +9,18 @@ Are you a Magic: the Gathering player? Do you want to make changes to your decks
 
 This is a capstone projecct for the 24-week App Academy program.
 
-## Media
+#### Profile Page
+<img width="1369" alt="profile_screenshot" src="https://github.com/CollinUllmann/game-night-capstone/assets/130401689/1592ad94-3145-4287-ab2d-2f68890da366">
+
+#### Deck Details
+<img width="1324" alt="deck_screenshot" src="https://github.com/CollinUllmann/game-night-capstone/assets/130401689/5b1ca75d-9c3a-494a-8447-014c3025cb29">
+
+#### Event Details
+<img width="1319" alt="event_screenshot" src="https://github.com/CollinUllmann/game-night-capstone/assets/130401689/bb8e7c3d-3326-47cc-a9ec-b417fd6248ff">
+
+#### Match Form
+<img width="1310" alt="match_form_screenshot" src="https://github.com/CollinUllmann/game-night-capstone/assets/130401689/0fb2b638-d569-40aa-975e-2195e4d68de2">
+
 
 ## Technologies
 #### Languages
