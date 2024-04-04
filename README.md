@@ -1,6 +1,33 @@
-# game-night-capstone
+# Game Night
+## Link to live site:
+https://game-night-3l3y.onrender.com/
 
-This application allows Magic: the Gathering players to track the performance of their decks and gain insights into their gameplay and deck construction
+
+
+## Summary
+Are you a Magic: the Gathering player? Do you want to make changes to your decks, but not sure where to start? Game Night is here! This application allows Magic players to track their performance and gain insights into their gameplay and deck construction.
+
+This is a capstone projecct for the 24-week App Academy program.
+
+## Media
+
+## Technologies
+### Languages
+
+### Libraries
+
+### APIs and Web Services
+
+### Development Tools
+
+### Hosting
+
+
+#Getting Started
+
+1. Clone this repository (only the main branch for full functionality).
+2. Install dependencies.
+   '''pipenv install -r requirements.txt'''
 
 ## Key Features
 
