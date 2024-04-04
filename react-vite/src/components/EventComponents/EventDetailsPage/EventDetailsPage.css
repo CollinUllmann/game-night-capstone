@@ -45,7 +45,7 @@
 }
 .event-details-event-tile-date {
   margin: 1vh;
-  width: 50%;
+  text-align: end;
 }
 .event-details-event-tile:hover .event-details-event-tile-date {
   display: none;
@@ -63,7 +63,7 @@
 
 .event-details-event-tile-icon {
   display: flex;
-  height: 2vh;
+  height: 25px;
   width: 2vh;
   margin: 0 1vh 0 0;
   justify-content: center;
