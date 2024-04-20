@@ -146,6 +146,7 @@ export function MatchStats() {
   return (
     <div className="match-stats-body">
       <div className="match-stats-matchup-divs-div">
+        <p style={{fontSize: 'x-large', margin: '0 0 0 20px', fontWeight: '900'}}>Match Stats</p>
         <div className="match-stats-player-tiles-div">
           <div className="match-stats-matchups-content-headers-div">
             <p className="match-stats-matchups-content-header">Players</p>

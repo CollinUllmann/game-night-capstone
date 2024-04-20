@@ -1,5 +1,6 @@
 .event-details-div {
   display: flex;
+  justify-content: center;
 }
 
 .event-details-title {
