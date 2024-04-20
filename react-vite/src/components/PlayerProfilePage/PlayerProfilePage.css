@@ -89,8 +89,8 @@
 
 .player-profile-player-stats-div {
   height: 500px;
-  width: 100%;
-  margin: 0 0 0 2vh;
+  width: 750px;
+  margin: 0 0 0 15px;
   border-radius: 1vh;
   display: flex;
   flex-direction: column;
