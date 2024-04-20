@@ -2,6 +2,7 @@
   display: flex;
   width: fit-content;
   align-items: center;
+  height: 40px;
 }
 .card-tile-div:hover {
   background-color: #63636343;
@@ -22,6 +23,7 @@
 
 .card-tile-name {
   margin: 0;
+  font-size: small;
 }
 
 .card-tile-manacost {
@@ -29,6 +31,10 @@
   min-height: 1.5vh;
   display: flex;
   align-items: center;
+}
+
+.card-tile-manacost img {
+  width: 13px;
 }
 
 .card-tile-count-div {

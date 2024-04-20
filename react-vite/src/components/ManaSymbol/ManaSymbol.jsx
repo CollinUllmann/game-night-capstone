@@ -1,3 +1,3 @@
 export function ManaSymbol({ symbol }) {
-  return <img style={{ width: 20 }} src={`/card-symbols/${symbol.replace('{', '').replace('}', '')}.svg`}/>
+  return <img style={{ width: 13 }} src={`/card-symbols/${symbol.replace('{', '').replace('}', '')}.svg`}/>
 }
