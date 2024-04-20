@@ -1,5 +1,6 @@
 .match-details-div {
   display: flex;
+  justify-content: center;
 }
 
 .match-details-title {
@@ -37,8 +38,8 @@
 }
 
 .match-details-match-stats-div {
-  height: 50vh;
-  width: 100%;
+  width: 850px;
+  height: 500px;
   margin: 0 0 0 2vh;
   border-radius: 1vh;
   background-color: var(--blue);

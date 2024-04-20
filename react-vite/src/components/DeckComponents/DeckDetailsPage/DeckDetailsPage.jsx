@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { DecklistPanel } from "../DecklistPanel/DecklistPanel";
 import { MatchTile } from "../../MatchComponents/MatchTile/MatchTile";
 import { DeckStats } from "./DeckStats/DeckStats";
@@ -84,7 +84,7 @@ export function DeckDetailsPage() {
       <p className="deck-details-title"><span className="breadcrumb-link" onClick={() => navigate(`/users/${deckOwner.id}`)}>{deckOwner?.username} / </span><span className="page-title">{deck?.name}</span> Deck Details</p>
       <div className="deck-details-div">
         <div className="deck-details-decklist-sidepanel-div top-level-section">
-          <div style={{display:'flex', alignItems:'center', height:'1vh', margin:'1.5vh 0'}}>
+          <div style={{display:'flex', alignItems:'center'}}>
             <p className="deck-details-decklist-title">{deck?.name} Decklist</p>
             <div className="deck-tile-update icon">
               <OpenModalUpdateIcon modalComponent={<DeckFormModal deckId={deck?.id} formtype={'update'}/>}/>

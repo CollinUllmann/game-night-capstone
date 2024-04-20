@@ -82,20 +82,14 @@
   flex-grow: 1;
 
 }
-.deck-stats-matchups-content-headers-div {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 2vh;
-}
 .deck-stats-matchups-content-header {
   font-size: medium;
   font-weight: 600;
-  width: 33%;
+  width: 100%;
 }
 
 .deck-stats-matchups-content-matchup-div {
   overflow-y: scroll;
-  padding: 0 0 0 3vh;
   flex-grow: 1;
   flex-basis: 0;
 }
@@ -118,6 +112,7 @@
 
 .matchup-tile-content {
   width: 33%;
+  padding: 0 0 0 20px;
 }
 
 .blah {

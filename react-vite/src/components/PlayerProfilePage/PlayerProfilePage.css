@@ -1,6 +1,7 @@
 
 .player-profile-div {
   display: flex;
+  justify-content: center;
 }
 
 .player-profile-title {
@@ -9,7 +10,7 @@
 }
 
 .player-profile-player-event-list-sidepanel-div {
-  width: 26.3vh;
+  width: 20%;
   height: 80vh;
   display: flex;
   flex-direction: column;
@@ -28,6 +29,7 @@
   width: 100%;
 }
 .player-profile-player-event-tile {
+  font-size: small;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -87,9 +89,9 @@
 }
 
 .player-profile-player-stats-div {
-  height: 50vh;
-  width: 100%;
-  margin: 0 0 0 2vh;
+  height: 500px;
+  width: 850px;
+  margin: 0 0 0 15px;
   border-radius: 1vh;
   display: flex;
   flex-direction: column;
