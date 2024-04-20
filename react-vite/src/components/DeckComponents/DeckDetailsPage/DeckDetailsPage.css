@@ -1,5 +1,6 @@
 .deck-details-div {
   display: flex;
+  justify-content: center;
 }
 
 .deck-details-title {
@@ -14,7 +15,7 @@
 .deck-details-decklist-sidepanel-div {
   /* border: 1px solid white; */
   background-color: rgba(47, 51, 109, 0.202);
-  width: fit-content;
+  width: 230px;
   height: 80vh;
   display: flex;
   flex-direction: column;
@@ -63,7 +64,7 @@
 
 .deck-details-deck-stats-div {
   height: 500px;
-  width: 100%;
+  width: 850px;
   margin: 0 0 0 2vh;
   /* border: 1px solid white; */
   border-radius: 1vh;
