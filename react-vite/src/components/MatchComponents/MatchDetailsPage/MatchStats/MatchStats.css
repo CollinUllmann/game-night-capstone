@@ -17,36 +17,33 @@
 .match-stats-player-tile {
   display: flex;
   justify-content: space-between;
-  padding: 0 2vh;
+  padding: 0 0 0 20px;
+  column-gap: 20px;
+  width: 100%;
+  font-size: medium;
 }
 
 .match-stats-player-tiles-div {
   background-color: rgba(0, 0, 0, 0.200);
   margin: 0 0 0 3vh;
 }
-.match-stats-player-tile {
-  font-size: medium;
-  width: 67%;
-}
 .match-stats-player-tile:hover {
   cursor: pointer;
 }
 .match-stats-deck-tile {
   font-size: medium;
-  width: 67%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 0 2vh;
+  column-gap: 20px;
+  padding: 0 0 0 20px;
+}
+.match-stats-deck-tile-p {
+  width: 100%;
 }
 .match-stats-deck-tile:hover {
   cursor: pointer;
 }
 
-.match-stats-matchups-content-headers-div {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 2vh;
-}
 .match-stats-matchups-content-header {
   font-size: medium;
   font-weight: 600;

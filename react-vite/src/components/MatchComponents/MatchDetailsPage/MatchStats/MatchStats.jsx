@@ -153,8 +153,8 @@ export function MatchStats() {
           </div>
           {Object.keys(matchPlayersObj).map(playerId => {
             return <div key={playerId} onClick={() => navigate(`/users/${playerId}`)} className="match-stats-player-tile">
-                <p>{usersById[playerId]?.username}</p>
-                <p>{matchPlayersObj[playerId]}%</p>
+                <p className="match-stats-player-tile-p">{usersById[playerId]?.username}</p>
+                <p className="match-stats-player-tile-p">{matchPlayersObj[playerId]}%</p>
             </div>
           })}
         </div>
@@ -165,8 +165,8 @@ export function MatchStats() {
           </div>
           {Object.keys(matchDecksObj).map(deckId => {
             return <div key={deckId} onClick={() => navigate(`/decks/${deckId}`)} className="match-stats-deck-tile">
-                <p>{decksById[deckId]?.name}</p>
-                <p>{matchDecksObj[deckId]}%</p>
+                <p className="match-stats-deck-tile-p">{decksById[deckId]?.name}</p>
+                <p className="match-stats-deck-tile-p">{matchDecksObj[deckId]}%</p>
             </div>
           })}
         </div>
