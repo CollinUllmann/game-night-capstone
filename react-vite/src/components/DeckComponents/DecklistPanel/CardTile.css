@@ -9,10 +9,10 @@
 }
 
 .card-tile-image-div {
-  height: 3vh;
-  width: 3vh;
-  background-size: 7vh;
-  margin: 0 .3vh 0 0;
+  height: 30px;
+  width: 30px;
+  background-size: 70px;
+  margin: 0 0 0 5px;
 }
 
 .card-tile-name-manacost-div {
@@ -42,4 +42,5 @@
   justify-content: center;
   align-items: center;
   width: 3vh;
+  background-color: #1a1b1c6c;
 }

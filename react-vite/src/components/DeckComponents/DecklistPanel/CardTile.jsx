@@ -6,7 +6,10 @@ export function CardTile({ card, count }) {
   let key = 0;
   return (
     <div className="card-tile-div">
-      <div className="card-tile-image-div" style={{backgroundImage: `url(${card.imageUrl})`, backgroundPositionX: '50%', backgroundPositionY: '25%', }}>
+      <div style={{margin:'0 5px'}}>
+        <div className="card-tile-image-div" style={{backgroundImage: `url(${card.imageUrl})`, backgroundPositionX: '50%', backgroundPositionY: '25%', }}>
+
+      </div>
       </div>
       <div className="card-tile-name-manacost-div">
         <p className="card-tile-name">{card.name}</p>
