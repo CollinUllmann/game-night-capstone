@@ -74,10 +74,10 @@ body {
 }
 
 .match-tile-deck-img {
-  width: 3vh;
-  height: 3vh;
-  background-size: 5vh;
-  margin: .5vh;
+  width: 30px;
+  height: 30px;
+  background-size: 70px;
+  margin: 5px;
 }
 
 .winning-deck-tile {

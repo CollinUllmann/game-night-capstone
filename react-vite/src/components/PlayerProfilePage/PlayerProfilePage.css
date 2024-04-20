@@ -28,6 +28,7 @@
   width: 100%;
 }
 .player-profile-player-event-tile {
+  font-size: small;
   display: flex;
   width: 100%;
   justify-content: space-between;

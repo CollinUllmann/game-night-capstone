@@ -9,7 +9,7 @@
 .deck-construction-type-pie-chart-div {
   display: flex;
   justify-content: space-around;
-  height: 20vh;
+  height: 200px;
   width: 100%;
   padding: 0 10%;
   box-sizing: border-box;
