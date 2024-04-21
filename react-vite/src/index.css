@@ -81,6 +81,7 @@ button.block {
 .page-title {
   font-style:italic;
   font-size: x-large;
+  margin: 0 10px 0 0;
 }
 
 .top-level-section {
