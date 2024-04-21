@@ -56,6 +56,7 @@
   margin: 1vh 2vh;
   flex-wrap: wrap;
   column-gap: 2vh;
+  row-gap: 2vh;
 }
 
 .match-details-decktile-div {

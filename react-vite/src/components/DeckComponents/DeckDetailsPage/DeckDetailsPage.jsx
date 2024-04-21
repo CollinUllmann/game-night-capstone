@@ -12,6 +12,9 @@ import { DeleteDeckConfirmationModal } from "../DeckTile/DeleteDeckConfirmationM
 
 import { MdNavigateNext } from "react-icons/md";
 import { MdNavigateBefore } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
+import { TbCardsFilled } from "react-icons/tb";
+
 
 
 import './DeckDetailsPage.css'
@@ -81,7 +84,7 @@ export function DeckDetailsPage() {
   let key = deckMatches.length - ((matchPageNum - 1) * 10);
   return (
     <div>
-      <p className="deck-details-title"><span className="breadcrumb-link" onClick={() => navigate(`/users/${deckOwner.id}`)}>{deckOwner?.username} / </span><span className="page-title">{deck?.name}</span> Deck Details</p>
+      <p className="deck-details-title"><FaUser style={{height: '15px'}}/><span className="breadcrumb-link" onClick={() => navigate(`/users/${deckOwner.id}`)}>{deckOwner?.username} &gt; </span><TbCardsFilled style={{height: '20px'}}/><span className="page-title">{deck?.name}</span> Deck Details</p>
       <div className="deck-details-div">
         <div className="deck-details-decklist-sidepanel-div top-level-section">
           <div style={{display:'flex', alignItems:'center'}}>

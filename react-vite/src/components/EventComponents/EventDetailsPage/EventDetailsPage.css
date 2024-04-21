@@ -65,9 +65,9 @@
 
 .event-details-event-tile-icon {
   display: flex;
-  height: 25px;
+  height: 15px;
   width: 2vh;
-  margin: 0 1vh 0 0;
+  margin: .5vh 0 0 .5vh;
   justify-content: center;
   align-items: center;
 }

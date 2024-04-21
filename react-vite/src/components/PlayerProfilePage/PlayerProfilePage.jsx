@@ -19,6 +19,9 @@ import { EventFormModal } from "../EventComponents/EventFormModal/EventFormModal
 
 import { MdNavigateNext } from "react-icons/md";
 import { MdNavigateBefore } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
+
+
 
 import './PlayerProfilePage.css'
 
@@ -87,7 +90,7 @@ export function PlayerProfilePage() {
   let key = 0;
   return (
     <div>
-      <p className="player-profile-title"><span className="page-title">{user?.username}&apos;s</span> Profile</p>
+      <p className="player-profile-title"><FaUser style={{height: '15px'}} /><span className="page-title" style={{height: '10px'}}>{user?.username}</span></p>
       <div className="player-profile-div">
         <div className="player-profile-player-event-list-sidepanel-div top-level-section">
           <p className="player-profile-player-event-list-title">Events</p>

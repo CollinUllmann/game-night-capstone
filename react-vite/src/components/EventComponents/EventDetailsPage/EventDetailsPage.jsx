@@ -16,6 +16,7 @@ import './EventDetailsPage.css'
 
 import { MdNavigateNext } from "react-icons/md";
 import { MdNavigateBefore } from "react-icons/md";
+import { MdEmojiEvents } from "react-icons/md";
 
 
 export function EventDetailsPage() {
@@ -71,8 +72,8 @@ export function EventDetailsPage() {
   if (matchPageNum == 1) matchKey = eventMatches.length
   return (
     <div>
-      <div style={{display:'flex', alignItems:'center', columnGap:'1vh'}}>
-        <p className="event-details-title"><span className="page-title">{event?.name}</span> Event Details</p>
+      <div style={{display:'flex', alignItems:'center'}}>
+        <p className="event-details-title"><MdEmojiEvents style={{height: '20px'}}/><span className="page-title">{event?.name}</span></p>
         <div style={{display:'flex'}}>
           <div className="event-details-event-tile-icon" >
             <OpenModalUpdateIcon modalComponent={<EventFormModal formtype={'update'} eventId={event?.id}/>}/>
