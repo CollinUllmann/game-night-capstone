@@ -6,6 +6,8 @@
 .deck-details-title {
   font-size: x-large;
   font-weight: 600;
+  display: flex;
+  align-items: center;
 }
 
 .breadcrumb-link:hover {

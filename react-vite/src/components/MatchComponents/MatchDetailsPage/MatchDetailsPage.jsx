@@ -15,6 +15,8 @@ import { thunkFetchAllEvents } from "../../../redux/event";
 
 import { MdEmojiEvents } from "react-icons/md";
 import { RiBoxingFill } from "react-icons/ri";
+import { IoIosArrowForward } from "react-icons/io";
+
 
 
 
@@ -59,7 +61,7 @@ export function MatchDetailsPage() {
   return (
     <div>
       <div style={{display:'flex', alignItems:'center'}}>
-        <p className="match-details-title"><span  style={{cursor: 'pointer'}} onClick={onClickEventName}><MdEmojiEvents style={{height: '20px'}}/>{event?.name} &gt; </span><RiBoxingFill style={{height: '20px'}}/><span className="page-title">Match Details</span></p>
+        <p className="match-details-title"><MdEmojiEvents style={{height: '20px'}}/><span  style={{cursor: 'pointer'}} onClick={onClickEventName}>{event?.name} </span> <IoIosArrowForward /><RiBoxingFill style={{height: '20px'}}/><span className="page-title">Match Details</span></p>
         <div className="match-tile-update icon">
           <OpenModalUpdateIcon modalComponent={<MatchFormModal formtype={'update'} matchId={match?.id}/>} />
         </div>
