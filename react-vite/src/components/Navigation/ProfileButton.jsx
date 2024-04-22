@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { IoMdSettings } from "react-icons/io";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { IoMdArrowDropup } from "react-icons/io";
 
 
 import { thunkLogout } from "../../redux/session";
@@ -53,7 +54,9 @@ function ProfileButton() {
       <div className="profile-menu-button" onClick={toggleMenu}>
         {/* <FaUserCircle /> */}
         <IoMdSettings />
-        <IoMdArrowDropdown />
+        {showMenu ? <IoMdArrowDropup /> : <IoMdArrowDropdown />
+}
+        
 
       </div>
       {showMenu && (
