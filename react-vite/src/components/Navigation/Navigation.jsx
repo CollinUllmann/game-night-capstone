@@ -3,6 +3,9 @@ import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import { useSelector } from "react-redux";
 
+import { IoMdHome } from "react-icons/io";
+
+
 function Navigation() {
   const navigate = useNavigate()
   const currentUser = useSelector(state => state.session.user)
@@ -30,7 +33,10 @@ function Navigation() {
 
       <div className="nav-bar-profile-section">
         <div className={currentUser ? "nav-bar-profile-div": "hidden"} onClick={handleProfileNav}>
-          <div>Profile</div>
+          <div className="nav-bar-home-button" style={{display: 'flex', alignItems: 'center', columnGap: '5px'}}>
+            <IoMdHome style={{width: '25px', height: '25px'}}/><p style={{margin: '0 0 -2px 0'}}>Profile</p>
+          </div>
+          
         </div>
         <ProfileButton />
       </div>

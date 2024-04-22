@@ -38,6 +38,13 @@
   width: 100%;
 }
 
+.nav-bar-home-button {
+  color: gray;
+}
+.nav-bar-home-button:hover {
+  color: white;
+}
+
 .nav-bar-profile-section {
   display: flex;
   flex-direction: row;
@@ -83,6 +90,14 @@
 
 .profile-menu-button {
   display: flex;
+  align-items: center;
+  color: gray;
+
+}
+.profile-menu-button:hover {
+  cursor: pointer;
+  color: white;
+  
 }
 
 .logo {
