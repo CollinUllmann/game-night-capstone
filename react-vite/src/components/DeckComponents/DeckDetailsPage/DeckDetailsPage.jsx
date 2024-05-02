@@ -36,6 +36,7 @@ export function DeckDetailsPage() {
   // const sessionUser = useSelector((state) => state.session.user);
   const deckById = useSelector(state => state.decks)
   const matchesById = useSelector(state => state.matches)
+  const currentUser = useSelector(state => state.session.user)
   const deck = deckById[deckId]
   const deckMatches = Object.values(matchesById).filter(match => {
     for (const matchDeckId of match.deckIds) {
@@ -91,10 +92,10 @@ export function DeckDetailsPage() {
         <div className="deck-details-decklist-sidepanel-div top-level-section">
           <div style={{display:'flex', alignItems:'center'}}>
             <p className="deck-details-decklist-title">{deck?.name} Decklist</p>
-            <div className="deck-tile-update icon">
+            <div style={{display: currentUser.id == deck?.userId ? 'flex' : 'none'}} className="deck-tile-update icon">
               <OpenModalUpdateIcon modalComponent={<DeckFormModal deckId={deck?.id} formtype={'update'}/>}/>
             </div>
-            <div className="deck-tile-delete icon">
+            <div style={{display: currentUser.id == deck?.userId ? 'flex' : 'none'}} className="deck-tile-delete icon">
               <OpenModalDeleteIcon modalComponent={<DeleteDeckConfirmationModal deckId={deck?.id}/>}/>
             </div>
           </div>
