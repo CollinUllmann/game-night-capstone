@@ -65,7 +65,7 @@ export function MatchFormModal({ formtype, matchId }) {
   }, [matchId, matchById])
 
 
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     if(deckIds.length < 2) {
@@ -80,9 +80,9 @@ export function MatchFormModal({ formtype, matchId }) {
     matchFormData.append('deck_ids', deckIds.join(' '))
     
     if (formtype == 'update') {
-      dispatch(thunkUpdateMatch(matchId, matchFormData)).then(() => setLoading(false)).then(() => navigate(`/matches/${matchId}`)).then(() => closeModal())
+      dispatch(thunkUpdateMatch(matchId, matchFormData)).then(() => closeModal()).then(() => setLoading(false))
     } else {
-      dispatch(thunkCreateMatch(matchFormData)).then(() => setLoading(false)).then(responseMatch => navigate(`/matches/${responseMatch.id}`)).then(() => closeModal())
+      dispatch(thunkCreateMatch(matchFormData)).then(() => closeModal()).then(() => setLoading(false))
     }
   };
 
