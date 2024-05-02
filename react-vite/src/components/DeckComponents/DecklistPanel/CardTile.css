@@ -44,3 +44,12 @@
   width: 3vh;
   background-color: #1a1b1c6c;
 }
+
+.decklistCardPreview {
+  transition: height 1s .5s;
+  height: 0;
+}
+
+.card-tile-div:hover ~ .decklistCardPreview{
+  height: 320px;
+}
