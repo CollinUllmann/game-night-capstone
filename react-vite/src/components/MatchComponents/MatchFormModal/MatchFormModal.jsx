@@ -9,11 +9,15 @@ import { MatchDeckSelector } from "./MatchDeckSelector/MatchDeckSelector";
 import { thunkFetchAllUsers } from "../../../redux/users";
 import { thunkFetchAllEvents } from "../../../redux/event";
 import { useModal } from "../../../context/Modal";
+import '../../LoadingSpinnerModal.css'
 
 export function MatchFormModal({ formtype, matchId }) {
   // const { matchId } = useParams()
 
   const { closeModal } = useModal();
+
+  const [loading, setLoading] = useState(false)
+ 
 
   const matchById = useSelector(state => state.matches)
   const deckById = useSelector(state => state.decks)
@@ -69,21 +73,24 @@ export function MatchFormModal({ formtype, matchId }) {
         deckCount: 'At least two decks must be selected'
       })
     }
-    
+    setLoading(true)
     const matchFormData = new FormData()
     matchFormData.append('event_id', eventId)
     matchFormData.append('user_id_winner', userIdWinner)
     matchFormData.append('deck_ids', deckIds.join(' '))
-
+    
     if (formtype == 'update') {
-      dispatch(thunkUpdateMatch(matchId, matchFormData)).then(() => navigate(`/matches/${matchId}`)).then(() => closeModal())
+      dispatch(thunkUpdateMatch(matchId, matchFormData)).then(() => setLoading(false)).then(() => navigate(`/matches/${matchId}`)).then(() => closeModal())
     } else {
-      dispatch(thunkCreateMatch(matchFormData)).then(responseMatch => navigate(`/matches/${responseMatch.id}`)).then(() => closeModal())
+      dispatch(thunkCreateMatch(matchFormData)).then(() => setLoading(false)).then(responseMatch => navigate(`/matches/${responseMatch.id}`)).then(() => closeModal())
     }
   };
 
   return (
     <>
+      <div className={loading ? "loadingDiv loading" : "loadingDiv"} >
+        <div class="lds-dual-ring"></div>
+      </div>
       <div className="match-form-container">
         <h1>Match Form</h1>        
       
