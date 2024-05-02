@@ -4,7 +4,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import './DeckTile.css'
 // import OpenModalMenuItem from '../../Navigation/OpenModalMenuItem';
-// import DeckDeleteConfirmationModal from '../../DeckDeleteConfirmationModal/DeckDeleteConfirmationModal'
 // import { FaTrashAlt } from "react-icons/fa";
 // import { RxUpdate } from "react-icons/rx";
 // import { thunkDeleteDeck } from '../../../redux/deck';
@@ -100,10 +99,6 @@ export function DeckTile({ deck, onClick }) {
         </div>
       
       }
-      {/* <OpenModalMenuItem
-        itemText="Delete"
-        modalComponent={<DeckDeleteConfirmationModal deckId={deck.id} />}
-      /> */}
     </div>
   )
 }

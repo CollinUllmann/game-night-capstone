@@ -21,6 +21,8 @@ export function DeckFormModal({ formtype, deckId }) {
   const [format, setFormat] = useState("")
   const [cards, setCards] = useState("")
 
+  const [loading, setLoading] = useState(false)
+
   const [errors, setErrors] = useState({});
   const [deckValidationErrors, setDeckValidationErrors] = useState()
 
@@ -79,6 +81,7 @@ export function DeckFormModal({ formtype, deckId }) {
 
     if(errorsNew.name || errorsNew.format || errorsNew.deckList) return;
     
+    setLoading(true)
     const deckFormData = new FormData()
     deckFormData.append('name', name)
     deckFormData.append('format', format)
@@ -86,6 +89,7 @@ export function DeckFormModal({ formtype, deckId }) {
 
     if (formtype == 'update') {
       const res = await dispatch(thunkUpdateDeck(deckId, deckFormData))
+      setLoading(false)
       if (res.card_names_requested_but_not_found) {
         setDeckValidationErrors(res.card_names_requested_but_not_found)
         return
@@ -135,6 +139,9 @@ export function DeckFormModal({ formtype, deckId }) {
 
   return (
     <>
+      <div className={loading ? "loadingDiv loading" : "loadingDiv"} >
+        <div class="lds-dual-ring"></div>
+      </div>
       <div className="deck-form-container">
         <h1>Deck Form</h1>        
       
