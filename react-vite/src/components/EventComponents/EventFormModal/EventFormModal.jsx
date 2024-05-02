@@ -67,12 +67,13 @@ export function EventFormModal({ formtype, eventId }) {
     eventFormData.append('format', format)
 
     if (formtype == 'update') {
-      dispatch(thunkUpdateEvent(eventId, eventFormData)).then(() => setLoading(false)).then(() => navigate(`/events/${eventId}`)).then(() => closeModal())
+      dispatch(thunkUpdateEvent(eventId, eventFormData)).then(() => setLoading(false)).then(() => closeModal()).then(() => navigate(`/events/${eventId}`))
     } else {
       dispatch(thunkCreateEvent(eventFormData)).then(() => setLoading(false)).then(eventOrFailureMessage => {
         if(typeof eventOrFailureMessage === 'object') {
-          navigate(`/events/${eventOrFailureMessage.id}`).then(() => closeModal())
+          navigate(`/events/${eventOrFailureMessage.id}`)
         }
+        closeModal()
       })
     }
   }
