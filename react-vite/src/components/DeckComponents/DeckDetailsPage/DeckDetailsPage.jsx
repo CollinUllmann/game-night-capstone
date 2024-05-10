@@ -22,6 +22,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import './DeckDetailsPage.css'
 import { thunkFetchAllUsers } from "../../../redux/users";
 import { thunkFetchAllEvents } from "../../../redux/event";
+import { thunkFetchDeckById } from "../../../redux/deck";
 
 
 export function DeckDetailsPage() {
@@ -53,6 +54,7 @@ export function DeckDetailsPage() {
   useEffect(() => {
     dispatch(thunkFetchAllEvents())
     dispatch(thunkFetchAllUsers())
+    dispatch(thunkFetchDeckById(deckId))
 
     // dispatch(thunkFetchDeckById(deckId)).then(returnDeck => {
     //   returnDeck.cards.forEach(card => dispatch(thunkFetchCardById(card.cardId)))
