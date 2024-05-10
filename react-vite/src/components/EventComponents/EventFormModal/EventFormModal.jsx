@@ -81,7 +81,7 @@ export function EventFormModal({ formtype, eventId }) {
   return (
     <>
       <div className={loading ? "loadingDiv loading" : "loadingDiv"} >
-        <div class="lds-dual-ring"></div>
+        <div className="lds-dual-ring"></div>
       </div>
       <div className="event-form-container">
         <h1>Event Form</h1>

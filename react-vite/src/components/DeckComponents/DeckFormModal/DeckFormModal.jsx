@@ -140,7 +140,7 @@ export function DeckFormModal({ formtype, deckId }) {
   return (
     <>
       <div className={loading ? "loadingDiv loading" : "loadingDiv"} >
-        <div class="lds-dual-ring"></div>
+        <div className="lds-dual-ring"></div>
       </div>
       <div className="deck-form-container">
         <h1>Deck Form</h1>        

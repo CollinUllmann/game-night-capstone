@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkCreateMatch, thunkFetchMatchById, thunkUpdateMatch } from "../../../redux/match";
 
 import './MatchFormModal.css'
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { thunkFetchAllDecks } from "../../../redux/deck";
 import { MatchDeckSelector } from "./MatchDeckSelector/MatchDeckSelector";
 import { thunkFetchAllUsers } from "../../../redux/users";
@@ -26,7 +26,7 @@ export function MatchFormModal({ formtype, matchId }) {
   
   
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   //state variables for data needed for creation
   const [eventId, setEventId] = useState();
   const [userIdWinner, setUserIdWinner] = useState()
@@ -84,12 +84,12 @@ export function MatchFormModal({ formtype, matchId }) {
     } else {
       dispatch(thunkCreateMatch(matchFormData)).then(() => closeModal()).then(() => setLoading(false))
     }
-  };
+  }
 
   return (
     <>
       <div className={loading ? "loadingDiv loading" : "loadingDiv"} >
-        <div class="lds-dual-ring"></div>
+        <div className="lds-dual-ring"></div>
       </div>
       <div className="match-form-container">
         <h1>Match Form</h1>        

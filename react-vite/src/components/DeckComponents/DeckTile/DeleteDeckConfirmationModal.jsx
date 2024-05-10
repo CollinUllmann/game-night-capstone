@@ -29,7 +29,7 @@ export function DeleteDeckConfirmationModal({ deckId }) {
   return (
     <>
       <div className={loading ? "loadingDiv loading" : "loadingDiv"} >
-        <div class="lds-dual-ring"></div>
+        <div className="lds-dual-ring"></div>
       </div>
 
       <div style={{display:'flex', flexDirection:'column', alignItems:'center', margin:'20px'}}>
