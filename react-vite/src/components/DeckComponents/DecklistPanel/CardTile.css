@@ -1,6 +1,6 @@
 .card-tile-div {
   display: flex;
-  width: fit-content;
+  /* width: fit-content; */
   align-items: center;
   height: 40px;
 }
@@ -18,7 +18,7 @@
 .card-tile-name-manacost-div {
   display: flex;
   flex-direction: column;
-  width: 20vh;
+  width: 185px;
 }
 
 .card-tile-name {
@@ -41,7 +41,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 3vh;
+  width: 30px;
   background-color: #1a1b1c6c;
 }
 

@@ -17,7 +17,7 @@
 .deck-details-decklist-sidepanel-div {
   /* border: 1px solid white; */
   background-color: rgba(47, 51, 109, 0.202);
-  width: 230px;
+  width: 250px;
   height: 90vh;
   display: flex;
   flex-direction: column;
