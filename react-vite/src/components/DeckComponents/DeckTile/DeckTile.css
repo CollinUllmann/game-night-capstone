@@ -51,6 +51,11 @@ body {
   font-weight: 600;
   opacity: 100%;
   font-size: x-large;
+  text-overflow: ellipsis;
+  overflow:hidden;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
 }
 
 .deck-tile-deck-format {
